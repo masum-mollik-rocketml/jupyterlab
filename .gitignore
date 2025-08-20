@@ -161,3 +161,10 @@ untitled*.txt
 
 # temporary files, useful for testing
 tmp
+
+
+#agents
+agents
+venv
+anaconda_projects
+.jupyter_ystore.db

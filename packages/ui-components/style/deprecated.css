@@ -40,6 +40,7 @@
   --jp-icon-collapse-all: url('icons/toolbar/collapse-all.svg');
   --jp-icon-collapse: url('icons/output/collapse.svg');
   --jp-icon-console: url('icons/filetype/console.svg');
+  --jp-icon-copilot: url('icons/toolbar/copilot.svg');
   --jp-icon-copy: url('icons/toolbar/copy.svg');
   --jp-icon-copyright: url('icons/licenses/copyright.svg');
   --jp-icon-cut: url('icons/toolbar/cut.svg');
@@ -247,6 +248,10 @@
 
 .jp-ConsoleIcon {
   background-image: var(--jp-icon-console);
+}
+
+.jp-CopilotIcon {
+  background-image: var(--jp-icon-copilot);
 }
 
 .jp-CopyIcon {

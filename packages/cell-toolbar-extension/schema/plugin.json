@@ -22,6 +22,14 @@
         "command": "notebook:delete-cell",
         "icon": "ui-components:delete",
         "name": "delete-cell"
+      },
+      {
+        "name": "run-code-cell",
+        "command": "toolbar-button:run-code-cell"
+      },
+      {
+        "name": "render-markdows-cell",
+        "command": "toolbar-button:render-markdown-cell"
       }
     ]
   },

@@ -1,0 +1,18 @@
+.copilot-widget {
+    max-height: 400px;
+    min-height: 240px;
+    background: #f8fafd;
+    /* border-radius: 8px; */
+    /* width: 500px; */
+    padding: 24px 16px;
+    /* margin: 0px auto; */
+    border: 1px solid #dadada;
+    border-radius: 12px;
+    bottom: 52px;
+    left: 0;
+    margin: 0 auto;
+    max-width: 550px;
+    position: absolute;
+    right: 0;
+    width: calc(100% - 172px);
+}
