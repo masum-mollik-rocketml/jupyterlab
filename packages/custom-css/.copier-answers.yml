@@ -1,0 +1,14 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: v4.4.0
+_src_path: https://github.com/jupyterlab/extension-template
+author_email: masum@rocketml.net
+author_name: custom-css
+has_binder: true
+has_settings: false
+kind: frontend
+labextension_name: custom-css
+project_short_description: A JupyterLab extension.
+python_name: custom_css
+repository: ''
+test: false
+

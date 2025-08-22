@@ -1,0 +1,4 @@
+/*@import "tailwindcss/preflight";*/
+@plugin "@tailwindcss/typography";
+
+/*@tailwind utilities;*/

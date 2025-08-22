@@ -37,8 +37,8 @@
     "postbuild:all": "npm run build:testutils && npm run build:galata",
     "build:builder": "cd builder && npm run build",
     "build:core": "cd jupyterlab/staging && jlpm && (jlpm dlx yarn-berry-deduplicate -s fewerHighest || jlpm) && jlpm && npm run build",
-    "build:dev": "npm run integrity && npm run build:all && cd dev_mode && npm run build",
-    "build:dev:prod": "npm run integrity && npm run build:all && cd dev_mode && npm run build:prod",
+    "build:dev": "npm run integrity && jlpm tailwind_css && jlpm tailwind_css_imports && npm run build:all && cd dev_mode && npm run build",
+    "build:dev:prod": "npm run integrity && jlpm tailwind_css && jlpm tailwind_css_imports && npm run build:all && cd dev_mode && npm run build:prod",
     "build:dev:prod:minimize": "npm run integrity && npm run build:all && cd dev_mode && npm run build:prod:minimize",
     "build:dev:prod:minimize:report": "npm run integrity && npm run build:all && cd dev_mode && npm run build:prod:minimize:report",
     "build:dev:prod:release": "npm run integrity && npm run build:all && cd dev_mode && npm run build:prod:release",
@@ -93,6 +93,8 @@
     "stylelint": "jlpm stylelint:check --fix",
     "stylelint:check": "stylelint --cache \"{packages/*,galata}/style/**/*.css\" \"{examples/*,docs/**}/*.css\"",
     "stylelint:files": "stylelint --fix",
+    "tailwind_css": "jlpm dlx -p postcss -p postcss-cli postcss packages/custom-css/style/tailwind.css --o packages/custom-css/style/tailwind-generated.css --config scripts/postcss.config.js",
+    "tailwind_css_imports": "jlpm dlx -p postcss -p postcss-cli postcss packages/custom-css/style/tailwind-imports.css --o packages/custom-css/style/tailwind-imports-generated.css --config scripts/postcss.config.js",
     "test": "lerna run test --scope \"@jupyterlab/!(galata|template)*\" --concurrency 1 --stream",
     "test:all": "lerna run test --scope \"@jupyterlab/!(galata|template)*\" --concurrency 1 --stream --no-bail",
     "test:examples": "python examples/test_examples.py",
@@ -112,6 +114,7 @@
     "yjs": "^13.5.40"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.1.12",
     "@typescript-eslint/eslint-plugin": "~6.13.2",
     "@typescript-eslint/parser": "~6.13.2",
     "eslint": "~8.55.0",
@@ -119,15 +122,18 @@
     "eslint-plugin-jest": "~27.6.0",
     "eslint-plugin-prettier": "~5.0.1",
     "eslint-plugin-react": "~7.33.2",
+    "postcss": "^8.5.6",
     "prettier": "~3.0.0",
     "stylelint": "^15.10.1",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-recommended": "^13.0.0",
     "stylelint-config-standard": "^34.0.0",
     "stylelint-csstree-validator": "^3.0.0",
-    "stylelint-prettier": "^4.0.0"
+    "stylelint-prettier": "^4.0.0",
+    "tailwindcss": "^4.1.12"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.16",
     "lerna": "^7.1.4",
     "typedoc": "~0.27.4",
     "typedoc-plugin-mdn-links": "^4.0.4"

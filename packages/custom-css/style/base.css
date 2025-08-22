@@ -1,0 +1,9 @@
+/*
+    See the JupyterLab Developer Guide for useful CSS Patterns:
+
+    https://jupyterlab.readthedocs.io/en/stable/developer/css.html
+*/
+
+@import "./tailwind.css";
+@import "./tailwind-generated.css";
+@import "./tailwind-imports-generated.css";

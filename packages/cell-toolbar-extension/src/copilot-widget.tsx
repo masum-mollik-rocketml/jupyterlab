@@ -41,7 +41,7 @@ export class CopilotWidget extends ReactWidget {
 
   render(): JSX.Element {
     return (<>
-      <div onClick={(): void => {
+      <div className={"text-3xl"} onClick={(): void => {
         this._stateChanged.emit();
       }}>Hello</div>
       <CopilotComponent  />

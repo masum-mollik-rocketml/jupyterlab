@@ -15,6 +15,7 @@
   "sideEffects": false,
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "style": "style/index.css",
   "directories": {
     "lib": "lib/"
   },
@@ -137,7 +138,8 @@
     "@jupyterlab/vega5-extension": "^4.5.0-alpha.2",
     "@jupyterlab/video-extension": "^4.5.0-alpha.2",
     "@jupyterlab/workspaces": "^4.5.0-alpha.2",
-    "@jupyterlab/workspaces-extension": "^4.5.0-alpha.2"
+    "@jupyterlab/workspaces-extension": "^4.5.0-alpha.2",
+    "custom-css": "^0.1.0"
   },
   "devDependencies": {
     "@jupyterlab/testing": "^4.5.0-alpha.2",
@@ -150,5 +152,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "styleModule": "style/index.js"
 }
