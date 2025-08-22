@@ -1,5 +1,15 @@
-import { Decoration, DecorationSet, EditorView, WidgetType } from '@codemirror/view';
-import { Extension, StateField } from '@codemirror/state';
+import { Decoration, DecorationSet, EditorView, ViewPlugin, WidgetType } from '@codemirror/view';
+import { Extension, StateEffect, StateField } from '@codemirror/state';
+
+/**
+ * State effect to show toolbar with delay
+ */
+const showToolbarEffect = StateEffect.define<{from: number, to: number}>();
+
+/**
+ * State effect to hide toolbar
+ */
+const hideToolbarEffect = StateEffect.define<void>();
 
 /**
  * Custom widget class for the popup toolbar
@@ -36,7 +46,7 @@ class ToolbarWidget extends WidgetType {
     return toolbar;
   }
 
-  ignoreEvent(event:Event): boolean {
+  ignoreEvent(event: Event): boolean {
     console.log(event);
     return true;
   }
@@ -66,14 +76,14 @@ function createToolbarWidget(from: number, to: number) {
   const widget = Decoration.widget({
     widget: new ToolbarWidget(from, to),
     side: -1,
-    block: true  // ✅ This works with StateField!
+    block: true
   });
 
-  return widget.range(from); // Position at end of selection
+  return widget.range(from);
 }
 
 /**
- * StateField to manage toolbar decorations
+ * StateField to manage toolbar decorations with delay
  */
 const toolbarField = StateField.define<DecorationSet>({
   create() {
@@ -84,31 +94,88 @@ const toolbarField = StateField.define<DecorationSet>({
     // Map existing decorations through document changes
     decorations = decorations.map(tr.changes);
 
-    // Check if selection changed
-    if (tr.selection || tr.docChanged) {
-      const { from, to } = tr.state.selection.main;
+    // Handle explicit show/hide effects
+    for (let effect of tr.effects) {
+      if (effect.is(showToolbarEffect)) {
+        const { from, to } = effect.value;
+        const toolbarWidget = createToolbarWidget(from, to);
+        return Decoration.set([toolbarWidget]);
+      } else if (effect.is(hideToolbarEffect)) {
+        return Decoration.none;
+      }
+    }
 
-      // Only show toolbar if there's a selection
+    // Hide toolbar immediately if no selection
+    if (tr.selection) {
+      const { from, to } = tr.state.selection.main;
       if (from === to) {
         return Decoration.none;
       }
-
-      // Create new toolbar widget
-      const toolbarWidget = createToolbarWidget(from, to);
-
-      return Decoration.set([toolbarWidget]);
     }
 
     return decorations;
   },
 
-  // ✅ This is the key: provide decorations to the editor
   provide: f => EditorView.decorations.from(f)
 });
 
 /**
- * Extension for CodeMirror 6 displaying popup toolbar using StateField
+ * ViewPlugin to handle delayed toolbar showing
+ */
+const toolbarViewPlugin = ViewPlugin.fromClass(class {
+  private showTimer: number | null = null;
+  private lastSelection: {from: number, to: number} | null = null;
+
+  constructor(private view: EditorView) {}
+
+  update(update: any) {
+    const { from, to } = update.state.selection.main;
+
+    // Clear existing timer
+    if (this.showTimer !== null) {
+      clearTimeout(this.showTimer);
+      this.showTimer = null;
+    }
+
+    // If no selection, hide immediately
+    if (from === to) {
+      if (this.lastSelection) {
+        this.view.dispatch({
+          effects: hideToolbarEffect.of()
+        });
+        this.lastSelection = null;
+      }
+      return;
+    }
+
+    // If selection changed, start delay timer
+    if (!this.lastSelection || this.lastSelection.from !== from || this.lastSelection.to !== to) {
+      this.lastSelection = { from, to };
+
+      // Set timer to show toolbar after delay
+      this.showTimer = setTimeout(() => {
+        // Check if selection is still the same when timer fires
+        const currentSelection = this.view.state.selection.main;
+        if (currentSelection.from === from && currentSelection.to === to && currentSelection.from !== currentSelection.to) {
+          this.view.dispatch({
+            effects: showToolbarEffect.of({ from, to })
+          });
+        }
+        this.showTimer = null;
+      }, 300); // 300ms delay - adjust as needed
+    }
+  }
+
+  destroy() {
+    if (this.showTimer !== null) {
+      clearTimeout(this.showTimer);
+    }
+  }
+});
+
+/**
+ * Extension for CodeMirror 6 displaying popup toolbar with delay
  */
 export function popupToolbar(): Extension {
-  return [toolbarField];
+  return [toolbarField, toolbarViewPlugin];
 }
