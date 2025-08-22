@@ -52,7 +52,7 @@ const cellToolbar: JupyterFrontEndPlugin<void> = {
   ) => {
 
     const { commands } = app;
-    const dialogWidget = new CopilotWidget();
+    const dialogWidget = new CopilotWidget(tracker);
 
     /* Adds a command enabled only on code cell */
     commands.addCommand(CommandIds.runCodeCell, {
