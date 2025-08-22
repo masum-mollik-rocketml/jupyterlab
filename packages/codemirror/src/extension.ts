@@ -37,7 +37,7 @@ import { JSONExt, ReadonlyJSONObject } from '@lumino/coreutils';
 import { IObservableDisposable } from '@lumino/disposable';
 import { ISignal, Signal } from '@lumino/signaling';
 import { StateCommands } from './commands';
-import { customTheme, CustomTheme, rulers } from './extensions';
+import { customTheme, CustomTheme, rulers, popupToolbar } from './extensions';
 import {
   IConfigurableExtension,
   IEditorExtensionFactory,
@@ -841,6 +841,16 @@ export namespace EditorExtensionRegistry {
             type: 'number',
             minimum: 0
           }
+        }
+      }),
+      Object.freeze({
+        name: 'popupToolbar',
+        default: true,  // or false if you want it disabled by default
+        factory: () => createConditionalExtension(popupToolbar()),
+        schema: {
+          type: 'boolean',
+          title: trans.__('Popup Toolbar'),
+          description: trans.__('Show popup toolbar on text selection')
         }
       }),
       Object.freeze({

@@ -1,0 +1,17 @@
+.cm-popup-toolbar {
+    display: flex;
+    gap: 6px;
+}
+
+.cm-btn {
+    font-size: 12px;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 2px 6px;
+    cursor: pointer;
+}
+
+.cm-btn:hover {
+    background: #e0e0e0;
+}
