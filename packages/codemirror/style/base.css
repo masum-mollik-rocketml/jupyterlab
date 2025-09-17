@@ -3,6 +3,9 @@
 | Distributed under the terms of the Modified BSD License.
 |----------------------------------------------------------------------------*/
 
+@import "popup-toolbar.css";
+
+
 .cm-editor {
   line-height: var(--jp-code-line-height);
   font-size: var(--jp-code-font-size);

@@ -35,9 +35,8 @@ class ToolbarWidget extends WidgetType {
       padding: "4px 8px",
       background: "white",
       border: "1px solid #ccc",
-      borderRadius: "6px",
       boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
-      margin: "4px 0",
+      margin: "20px 0 6px",
       justifyContent: "center",
       alignItems: "center",
       pointerEvents: "auto"
@@ -120,7 +119,7 @@ const toolbarField = StateField.define<DecorationSet>({
 });
 
 /**
- * ViewPlugin to handle delayed toolbar showing
+ * ViewPlugin to handle delayed toolbar showing - FIXED VERSION
  */
 const toolbarViewPlugin = ViewPlugin.fromClass(class {
   private showTimer: number | null = null;
@@ -140,9 +139,12 @@ const toolbarViewPlugin = ViewPlugin.fromClass(class {
     // If no selection, hide immediately
     if (from === to) {
       if (this.lastSelection) {
-        this.view.dispatch({
-          effects: hideToolbarEffect.of()
-        });
+        // ✅ FIX: Defer dispatch using setTimeout
+        setTimeout(() => {
+          this.view.dispatch({
+            effects: hideToolbarEffect.of()
+          });
+        }, 0);
         this.lastSelection = null;
       }
       return;
@@ -157,6 +159,7 @@ const toolbarViewPlugin = ViewPlugin.fromClass(class {
         // Check if selection is still the same when timer fires
         const currentSelection = this.view.state.selection.main;
         if (currentSelection.from === from && currentSelection.to === to && currentSelection.from !== currentSelection.to) {
+          // ✅ FIX: This is already deferred, so it's safe
           this.view.dispatch({
             effects: showToolbarEffect.of({ from, to })
           });
