@@ -1244,6 +1244,10 @@ function activateWidgetFactory(
       translator
     )
   );
+  
+  toolbarRegistry.addFactory<NotebookPanel>(FACTORY, 'customWidget', panel =>
+    Toolbar.createCustomWidget()
+  );
 
   toolbarRegistry.addFactory<NotebookPanel>(
     FACTORY,

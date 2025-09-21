@@ -98,10 +98,10 @@ const workspacesIndicator: JupyterFrontEndPlugin<void> = {
       translator: translator
     });
 
-    toolbarRegistry.addFactory('TopBar', 'workspaceIndicator', () => {
+    /*toolbarRegistry.addFactory('TopBar', 'workspaceIndicator', () => {
       return workspaceSelector;
     });
-
+*/
     app.commands.addCommand(WORKSPACE_INDICATOR_COMMAND_ID, {
       label: trans.__('Show Workspace Indicator'),
       isToggled: () => workspaceSelector.isVisible,

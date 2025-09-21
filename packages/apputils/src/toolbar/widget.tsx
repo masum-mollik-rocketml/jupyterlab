@@ -121,6 +121,20 @@ export namespace Toolbar {
   ): Widget {
     return new Private.KernelStatus(sessionContext, translator);
   }
+
+  /**
+   * Create a custom toolbar widget item.
+   * 
+   * #### Notes
+   * It displays an icon and text in a row layout.
+   */
+  export function createCustomWidget(): Widget {
+    const el = ReactWidget.create(
+      <Private.CustomWidgetComponent />
+    );
+    el.addClass('jp-CustomWidget');
+    return el;
+  }
 }
 
 /**
@@ -170,6 +184,20 @@ namespace Private {
           />
         )}
       </UseSignal>
+    );
+  }
+
+  /**
+   * React component for a custom toolbar widget.
+   * 
+   * This displays an icon and text in a row layout.
+   */
+  export function CustomWidgetComponent(): JSX.Element {
+    return (
+      <div style={{ display: 'flex', alignItems: 'center', gap: '4px' , margin: '0px 8px'}}>
+
+        <span style={{ fontSize: '13px' }}>CPU Usage</span>
+      </div>
     );
   }
 

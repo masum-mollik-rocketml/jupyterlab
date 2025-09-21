@@ -9,9 +9,9 @@
 
 :root {
   /* These need to be root because tabs get attached to the body during dragging. */
-  --jp-private-horizontal-tab-height: 24px;
+  --jp-private-horizontal-tab-height: 32px;
   --jp-private-horizontal-tab-width: 216px;
-  --jp-private-horizontal-tab-active-top-border: 2px;
+  --jp-private-horizontal-tab-active-top-border: 4px;
 }
 
 /*-----------------------------------------------------------------------------

@@ -45,7 +45,7 @@ import {
 import {
   buildIcon,
   ContextMenuSvg,
-  jupyterIcon,
+  /*jupyterIcon,*/
   RankedMenu,
   Switch
 } from '@jupyterlab/ui-components';
@@ -1357,7 +1357,7 @@ const propertyInspector: JupyterFrontEndPlugin<IPropertyInspectorProvider> = {
     widget.title.icon = buildIcon;
     widget.title.caption = trans.__('Property Inspector');
     widget.id = 'jp-property-inspector';
-    labshell.add(widget, 'right', { rank: 100, type: 'Property Inspector' });
+    // labshell.add(widget, 'right', { rank: 100, type: 'Property Inspector' });
 
     app.commands.addCommand(CommandIDs.showPropertyPanel, {
       label: trans.__('Property Inspector'),
@@ -1386,13 +1386,25 @@ const jupyterLogo: JupyterFrontEndPlugin<void> = {
   requires: [ILabShell],
   activate: (app: JupyterFrontEnd, shell: ILabShell) => {
     const logo = new Widget();
-    jupyterIcon.element({
+    /*jupyterIcon.element({
       container: logo.node,
       elementPosition: 'center',
       margin: '2px 2px 2px 8px',
       height: 'auto',
       width: '16px'
-    });
+    });*/
+    // add html element inside logo.node
+    const div = document.createElement('div');
+    const span = document.createElement('span');
+    span.textContent = 'Notebooks';
+    span.style.color = '#00ADB5';
+    span.style.fontFamily = 'Inter';
+    span.style.fontSize = '16px';
+    span.style.fontStyle = 'normal';
+    span.style.fontWeight = '600';
+    span.style.lineHeight = '16px';
+    div.appendChild(span);
+    logo.node.appendChild(div);
     logo.id = 'jp-MainLogo';
     shell.add(logo, 'top', { rank: 0 });
   }

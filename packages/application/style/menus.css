@@ -8,7 +8,7 @@
 |----------------------------------------------------------------------------*/
 
 :root {
-  --jp-private-menubar-height: 28px;
+  --jp-private-menubar-height: 64px;
   --jp-private-menu-item-height: 24px;
 }
 
@@ -77,6 +77,15 @@
   line-height: calc(
     var(--jp-private-menubar-height) - var(--jp-border-width) * 2
   );
+
+  .lm-MenuBar-itemLabel {
+    color: #EEE;
+    text-align: center;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px; /* 123.077% */
+  }
 }
 
 .lm-MenuBar-content:focus-visible {

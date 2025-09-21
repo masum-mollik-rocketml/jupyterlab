@@ -1125,7 +1125,7 @@ const main: JupyterFrontEndPlugin<void> = {
 
     sidebar.title.caption = trans.__('Debugger');
 
-    shell.add(sidebar, 'right', { type: 'Debugger' });
+    // shell.add(sidebar, 'right', { type: 'Debugger' });
 
     commands.addCommand(CommandIDs.showPanel, {
       label: trans.__('Debugger Panel'),

@@ -71,6 +71,7 @@ export namespace Toolbar {
   export const createKernelNameItem = ApputilsToolbar.createKernelNameItem;
   export const createKernelStatusItem = ApputilsToolbar.createKernelStatusItem;
   export const createRestartButton = ApputilsToolbar.createRestartButton;
+  export const createCustomWidget = ApputilsToolbar.createCustomWidget;
   /**
    * @deprecated since v4
    * This helper function is in @jupyterlab/ui-components

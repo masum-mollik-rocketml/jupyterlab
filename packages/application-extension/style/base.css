@@ -5,7 +5,8 @@
 |----------------------------------------------------------------------------*/
 
 #jp-MainLogo {
-  width: calc(var(--jp-private-sidebar-tab-width) + var(--jp-border-width));
+  /*width: calc(var(--jp-private-sidebar-tab-width) + var(--jp-border-width));*/
+  padding: 24px 16px 24px 32px;
 }
 
 #jp-top-bar {

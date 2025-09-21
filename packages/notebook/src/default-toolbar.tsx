@@ -305,6 +305,10 @@ export namespace ToolbarItems {
           sessionDialogs,
           translator
         )
+      },
+      {
+        name: 'customWidget',
+        widget: AppToolbar.createCustomWidget()
       }
     ];
   }
