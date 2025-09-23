@@ -18,6 +18,7 @@ import {
   Dialog,
   ICommandPalette,
   InputDialog,
+  ISessionContext,
   ISessionContextDialogs,
   Notification,
   ReactWidget,
@@ -37,6 +38,7 @@ import {
   SavingStatus
 } from '@jupyterlab/docmanager';
 import { DocumentRegistry, IDocumentWidget } from '@jupyterlab/docregistry';
+import { IUrlResolverFactory } from '@jupyterlab/rendermime';
 import { Contents, Kernel } from '@jupyterlab/services';
 import { ISettingRegistry } from '@jupyterlab/settingregistry';
 import { IStatusBar } from '@jupyterlab/statusbar';
@@ -175,7 +177,8 @@ const manager: JupyterFrontEndPlugin<IDocumentManager> = {
     ILabStatus,
     ISessionContextDialogs,
     JupyterLab.IInfo,
-    IRecentsManager
+    IRecentsManager,
+    IUrlResolverFactory
   ],
   activate: (
     app: JupyterFrontEnd,
@@ -184,7 +187,8 @@ const manager: JupyterFrontEndPlugin<IDocumentManager> = {
     status: ILabStatus | null,
     sessionDialogs_: ISessionContextDialogs | null,
     info: JupyterLab.IInfo | null,
-    recentsManager: IRecentsManager | null
+    recentsManager: IRecentsManager | null,
+    urlResolverFactory: IUrlResolverFactory | null
   ) => {
     const { serviceManager: manager, docRegistry: registry } = app;
     const translator = translator_ ?? nullTranslator;
@@ -206,7 +210,8 @@ const manager: JupyterFrontEndPlugin<IDocumentManager> = {
         }
         return true;
       },
-      recentsManager: recentsManager ?? undefined
+      recentsManager: recentsManager ?? undefined,
+      urlResolverFactory: urlResolverFactory ?? undefined
     });
 
     return docManager;
@@ -779,11 +784,22 @@ function addCommands(
         typeof args['path'] === 'undefined' ? '' : (args['path'] as string);
       const factory = (args['factory'] as string) || void 0;
       const kernel = args?.kernel as unknown as Kernel.IModel | undefined;
+      const kernelPreference = args?.kernelPreference as unknown as
+        | ISessionContext.IKernelPreference
+        | undefined;
       const options =
         (args['options'] as DocumentRegistry.IOpenOptions) || void 0;
       return docManager.services.contents
         .get(path, { content: false })
-        .then(() => docManager.openOrReveal(path, factory, kernel, options));
+        .then(() =>
+          docManager.openOrReveal(
+            path,
+            factory,
+            kernel,
+            options,
+            kernelPreference
+          )
+        );
     },
     iconClass: args => (args['icon'] as string) || '',
     label: args =>
@@ -805,6 +821,11 @@ function addCommands(
           kernel: {
             type: 'object',
             description: 'The kernel model to use'
+          },
+          kernelPreference: {
+            type: 'object',
+            description:
+              'Override kernel preferences, see [`IKernelPreference`](https://jupyterlab.readthedocs.io/en/latest/api/interfaces/apputils.ISessionContext.IKernelPreference.html) for possible values'
           },
           options: {
             type: 'object',

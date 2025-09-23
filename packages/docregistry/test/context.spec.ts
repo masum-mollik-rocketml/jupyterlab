@@ -55,15 +55,16 @@ describe('docregistry/context', () => {
         expect(context).toBeInstanceOf(Context);
       });
 
-      it('should set the session path with local path', () => {
+      it('should set the session path with global path', () => {
         const localPath = `${UUID.uuid4()}.txt`;
+        const globalPath = `TestDrive:${localPath}`;
         context = new Context({
           manager,
           factory,
-          path: `TestDrive:${localPath}`
+          path: globalPath
         });
 
-        expect(context.sessionContext.path).toEqual(localPath);
+        expect(context.sessionContext.path).toEqual(globalPath);
       });
     });
 
@@ -673,10 +674,25 @@ describe('docregistry/context', () => {
     });
 
     describe('#urlResolver', () => {
+      class TestResolver extends RenderMimeRegistry.UrlResolver {
+        // no-op
+      }
       it('should be a url resolver', () => {
         expect(context.urlResolver).toBeInstanceOf(
           RenderMimeRegistry.UrlResolver
         );
+        expect(context.urlResolver).not.toBeInstanceOf(TestResolver);
+      });
+      it('should use preferred url resolver', () => {
+        context = new Context({
+          manager,
+          factory,
+          path: UUID.uuid4() + '.txt',
+          urlResolverFactory: {
+            createResolver: options => new TestResolver(options)
+          }
+        });
+        expect(context.urlResolver).toBeInstanceOf(TestResolver);
       });
     });
 
