@@ -1245,8 +1245,12 @@ function activateWidgetFactory(
     )
   );
   
-  toolbarRegistry.addFactory<NotebookPanel>(FACTORY, 'customWidget', panel =>
-    Toolbar.createCustomWidget()
+  toolbarRegistry.addFactory<NotebookPanel>(FACTORY, 'memoryIndicator', panel =>
+    Toolbar.createMemoryIndicatorWidget(panel.sessionContext)
+  );
+
+  toolbarRegistry.addFactory<NotebookPanel>(FACTORY, 'cpuIndicator', panel =>
+    Toolbar.createCpuIndicatorWidget(panel.sessionContext)
   );
 
   toolbarRegistry.addFactory<NotebookPanel>(

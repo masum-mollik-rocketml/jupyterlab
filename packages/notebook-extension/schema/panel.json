@@ -31,8 +31,8 @@
       },
       { "name": "cellType", "rank": 40 },
       { "name": "spacer", "type": "spacer", "rank": 100 },
-      { "name": "customWidget", "rank": 1001 },
-      { "name": "customWidget", "rank": 1002 },
+      { "name": "cpuIndicator", "rank": 1001 },
+      { "name": "memoryIndicator", "rank": 1002 },
       { "name": "executionProgress", "rank": 1003 },
       {
         "name": "scrollbar",

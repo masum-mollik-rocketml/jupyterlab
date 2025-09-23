@@ -307,8 +307,12 @@ export namespace ToolbarItems {
         )
       },
       {
-        name: 'customWidget',
-        widget: AppToolbar.createCustomWidget()
+        name: 'memoryIndicator',
+        widget: AppToolbar.createMemoryIndicatorWidget(panel.sessionContext)
+      },
+      {
+        name: 'cpuIndicator',
+        widget: AppToolbar.createCpuIndicatorWidget(panel.sessionContext)
       }
     ];
   }

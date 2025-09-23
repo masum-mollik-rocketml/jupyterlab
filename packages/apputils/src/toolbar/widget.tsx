@@ -8,8 +8,8 @@ import {
 } from '@jupyterlab/translation';
 import {
   circleEmptyIcon,
-  circleIcon,
-  LabIcon,
+  circleIcon, cpuUsageIcon,
+  LabIcon, memoryUsageIcon,
   offlineBoltIcon,
   ReactWidget,
   refreshIcon,
@@ -128,11 +128,25 @@ export namespace Toolbar {
    * #### Notes
    * It displays an icon and text in a row layout.
    */
-  export function createCustomWidget(): Widget {
+  export function createCustomWidget(sessionContext: ISessionContext): Widget {
     const el = ReactWidget.create(
-      <Private.CustomWidgetComponent />
+      <Private.ToolbarMemoryIndicatorWidgetComponent sessionContext={sessionContext}/>
     );
-    el.addClass('jp-CustomWidget');
+    el.addClass('jp-MemoryIndicator');
+    return el;
+  }
+
+  /**
+   * Create a CPU indicator toolbar widget item.
+   * 
+   * #### Notes
+   * It displays CPU usage information in the toolbar.
+   */
+  export function createCpuIndicatorWidget(sessionContext: ISessionContext): Widget {
+    const el = ReactWidget.create(
+      <Private.ToolbarCpuIndicatorWidgetComponent sessionContext={sessionContext} />
+    );
+    el.addClass('jp-CpuIndicator');
     return el;
   }
 }
@@ -187,14 +201,74 @@ namespace Private {
     );
   }
 
+
+  /**
+   * Namespace for KernelNameComponent.
+   */
+  export namespace ToolbarMemoryIndicatorWidgetComponent {
+    /**
+     * Interface for KernelNameComponent props.
+     */
+    export interface IProps {
+      sessionContext: ISessionContext;
+    }
+  }
   /**
    * React component for a custom toolbar widget.
    * 
    * This displays an icon and text in a row layout.
    */
-  export function CustomWidgetComponent(): JSX.Element {
+  export function ToolbarMemoryIndicatorWidgetComponent(props: ToolbarMemoryIndicatorWidgetComponent.IProps): JSX.Element {
     return (
       <div style={{ display: 'flex', alignItems: 'center', gap: '4px' , margin: '0px 8px'}}>
+        <UseSignal
+          signal={props.sessionContext.kernelChanged}
+          initialSender={props.sessionContext}
+        >
+          {sessionContext => (
+            <memoryUsageIcon.react />
+          )}
+        </UseSignal>
+
+        <span style={{ fontSize: '13px' }}>Memory Usage</span>
+      </div>
+    );
+  }
+
+
+
+
+  /**
+   * Namespace for KernelNameComponent.
+   */
+  export namespace ToolbarCpuIndicatorWidgetComponent {
+    /**
+     * Interface for KernelNameComponent props.
+     */
+    export interface IProps {
+      sessionContext: ISessionContext;
+    }
+  }
+
+  /**
+   * React component for CPU indicator toolbar widget.
+   * 
+   * This displays CPU usage information.
+   */
+  export function ToolbarCpuIndicatorWidgetComponent(props: ToolbarCpuIndicatorWidgetComponent.IProps): JSX.Element {
+    return (
+
+
+      <div style={{ display: 'flex', alignItems: 'center', gap: '4px' , margin: '0px 8px'}}>
+        <UseSignal
+          signal={props.sessionContext.kernelChanged}
+          initialSender={props.sessionContext}
+        >
+
+          {sessionContext => (
+            <cpuUsageIcon.react />
+          )}
+        </UseSignal>
 
         <span style={{ fontSize: '13px' }}>CPU Usage</span>
       </div>

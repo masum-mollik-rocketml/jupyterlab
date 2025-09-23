@@ -91,7 +91,7 @@ export namespace galata {
     | 'restart'
     | 'restart-and-run'
     | 'cellType'
-    | 'customWidget'
+    | 'memoryIndicator'
     | 'kernelName'
     | 'kernelStatus';
 

@@ -43,6 +43,7 @@
   --jp-icon-copilot: url('icons/toolbar/copilot.svg');
   --jp-icon-copy: url('icons/toolbar/copy.svg');
   --jp-icon-copyright: url('icons/licenses/copyright.svg');
+  --jp-icon-cpu-usage: url('icons/toolbar/cpu-usage.svg');
   --jp-icon-cut: url('icons/toolbar/cut.svg');
   --jp-icon-delete: url('icons/toolbar/delete.svg');
   --jp-icon-dock-bottom: url('icons/toolbar/dock-bottom.svg');
@@ -87,6 +88,7 @@
   --jp-icon-list: url('icons/statusbar/list.svg');
   --jp-icon-lock: url('icons/lock.svg');
   --jp-icon-markdown: url('icons/filetype/markdown.svg');
+  --jp-icon-memory-usage: url('icons/toolbar/memory-usage.svg');
   --jp-icon-mermaid: url('icons/filetype/mermaid.svg');
   --jp-icon-move-down: url('icons/toolbar/move-down.svg');
   --jp-icon-move-up: url('icons/toolbar/move-up.svg');
@@ -260,6 +262,10 @@
 
 .jp-CopyrightIcon {
   background-image: var(--jp-icon-copyright);
+}
+
+.jp-CpuUsageIcon {
+  background-image: var(--jp-icon-cpu-usage);
 }
 
 .jp-CutIcon {
@@ -436,6 +442,10 @@
 
 .jp-MarkdownIcon {
   background-image: var(--jp-icon-markdown);
+}
+
+.jp-MemoryUsageIcon {
+  background-image: var(--jp-icon-memory-usage);
 }
 
 .jp-MermaidIcon {
