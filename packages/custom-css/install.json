@@ -1,5 +1,0 @@
-{
-  "packageManager": "python",
-  "packageName": "custom_css",
-  "uninstallInstructions": "Use your Python package manager (pip, conda, etc.) to uninstall the package custom_css"
-}

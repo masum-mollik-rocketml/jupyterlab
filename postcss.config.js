@@ -8,7 +8,10 @@
 // this adds a no-op plugin.
 const plugin = () => {
   return {
-    "@tailwindcss/postcss": {}
+    postcssPlugin: 'no-op',
+    Once(root) {
+      // no-op plugin
+    }
   };
 };
 plugin.postcss = true;

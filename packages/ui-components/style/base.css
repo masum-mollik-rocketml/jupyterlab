@@ -23,7 +23,6 @@
 @import './toolkit.css';
 @import './windowedlist.css';
 @import './copilot-widget.css';
-@import "tailwindcss";
 
 .jp-ThemedContainer {
   color: var(--jp-ui-font-color1);

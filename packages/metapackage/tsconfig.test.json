@@ -303,9 +303,6 @@
       "path": "../workspaces-extension"
     },
     {
-      "path": "../custom-css"
-    },
-    {
       "path": "."
     },
     {

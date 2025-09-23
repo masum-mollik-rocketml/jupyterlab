@@ -18,13 +18,13 @@
       "path": "../cell-toolbar"
     },
     {
-      "path": "../notebook"
-    },
-    {
       "path": "../settingregistry"
     },
     {
       "path": "../translation"
+    },
+    {
+      "path": "../notebook"
     },
     {
       "path": "../ui-components"

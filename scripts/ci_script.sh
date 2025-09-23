@@ -98,7 +98,7 @@ if [[ $GROUP == integrity2 ]]; then
     jlpm run build:dev:prod:release
 
     # Make sure we have CSS that can be converted with postcss
-    jlpm dlx -p postcss -p postcss-cli postcss packages/**/style/*.css --dir tmp --config scripts/postcss.config.js
+    jlpm dlx -p postcss -p postcss-cli postcss packages/**/style/*.css --dir /tmp --config scripts/postcss.config.js
 
     # run twine check on the python build assets.
     # this must be done before altering any versions below.
