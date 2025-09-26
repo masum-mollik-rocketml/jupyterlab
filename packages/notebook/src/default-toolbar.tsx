@@ -376,6 +376,22 @@ export class CellTypeSwitcher extends ReactWidget {
         onKeyDown={this.handleKeyDown}
         value={value}
         aria-label={this._trans.__('Cell type')}
+        options={
+        [
+          {
+            value: 'code',
+            label: this._trans.__('Code')
+          },
+          {
+            value: 'markdown',
+            label: this._trans.__('Markdown')
+          },
+          {
+            value: 'raw',
+            label: this._trans.__('Raw')
+          }
+        ]
+        }
         title={this._trans.__('Select the cell type')}
       >
         <option value="-">-</option>
