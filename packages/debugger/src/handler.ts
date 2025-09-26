@@ -17,7 +17,7 @@ import { FileHandler } from './handlers/file';
 import { NotebookHandler } from './handlers/notebook';
 import { IDebugger } from './tokens';
 
-const TOOLBAR_DEBUGGER_ITEM = 'debugger-icon';
+// const TOOLBAR_DEBUGGER_ITEM = 'debugger-icon';
 
 /**
  * Add a bug icon to the widget toolbar to enable and disable debugging.
@@ -46,9 +46,9 @@ function updateIconButton(
     pressed,
     onClick
   });
-  if (!widget.toolbar.insertBefore('kernelName', TOOLBAR_DEBUGGER_ITEM, icon)) {
+/*  if (!widget.toolbar.insertBefore('kernelName', TOOLBAR_DEBUGGER_ITEM, icon)) {
     widget.toolbar.addItem(TOOLBAR_DEBUGGER_ITEM, icon);
-  }
+  }*/
 
   return icon;
 }

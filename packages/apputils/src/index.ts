@@ -71,7 +71,6 @@ export namespace Toolbar {
   export const createKernelNameItem = ApputilsToolbar.createKernelNameItem;
   export const createKernelStatusItem = ApputilsToolbar.createKernelStatusItem;
   export const createRestartButton = ApputilsToolbar.createRestartButton;
-  export const createMemoryIndicatorWidget = ApputilsToolbar.createCustomWidget;
   export const createCpuIndicatorWidget = ApputilsToolbar.createCpuIndicatorWidget;
   /**
    * @deprecated since v4

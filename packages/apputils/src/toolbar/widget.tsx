@@ -22,6 +22,7 @@ import { Widget } from '@lumino/widgets';
 import * as React from 'react';
 import { ISessionContext, SessionContextDialogs } from '../sessioncontext';
 import { translateKernelStatuses } from '../kernelstatuses';
+import {requestAPI} from "./handler";
 /**
  * The class name added to toolbar kernel name text.
  */
@@ -122,19 +123,6 @@ export namespace Toolbar {
     return new Private.KernelStatus(sessionContext, translator);
   }
 
-  /**
-   * Create a custom toolbar widget item.
-   * 
-   * #### Notes
-   * It displays an icon and text in a row layout.
-   */
-  export function createCustomWidget(sessionContext: ISessionContext): Widget {
-    const el = ReactWidget.create(
-      <Private.ToolbarMemoryIndicatorWidgetComponent sessionContext={sessionContext}/>
-    );
-    el.addClass('jp-MemoryIndicator');
-    return el;
-  }
 
   /**
    * Create a CPU indicator toolbar widget item.
@@ -205,42 +193,6 @@ namespace Private {
   /**
    * Namespace for KernelNameComponent.
    */
-  export namespace ToolbarMemoryIndicatorWidgetComponent {
-    /**
-     * Interface for KernelNameComponent props.
-     */
-    export interface IProps {
-      sessionContext: ISessionContext;
-    }
-  }
-  /**
-   * React component for a custom toolbar widget.
-   * 
-   * This displays an icon and text in a row layout.
-   */
-  export function ToolbarMemoryIndicatorWidgetComponent(props: ToolbarMemoryIndicatorWidgetComponent.IProps): JSX.Element {
-    return (
-      <div style={{ display: 'flex', alignItems: 'center', gap: '4px' , margin: '0px 8px'}}>
-        <UseSignal
-          signal={props.sessionContext.kernelChanged}
-          initialSender={props.sessionContext}
-        >
-          {sessionContext => (
-            <memoryUsageIcon.react />
-          )}
-        </UseSignal>
-
-        <span style={{ fontSize: '13px' }}>Memory Usage</span>
-      </div>
-    );
-  }
-
-
-
-
-  /**
-   * Namespace for KernelNameComponent.
-   */
   export namespace ToolbarCpuIndicatorWidgetComponent {
     /**
      * Interface for KernelNameComponent props.
@@ -248,6 +200,111 @@ namespace Private {
     export interface IProps {
       sessionContext: ISessionContext;
     }
+
+    export type Usage = {
+      timestamp: Date | null;
+      kernel_id: string;
+      hostname: string;
+      kernel_cpu: number;
+      kernel_memory: number;
+      pid: number;
+      host_cpu_percent: number;
+      cpu_count: number;
+      host_usage_flag: boolean;
+      host_virtual_memory: {
+        total: number;
+        available: number;
+        percent: number;
+        used: number;
+        free: number;
+      };
+    };
+  }
+
+  // Internal component to manage CPU/memory polling and render values
+  function CpuUsageInner({ kernelId }: { kernelId: string }): JSX.Element | null {
+    // Track current kernel id to ignore late replies
+    const kernelIdRef = React.useRef<string>(kernelId);
+    React.useEffect(() => {
+      kernelIdRef.current = kernelId;
+    }, [kernelId]);
+
+    // Reason and usage states (reason reserved for future UI use)
+    const [_, setReason] = React.useState<any | undefined>(undefined);
+    const [usage, setUsage] = React.useState<ToolbarCpuIndicatorWidgetComponent.Usage | undefined>(undefined);
+
+    const requestUsage = (kid: string) => {
+      return requestAPI<any>(`get_usage/${kid}`).then((data) => {
+        // The kernel reply may arrive late due to lax timeouts, so we need to
+        // check if it is for the current kernel
+        if (kid !== kernelIdRef.current) {
+          // Ignore outdated response, but preserve current reason
+          return;
+        }
+
+        if (data.content?.reason) {
+          const reason = data.content;
+          setReason(reason);
+          return;
+        } else {
+          setReason(undefined);
+        }
+
+        const kernelUsage: ToolbarCpuIndicatorWidgetComponent.Usage = {
+          ...data.content,
+          timestamp: new Date(),
+          // eslint-disable-next-line camelcase
+          kernel_id: kid,
+        } as any;
+        setUsage(kernelUsage);
+      });
+    };
+
+    // Poll usage every 5 seconds when kernelId is available
+    React.useEffect(() => {
+      if (!kernelId) {
+        return;
+      }
+      let disposed = false;
+      const tick = () => {
+        if (disposed) { return; }
+        void requestUsage(kernelId).catch(() => {
+          // swallow errors; keep last known value
+        });
+      };
+      // Call immediately, then at interval
+      tick();
+      const handle = window.setInterval(tick, 5000);
+      return () => {
+        disposed = true;
+        window.clearInterval(handle);
+      };
+    }, [kernelId]);
+
+    if (!kernelId) {
+      return null;
+    }
+    const show = usage && usage.kernel_id === kernelId ? usage : undefined;
+    const cpuValue = show && Number.isFinite(Number(show.kernel_cpu)) ? String(show.kernel_cpu) : '\u2014';
+    // Convert memory from bytes to MB with one decimal place
+    const memoryValue = show && Number.isFinite(Number(show.kernel_memory))
+      ? (Number(show.kernel_memory) / (1024 * 1024)).toFixed(2) + 'MB'
+      : '\u2014';
+
+    return (
+      <>
+        <div className={'toolbarKernelUsage'}>
+          <div className={'cpu-usage-container'}>
+            <cpuUsageIcon.react className={'cpu-usage-icon'}/>
+            <span style={{ fontSize: '13px'}}>{cpuValue}</span>
+          </div>
+          <div className={'memory-usage-container'}>
+            <memoryUsageIcon.react className={'memory-usage-icon'}/>
+            <span style={{ fontSize: '13px'}}>{memoryValue}</span>
+          </div>
+        </div>
+      </>
+    );
   }
 
   /**
@@ -258,19 +315,19 @@ namespace Private {
   export function ToolbarCpuIndicatorWidgetComponent(props: ToolbarCpuIndicatorWidgetComponent.IProps): JSX.Element {
     return (
 
-
       <div style={{ display: 'flex', alignItems: 'center', gap: '4px' , margin: '0px 8px'}}>
         <UseSignal
           signal={props.sessionContext.kernelChanged}
           initialSender={props.sessionContext}
         >
 
-          {sessionContext => (
-            <cpuUsageIcon.react />
-          )}
+          {sessionContext => {
+            const kernelId = sessionContext?.session?.kernel?.id ?? '';
+            return (
+              <CpuUsageInner kernelId={kernelId} />
+            );
+          }}
         </UseSignal>
-
-        <span style={{ fontSize: '13px' }}>CPU Usage</span>
       </div>
     );
   }

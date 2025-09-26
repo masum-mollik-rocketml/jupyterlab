@@ -11,3 +11,25 @@
   background-position: center;
   background-size: 16px;
 }
+
+.toolbarKernelUsage {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+.memory-usage-icon,
+.cpu-usage-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cpu-usage-container,
+.memory-usage-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}

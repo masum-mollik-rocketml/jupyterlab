@@ -5,7 +5,7 @@
 
 :root {
   --jp-private-toolbar-height: calc(
-    31px + var(--jp-border-width)
+    66px + var(--jp-border-width)
   ); /* leave 28px for content */
 }
 
@@ -18,7 +18,7 @@
   --design-unit: 3.5;
   --toolbar-item-gap: 0;
 
-  color: var(--jp-ui-font-color1);
+  color: var(--jp-ui-font-color0);
   border-bottom: var(--jp-border-width) solid var(--jp-toolbar-border-color);
   box-shadow: var(--jp-toolbar-box-shadow);
   background: var(--jp-toolbar-background);
@@ -29,11 +29,33 @@
 
 /* Toolbar items */
 
+.jp-Toolbar > .jp-Toolbar-item > .jp-Notebook-toolbarCellTypeDropdown {
+  position: relative;
+  border: 1px solid #EEE;
+  border-radius: 8px;
+  padding: 7px 12px;
+  margin: 0 4px;
+
+  select:focus-visible {
+    outline: none;
+  }
+
+  select:hover {
+    background: unset;
+  }
+
+  svg[data-icon="ui-components:caret-down-empty"] {
+    top: 12px;
+  }
+
+}
+
 .jp-Toolbar > .jp-Toolbar-item {
   /* Center the items in toolbar */
   height: 100%;
   display: flex;
   align-items: center;
+  margin: 0 4px;
 }
 
 .jp-Toolbar::part(positioning-region) {
@@ -71,18 +93,31 @@ button.jp-ToolbarButtonComponent .jp-ToolbarButtonComponent-label {
   font-family: var(--jp-ui-font-family);
 }
 
+.jp-Toolbar .jp-ToolbarButtonComponent > div {
+  display: flex;
+}
+
 .jp-Toolbar .jp-ToolbarButtonComponent {
   color: var(--jp-ui-font-color1);
+
 }
 
 .jp-ToolbarButtonComponent::part(content) {
   display: flex;
   align-items: center;
+  gap: 12px;
 }
 
 .jp-Toolbar > .jp-Toolbar-item.jp-Toolbar-spacer {
   flex-grow: 1;
   flex-shrink: 1;
+}
+
+.jp-Toolbar > .jp-Toolbar-item.jp-Toolbar-vertical-spacer {
+  width: 1px;
+  height: 30%;
+  background: rgba(238, 238, 238, 0.24);
+  margin: 0 8px;
 }
 
 .jp-Toolbar-responsive-popup.jp-ThemedContainer {
@@ -141,4 +176,19 @@ button.jp-ToolbarButtonComponent:disabled {
 button.jp-ToolbarButtonComponent > span {
   padding: 0;
   flex: 0 0 auto;
+}
+
+.fast-forward-icon {
+  display: flex;
+  svg {
+    height: 30px !important;
+    width: 30px !important;
+  }
+}
+
+.fast-forward-icon.jp-ToolbarButtonComponent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
 }

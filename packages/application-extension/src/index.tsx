@@ -1398,7 +1398,6 @@ const jupyterLogo: JupyterFrontEndPlugin<void> = {
     const span = document.createElement('span');
     span.textContent = 'Notebooks';
     span.style.color = '#00ADB5';
-    span.style.fontFamily = 'Inter';
     span.style.fontSize = '16px';
     span.style.fontStyle = 'normal';
     span.style.fontWeight = '600';

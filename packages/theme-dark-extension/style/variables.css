@@ -130,10 +130,10 @@ all of MD as it is not optimized for dense, information rich UIs.
    */
 
   /* Defaults use Material Design specification */
-  --jp-ui-font-color0: rgba(255, 255, 255, 1);
-  --jp-ui-font-color1: rgba(255, 255, 255, 0.87);
-  --jp-ui-font-color2: rgba(255, 255, 255, 0.54);
-  --jp-ui-font-color3: rgba(255, 255, 255, 0.38);
+  --jp-ui-font-color0: rgba(238, 238, 238, 1);
+  --jp-ui-font-color1: rgba(238, 238, 238, 0.87);
+  --jp-ui-font-color2: rgba(238, 238, 238, 0.54);
+  --jp-ui-font-color3: rgba(238, 238, 238, 0.38);
 
   /*
    * Use these against the brand/accent/warn/error colors.

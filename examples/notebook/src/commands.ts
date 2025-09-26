@@ -25,7 +25,7 @@ import {
   deleteIcon,
   fastForwardIcon,
   pasteIcon,
-  refreshIcon,
+  restartKernelIcon,
   runIcon,
   saveIcon,
   stopIcon
@@ -188,7 +188,7 @@ export const setupCommands = (
   commands.addCommand(COMMAND_IDS.restart, {
     label: args => (args.toolbar ? '' : 'Restart Kernel'),
     caption: 'Restart the kernel',
-    icon: args => (args.toolbar ? refreshIcon : undefined),
+    icon: args => (args.toolbar ? restartKernelIcon : undefined),
     execute: () =>
       sessionContextDialogs.restart(nbWidget.context.sessionContext)
   });
@@ -312,6 +312,7 @@ export const setupCommands = (
       args.toolbar ? '' : 'Restart the kernel, then re-run the whole notebook',
     caption: 'Restart the kernl, then re-run the whole notebook',
     icon: args => (args.toolbar ? fastForwardIcon : undefined),
+    className: 'fast-forward-icon',
     execute: () => {
       void sessionContextDialogs
         .restart(nbWidget.sessionContext)

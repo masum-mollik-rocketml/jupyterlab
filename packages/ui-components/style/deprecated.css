@@ -109,6 +109,7 @@
   --jp-icon-redo: url('icons/toolbar/redo.svg');
   --jp-icon-refresh: url('icons/toolbar/refresh.svg');
   --jp-icon-regex: url('icons/search/regex.svg');
+  --jp-icon-restart-kernel: url('icons/toolbar/restart-kernel.svg');
   --jp-icon-run: url('icons/toolbar/run.svg');
   --jp-icon-running: url('icons/sidebar/running.svg');
   --jp-icon-save: url('icons/toolbar/save.svg');
@@ -116,6 +117,7 @@
   --jp-icon-selected-breakpoint: url('icons/debugger/selected-breakpoint.svg');
   --jp-icon-settings: url('icons/filetype/settings.svg');
   --jp-icon-share: url('icons/sidebar/share.svg');
+  --jp-icon-shutdown: url('icons/toolbar/shutdown.svg');
   --jp-icon-spreadsheet: url('icons/filetype/spreadsheet.svg');
   --jp-icon-step-into: url('icons/debugger/step-into.svg');
   --jp-icon-step-out: url('icons/debugger/step-out.svg');
@@ -530,6 +532,10 @@
   background-image: var(--jp-icon-regex);
 }
 
+.jp-RestartKernelIcon {
+  background-image: var(--jp-icon-restart-kernel);
+}
+
 .jp-RunIcon {
   background-image: var(--jp-icon-run);
 }
@@ -556,6 +562,10 @@
 
 .jp-ShareIcon {
   background-image: var(--jp-icon-share);
+}
+
+.jp-ShutdownIcon {
+  background-image: var(--jp-icon-shutdown);
 }
 
 .jp-SpreadsheetIcon {

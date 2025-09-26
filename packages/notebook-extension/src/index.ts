@@ -115,7 +115,7 @@ import {
   notebookIcon,
   pasteIcon,
   RankedMenu,
-  refreshIcon,
+  restartKernelIcon,
   runIcon,
   stopIcon,
   tableRowsIcon
@@ -1312,10 +1312,6 @@ function activateWidgetFactory(
       sessionContextDialogs,
       translator
     )
-  );
-  
-  toolbarRegistry.addFactory<NotebookPanel>(FACTORY, 'memoryIndicator', panel =>
-    Toolbar.createMemoryIndicatorWidget(panel.sessionContext)
   );
 
   toolbarRegistry.addFactory<NotebookPanel>(FACTORY, 'cpuIndicator', panel =>
@@ -2762,7 +2758,7 @@ function addCommands(
       }
     },
     isEnabled: args => (args.toolbar ? true : isEnabled()),
-    icon: args => (args.toolbar ? refreshIcon : undefined),
+    icon: args => (args.toolbar ? restartKernelIcon : undefined),
     describedBy: {
       args: {
         type: 'object',
@@ -2927,6 +2923,7 @@ function addCommands(
     },
     isEnabled: args => (args.toolbar ? true : isEnabled()),
     icon: args => (args.toolbar ? fastForwardIcon : undefined),
+    className: 'fast-forward-icon',
     describedBy: {
       args: {
         type: 'object',

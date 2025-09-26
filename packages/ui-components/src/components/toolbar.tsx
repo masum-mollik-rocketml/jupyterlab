@@ -45,6 +45,11 @@ const TOOLBAR_OPENER_NAME = 'toolbar-popup-opener';
 const TOOLBAR_SPACER_CLASS = 'jp-Toolbar-spacer';
 
 /**
+ * The class name added to toolbar spacer.
+ */
+const TOOLBAR_VERTICAL_SPACER_CLASS = 'jp-Toolbar-vertical-spacer';
+
+/**
  * A layout for toolbars.
  *
  * #### Notes
@@ -762,6 +767,17 @@ export namespace Toolbar {
   export function createSpacerItem(): Widget {
     return new Private.Spacer();
   }
+
+  /**
+   * Create a toolbar vertical spacer item.
+   *
+   * #### Notes
+   * It is a vertical line spacer that separates the toolbar items
+   * from the other toolbar items.
+   */
+  export function createVerticalSpacerItem(): Widget {
+    return new Private.VerticalSpacer();
+  }
 }
 
 /**
@@ -880,11 +896,13 @@ export function ToolbarButtonComponent(
       {(props.icon || props.iconClass) && (
         <LabIcon.resolveReact
           icon={props.pressed ? props.pressedIcon ?? props.icon : props.icon}
+          className={props.className}
           iconClass={
             // add some extra classes for proper support of icons-as-css-background
             classes(props.iconClass, 'jp-Icon')
           }
-          tag={null}
+          elementSize={"large"}
+          tag={"div"}
         />
       )}
       {props.label && (
@@ -1401,6 +1419,19 @@ namespace Private {
     constructor() {
       super();
       this.addClass(TOOLBAR_SPACER_CLASS);
+    }
+  }
+
+  /**
+   * A vertical spacer widget.
+   */
+  export class VerticalSpacer extends Widget {
+    /**
+     * Construct a new vertical spacer widget.
+     */
+    constructor() {
+      super();
+      this.addClass(TOOLBAR_VERTICAL_SPACER_CLASS);
     }
   }
 }

@@ -378,8 +378,8 @@ export namespace LabIconStyle {
         verticalAlign: 'middle'
       },
       element: {
-        height: '16px',
-        width: '16px'
+        height: '18px',
+        width: '18px'
       },
       options: {
         elementPosition: 'center'
