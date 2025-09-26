@@ -11,6 +11,9 @@ import {
 } from '@jupyterlab/apputils';
 import { DocumentRegistry } from '@jupyterlab/docregistry';
 import * as nbformat from '@jupyterlab/nbformat';
+/*
+import {restartAndRunToSelected} from "@jupyterlab/notebook-extension";
+*/
 import {
   ITranslator,
   nullTranslator,
@@ -21,8 +24,9 @@ import {
   addToolbarButtonClass,
   copyIcon,
   cutIcon,
+  DropdownMenu,
   fastForwardIcon,
-  HTMLSelect,
+  HTMLSelect, otherOptionsMenuIcon,
   pasteIcon,
   ReactWidget,
   runIcon,
@@ -32,6 +36,7 @@ import {
   ToolbarButtonComponent,
   UseSignal
 } from '@jupyterlab/ui-components';
+import {CommandRegistry} from '@lumino/commands'
 import * as React from 'react';
 import { NotebookActions } from './actions';
 import { NotebookPanel } from './panel';
@@ -46,6 +51,11 @@ const TOOLBAR_CELLTYPE_CLASS = 'jp-Notebook-toolbarCellType';
  * The class name added to toolbar cell type dropdown.
  */
 const TOOLBAR_CELLTYPE_DROPDOWN_CLASS = 'jp-Notebook-toolbarCellTypeDropdown';
+
+/**
+ * The class name added to toolbar cell type dropdown.
+ */
+const TOOLBAR_ADD_CELL_MENU_CLASS = 'jp-Notebook-toolbarAddCellMenu';
 
 /**
  * A namespace for the default toolbar items.
@@ -258,6 +268,44 @@ export namespace ToolbarItems {
   }
 
   /**
+   * Create a cell type switcher item.
+   *
+   * #### Notes
+   * It will display the type of the current active cell.
+   * If more than one cell is selected but are of different types,
+   * it will display `'-'`.
+   * When the user changes the cell type, it will change the
+   * cell types of the selected cells.
+   * It can handle a change to the context.
+   */
+  export function createAddCellMenu(
+    panel: NotebookPanel,
+    translator?: ITranslator
+  ): ReactWidget {
+    return new AddCellMenu(panel, translator);
+  }
+
+
+  /**
+   * Create a cell type switcher item.
+   *
+   * #### Notes
+   * It will display the type of the current active cell.
+   * If more than one cell is selected but are of different types,
+   * it will display `'-'`.
+   * When the user changes the cell type, it will change the
+   * cell types of the selected cells.
+   * It can handle a change to the context.
+   */
+  export function createToolbarOtherOptionsMenu(
+    panel: NotebookPanel,
+    commands: CommandRegistry,
+    translator?: ITranslator
+  ): ReactWidget {
+    return new ToolbarOtherOptionsMenu(panel, commands, translator);
+  }
+
+  /**
    * Get the default toolbar items for panel
    *
    * @deprecated since v4
@@ -404,4 +452,153 @@ export class CellTypeSwitcher extends ReactWidget {
 
   private _trans: TranslationBundle;
   private _notebook: Notebook;
+}
+
+
+/**
+ * A toolbar widget that switches cell types.
+ */
+export class AddCellMenu extends ReactWidget {
+  /**
+   * Construct a new cell type switcher.
+   */
+  constructor(notebookPanel: NotebookPanel, translator?: ITranslator) {
+    super();
+    const widget = notebookPanel.content;
+    this._trans = (translator || nullTranslator).load('jupyterlab');
+    this.addClass(TOOLBAR_CELLTYPE_CLASS);
+    this._notebook = widget;
+    this._panel = notebookPanel;
+    if (widget.model) {
+      this.update();
+    }
+
+    widget.selectionChanged.connect(this.update, this);
+
+    this._trans.__('Code')
+    this._panel.toolbar
+  }
+
+  /**
+   * Handle `change` events for the HTMLSelect component.
+   */
+  handleChange = (event: React.ChangeEvent<HTMLSelectElement>): void => {
+    if (event.target.value !== '-') {
+      NotebookActions.changeCellType(
+        this._notebook,
+        event.target.value as nbformat.CellType
+      );
+      this._notebook.activate();
+    }
+  };
+
+  /**
+   * Handle `keydown` events for the HTMLSelect component.
+   */
+  handleKeyDown = (event: React.KeyboardEvent): void => {
+    if (event.keyCode === 13) {
+      this._notebook.activate();
+    }
+  };
+
+  render(): JSX.Element {
+    const items = [
+      {
+        label: this._trans.__("Insert cell above"),
+        onClick: () => {
+          NotebookActions.insertAbove(this._notebook);
+        }
+      },
+      {
+        label: this._trans.__("Insert cell below"),
+        onClick: () => {
+          NotebookActions.insertBelow(this._notebook);
+        }
+      }
+    ];
+    return (
+      <div className={TOOLBAR_ADD_CELL_MENU_CLASS}>
+        <DropdownMenu label={this._trans.__("Add cell")} items={items} />
+      </div>
+    );
+  }
+
+  private _trans: TranslationBundle;
+  private _notebook: Notebook;
+  private _panel: NotebookPanel;
+}
+
+/**
+ * A toolbar widget that switches cell types.
+ */
+export class ToolbarOtherOptionsMenu extends ReactWidget {
+  /**
+   * Construct a new cell type switcher.
+   */
+  constructor(notebookPanel: NotebookPanel, commands: CommandRegistry, translator?: ITranslator) {
+    super();
+    const widget = notebookPanel.content;
+    this._trans = (translator || nullTranslator).load('jupyterlab');
+    this.addClass(TOOLBAR_CELLTYPE_CLASS);
+    this._notebook = widget;
+    this._panel = notebookPanel;
+    this._commands = commands;
+    if (widget.model) {
+      this.update();
+    }
+
+    widget.selectionChanged.connect(this.update, this);
+
+    this._trans.__('Code')
+    this._panel.toolbar
+  }
+
+  /**
+   * Handle `change` events for the HTMLSelect component.
+   */
+  handleChange = (event: React.ChangeEvent<HTMLSelectElement>): void => {
+    if (event.target.value !== '-') {
+      NotebookActions.changeCellType(
+        this._notebook,
+        event.target.value as nbformat.CellType
+      );
+      this._notebook.activate();
+    }
+  };
+
+  /**
+   * Handle `keydown` events for the HTMLSelect component.
+   */
+  handleKeyDown = (event: React.KeyboardEvent): void => {
+    if (event.keyCode === 13) {
+      this._notebook.activate();
+    }
+  };
+
+  render(): JSX.Element {
+    const items = [
+      {
+        label: this._trans.__("Restart kernel and clear cell outputs"),
+        onClick: () => {
+          this._commands.execute('notebook:restart-clear-output').then(_ => {});
+        }
+      },
+      {
+        label: this._trans.__("Restart kernel and run up to selected cells"),
+        onClick: () => {
+          this._commands.execute('notebook:restart-and-run-to-selected').then(_ => {});
+        }
+      }
+    ];
+    return (
+      <div className={TOOLBAR_ADD_CELL_MENU_CLASS}>
+        <DropdownMenu label={this._trans.__("Add cell")} menuClassName={"float-menu-left"} items={items} icon={otherOptionsMenuIcon} />
+      </div>
+    );
+  }
+
+  private _trans: TranslationBundle;
+  private _notebook: Notebook;
+  private _panel: NotebookPanel;
+  private _commands: CommandRegistry;
 }

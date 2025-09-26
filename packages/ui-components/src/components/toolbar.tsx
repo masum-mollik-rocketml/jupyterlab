@@ -45,9 +45,13 @@ const TOOLBAR_OPENER_NAME = 'toolbar-popup-opener';
 const TOOLBAR_SPACER_CLASS = 'jp-Toolbar-spacer';
 
 /**
- * The class name added to toolbar spacer.
+ * The class name added to toolbar vertical spacer.
  */
 const TOOLBAR_VERTICAL_SPACER_CLASS = 'jp-Toolbar-vertical-spacer';
+/**
+ * The class name added to toolbar menu item.
+ */
+const TOOLBAR_MENU_BUTTON_CLASS = 'jp-Toolbar-menu-button';
 
 /**
  * A layout for toolbars.
@@ -778,6 +782,18 @@ export namespace Toolbar {
   export function createVerticalSpacerItem(): Widget {
     return new Private.VerticalSpacer();
   }
+
+  /**
+   * Create a toolbar vertical spacer item.
+   *
+   * #### Notes
+   * It is a vertical line spacer that separates the toolbar items
+   * from the other toolbar items.
+   */
+  export function createMenuButtonItem(): Widget {
+    return new Private.MenuButtonItem();
+  }
+
 }
 
 /**
@@ -1432,6 +1448,19 @@ namespace Private {
     constructor() {
       super();
       this.addClass(TOOLBAR_VERTICAL_SPACER_CLASS);
+    }
+  }
+
+  /**
+   * A vertical spacer widget.
+   */
+  export class MenuButtonItem extends Widget {
+    /**
+     * Construct a new vertical spacer widget.
+     */
+    constructor() {
+      super();
+      this.addClass(TOOLBAR_MENU_BUTTON_CLASS);
     }
   }
 }

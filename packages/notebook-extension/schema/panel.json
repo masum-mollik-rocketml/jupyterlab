@@ -7,8 +7,9 @@
         "name": "insert",
         "command": "notebook:insert-cell-below",
         "icon": "ui-components:add",
-        "rank": 19
+        "rank": 18
       },
+      { "name": "addCellMenu", "rank": 19 },
       { "name": "vertical-spacer", "type": "vertical-spacer", "rank": 20 },
       { "name": "cut", "command": "notebook:cut-cell", "rank": 21 },
       { "name": "copy", "command": "notebook:copy-cell", "rank": 22 },
@@ -31,11 +32,12 @@
       { "name": "cpuIndicator", "rank": 1001 },
       { "name": "shutdown", "command": "notebook:shutdown-kernel", "icon": "ui-components:shutdown", "rank": 1002 },
       { "name": "restart", "command": "notebook:restart-kernel", "rank": 1003 },
+      { "name": "otherOptionsMenu", "rank": 1004 },
 
       {
         "name": "scrollbar",
         "command": "notebook:toggle-virtual-scrollbar",
-        "rank": 1004
+        "rank": 1005
       }
     ]
   },

@@ -1279,7 +1279,7 @@ function activateWidgetFactory(
   toolbarRegistry: IToolbarWidgetRegistry,
   settingRegistry: ISettingRegistry | null,
   sessionContextDialogs_: ISessionContextDialogs | null,
-  translator_: ITranslator | null
+  translator_: ITranslator | null,
 ): NotebookWidgetFactory.IFactory {
   const translator = translator_ ?? nullTranslator;
   const sessionContextDialogs =
@@ -1305,6 +1305,14 @@ function activateWidgetFactory(
   );
   toolbarRegistry.addFactory<NotebookPanel>(FACTORY, 'cellType', panel =>
     ToolbarItems.createCellTypeItem(panel, translator)
+  );
+
+  toolbarRegistry.addFactory<NotebookPanel>(FACTORY, 'addCellMenu', panel =>
+    ToolbarItems.createAddCellMenu(panel, translator)
+  );
+
+  toolbarRegistry.addFactory<NotebookPanel>(FACTORY, 'otherOptionsMenu', panel =>
+    ToolbarItems.createToolbarOtherOptionsMenu(panel, commands, translator)
   );
   toolbarRegistry.addFactory<NotebookPanel>(FACTORY, 'kernelName', panel =>
     Toolbar.createKernelNameItem(

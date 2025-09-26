@@ -136,6 +136,8 @@ import videoSvgstr from '../../style/icons/filetype/video.svg';
 import viewBreakpointSvgstr from '../../style/icons/debugger/view-breakpoint.svg';
 import wordSvgstr from '../../style/icons/search/word.svg';
 import yamlSvgstr from '../../style/icons/filetype/yaml.svg';
+import addCellMenu from '../../style/icons/toolbar/add-cell-menu.svg';
+import otherOptionsMenu from '../../style/icons/toolbar/other-options-menu.svg';
 
 // LabIcon instance construction
 export const addAboveIcon = new LabIcon({ name: 'ui-components:add-above', svgstr: addAboveSvgstr });
@@ -266,3 +268,5 @@ export const videoIcon = new LabIcon({ name: 'ui-components:video', svgstr: vide
 export const viewBreakpointIcon = new LabIcon({ name: 'ui-components:view-breakpoint', svgstr: viewBreakpointSvgstr });
 export const wordIcon = new LabIcon({ name: 'ui-components:word', svgstr: wordSvgstr });
 export const yamlIcon = new LabIcon({ name: 'ui-components:yaml', svgstr: yamlSvgstr });
+export const addCellMenuIcon = new LabIcon({ name: 'ui-components:add-cell-menu', svgstr: addCellMenu });
+export const otherOptionsMenuIcon = new LabIcon({ name: 'ui-components:other-options-menu', svgstr: otherOptionsMenu });

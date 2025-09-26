@@ -193,3 +193,64 @@ button.jp-ToolbarButtonComponent > span {
   align-items: center;
   gap: 8px;
 }
+
+
+.jp-DropdownMenu {
+
+  button {
+    border: none;
+    background: transparent;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 20px;
+    width: 20px;
+    padding: 0;
+
+    path {
+      fill: var(--jp-inverse-layout-color3);
+    }
+  }
+
+  button:hover {
+    background: var(--neutral-fill-stealth-hover);
+  }
+
+}
+
+.float-menu-left {
+  right: 0 !important;
+  left: auto !important;
+}
+
+.jp-DropdownMenu-menu {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  margin-top: 4px;
+  min-width: 140px;
+  z-index: 1000;
+  width: auto;
+  padding: 8px 0;
+  background: var(--jp-layout-color2);
+  color: var(--jp-ui-font-color0);
+  border: 1px solid var(--jp-inverse-border-color);
+  border-radius: 4px;
+
+  .jp-DropdownMenu-item {
+    list-style: none;
+    padding: 4px 8px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .jp-DropdownMenu-item:hover {
+    background: var(--jp-layout-color3);
+  }
+
+  .jp-DropdownMenu-item.lm-mod-disabled {
+    cursor: not-allowed;
+  }
+
+}

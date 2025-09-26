@@ -169,6 +169,8 @@ export function createDefaultFactory(
         return Toolbar.createSpacerItem();
       case 'vertical-spacer':
         return Toolbar.createVerticalSpacerItem();
+      case 'menu':
+        return Toolbar.createMenuButtonItem();
       default:
         return new Widget();
     }
