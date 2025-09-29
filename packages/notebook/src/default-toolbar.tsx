@@ -588,6 +588,18 @@ export class ToolbarOtherOptionsMenu extends ReactWidget {
         onClick: () => {
           this._commands.execute('notebook:restart-and-run-to-selected').then(_ => {});
         }
+      },
+      {
+        label: this._trans.__("Restart Kernel and Run All Cells"),
+        onClick: () => {
+          this._commands.execute('notebook:restart-run-all').then(_ => {});
+        }
+      },
+      {
+        label: this._trans.__("Interrupt Kernel"),
+        onClick: () => {
+          this._commands.execute('notebook:interrupt-kernel').then(_ => {});
+        }
       }
     ];
     return (

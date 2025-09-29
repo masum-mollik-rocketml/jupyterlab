@@ -32,13 +32,7 @@
       { "name": "cpuIndicator", "rank": 1001 },
       { "name": "shutdown", "command": "notebook:shutdown-kernel", "icon": "ui-components:shutdown", "rank": 1002 },
       { "name": "restart", "command": "notebook:restart-kernel", "rank": 1003 },
-      { "name": "otherOptionsMenu", "rank": 1004 },
-
-      {
-        "name": "scrollbar",
-        "command": "notebook:toggle-virtual-scrollbar",
-        "rank": 1005
-      }
+      { "name": "otherOptionsMenu", "rank": 1004 }
     ]
   },
   "jupyter.lab.transform": true,

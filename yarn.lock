@@ -4426,6 +4426,7 @@ __metadata:
     "@jupyterlab/translation": ^4.5.0-alpha.4
     "@jupyterlab/ui-components": ^4.5.0-alpha.4
     "@lumino/algorithm": ^2.0.3
+    "@lumino/commands": ^2.3.2
     "@lumino/coreutils": ^2.2.1
     "@lumino/disposable": ^2.1.4
     "@lumino/domutils": ^2.0.3

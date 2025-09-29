@@ -14,6 +14,7 @@
 :root {
   --jp-icon-add-above: url('icons/toolbar/add-above.svg');
   --jp-icon-add-below: url('icons/toolbar/add-below.svg');
+  --jp-icon-add-cell-menu: url('icons/toolbar/add-cell-menu.svg');
   --jp-icon-add: url('icons/toolbar/add.svg');
   --jp-icon-audio: url('icons/filetype/audio.svg');
   --jp-icon-bell: url('icons/statusbar/bell.svg');
@@ -99,6 +100,7 @@
   --jp-icon-numbering: url('icons/toolbar/numbering.svg');
   --jp-icon-offline-bolt: url('icons/toolbar/offline-bolt.svg');
   --jp-icon-open-kernel-source: url('icons/debugger/open-kernel-source.svg');
+  --jp-icon-other-options-menu: url('icons/toolbar/other-options-menu.svg');
   --jp-icon-palette: url('icons/sidebar/palette.svg');
   --jp-icon-paste: url('icons/toolbar/paste.svg');
   --jp-icon-pause: url('icons/debugger/pause.svg');
@@ -150,6 +152,10 @@
 
 .jp-AddBelowIcon {
   background-image: var(--jp-icon-add-below);
+}
+
+.jp-AddCellMenuIcon {
+  background-image: var(--jp-icon-add-cell-menu);
 }
 
 .jp-AddIcon {
@@ -490,6 +496,10 @@
 
 .jp-OpenKernelSourceIcon {
   background-image: var(--jp-icon-open-kernel-source);
+}
+
+.jp-OtherOptionsMenuIcon {
+  background-image: var(--jp-icon-other-options-menu);
 }
 
 .jp-PaletteIcon {

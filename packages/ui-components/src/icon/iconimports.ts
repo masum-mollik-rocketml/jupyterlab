@@ -10,6 +10,7 @@ import { LabIcon } from './labicon';
 // icon svg import statements
 import addAboveSvgstr from '../../style/icons/toolbar/add-above.svg';
 import addBelowSvgstr from '../../style/icons/toolbar/add-below.svg';
+import addCellMenuSvgstr from '../../style/icons/toolbar/add-cell-menu.svg';
 import addSvgstr from '../../style/icons/toolbar/add.svg';
 import audioSvgstr from '../../style/icons/filetype/audio.svg';
 import bellSvgstr from '../../style/icons/statusbar/bell.svg';
@@ -95,6 +96,7 @@ import notebookSvgstr from '../../style/icons/filetype/notebook.svg';
 import numberingSvgstr from '../../style/icons/toolbar/numbering.svg';
 import offlineBoltSvgstr from '../../style/icons/toolbar/offline-bolt.svg';
 import openKernelSourceSvgstr from '../../style/icons/debugger/open-kernel-source.svg';
+import otherOptionsMenuSvgstr from '../../style/icons/toolbar/other-options-menu.svg';
 import paletteSvgstr from '../../style/icons/sidebar/palette.svg';
 import pasteSvgstr from '../../style/icons/toolbar/paste.svg';
 import pauseSvgstr from '../../style/icons/debugger/pause.svg';
@@ -136,12 +138,11 @@ import videoSvgstr from '../../style/icons/filetype/video.svg';
 import viewBreakpointSvgstr from '../../style/icons/debugger/view-breakpoint.svg';
 import wordSvgstr from '../../style/icons/search/word.svg';
 import yamlSvgstr from '../../style/icons/filetype/yaml.svg';
-import addCellMenu from '../../style/icons/toolbar/add-cell-menu.svg';
-import otherOptionsMenu from '../../style/icons/toolbar/other-options-menu.svg';
 
 // LabIcon instance construction
 export const addAboveIcon = new LabIcon({ name: 'ui-components:add-above', svgstr: addAboveSvgstr });
 export const addBelowIcon = new LabIcon({ name: 'ui-components:add-below', svgstr: addBelowSvgstr });
+export const addCellMenuIcon = new LabIcon({ name: 'ui-components:add-cell-menu', svgstr: addCellMenuSvgstr });
 export const addIcon = new LabIcon({ name: 'ui-components:add', svgstr: addSvgstr });
 export const audioIcon = new LabIcon({ name: 'ui-components:audio', svgstr: audioSvgstr });
 export const bellIcon = new LabIcon({ name: 'ui-components:bell', svgstr: bellSvgstr });
@@ -227,6 +228,7 @@ export const notebookIcon = new LabIcon({ name: 'ui-components:notebook', svgstr
 export const numberingIcon = new LabIcon({ name: 'ui-components:numbering', svgstr: numberingSvgstr });
 export const offlineBoltIcon = new LabIcon({ name: 'ui-components:offline-bolt', svgstr: offlineBoltSvgstr });
 export const openKernelSourceIcon = new LabIcon({ name: 'ui-components:open-kernel-source', svgstr: openKernelSourceSvgstr });
+export const otherOptionsMenuIcon = new LabIcon({ name: 'ui-components:other-options-menu', svgstr: otherOptionsMenuSvgstr });
 export const paletteIcon = new LabIcon({ name: 'ui-components:palette', svgstr: paletteSvgstr });
 export const pasteIcon = new LabIcon({ name: 'ui-components:paste', svgstr: pasteSvgstr });
 export const pauseIcon = new LabIcon({ name: 'ui-components:pause', svgstr: pauseSvgstr });
@@ -268,5 +270,3 @@ export const videoIcon = new LabIcon({ name: 'ui-components:video', svgstr: vide
 export const viewBreakpointIcon = new LabIcon({ name: 'ui-components:view-breakpoint', svgstr: viewBreakpointSvgstr });
 export const wordIcon = new LabIcon({ name: 'ui-components:word', svgstr: wordSvgstr });
 export const yamlIcon = new LabIcon({ name: 'ui-components:yaml', svgstr: yamlSvgstr });
-export const addCellMenuIcon = new LabIcon({ name: 'ui-components:add-cell-menu', svgstr: addCellMenu });
-export const otherOptionsMenuIcon = new LabIcon({ name: 'ui-components:other-options-menu', svgstr: otherOptionsMenu });
