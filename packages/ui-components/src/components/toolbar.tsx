@@ -19,6 +19,7 @@ import { Throttler } from '@lumino/polling';
 import * as React from 'react';
 import { ellipsesIcon, LabIcon } from '../icon';
 import { classes } from '../utils';
+import {NewFileMenu} from "./new-file-menu";
 import { ReactWidget, UseSignal } from './vdom';
 
 provideJupyterDesignSystem().register([jpButton(), jpToolbar()]);
@@ -792,6 +793,17 @@ export namespace Toolbar {
    */
   export function createMenuButtonItem(): Widget {
     return new Private.MenuButtonItem();
+  }
+
+  /**
+   * Create a toolbar vertical spacer item.
+   *
+   * #### Notes
+   * It is a vertical line spacer that separates the toolbar items
+   * from the other toolbar items.
+   */
+  export function createNewFileDropdownItem(options: NewFileMenu.IOptions): Widget {
+    return new NewFileMenu(options);
   }
 
 }

@@ -3,6 +3,7 @@
   "description": "File Browser widget settings.",
   "jupyter.lab.toolbars": {
     "FileBrowser": [
+      { "name": "newFileDropdown", "type": "newFileDropdown", "rank": 5 },
       {
         "name": "new-directory",
         "command": "filebrowser:create-new-directory",
@@ -107,7 +108,7 @@
         "type": {
           "title": "Item type",
           "type": "string",
-          "enum": ["command", "spacer"]
+          "enum": ["command", "spacer", "vertical-spacer", "menu", "newFileDropdown"]
         },
         "rank": {
           "title": "Item rank",

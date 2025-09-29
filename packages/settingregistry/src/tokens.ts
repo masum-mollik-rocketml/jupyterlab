@@ -790,6 +790,6 @@ export namespace ISettingRegistry {
     /**
      * The type of the toolbar item.
      */
-    type?: 'command' | 'spacer' | 'vertical-spacer' | 'menu';
+    type?: 'command' | 'spacer' | 'vertical-spacer' | 'menu' | 'newFileDropdown';
   }
 }

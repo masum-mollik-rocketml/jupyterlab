@@ -4,10 +4,11 @@
  */
 
 import {
-  CommandToolbarButton,
+  CommandToolbarButton, createConsoleIcon, createNoteBookIcon, createTerminalIcon,
   LabIcon,
   Toolbar
 } from '@jupyterlab/ui-components';
+import {NewFileMenu} from "@jupyterlab/ui-components/lib/components/new-file-menu";
 import { CommandRegistry } from '@lumino/commands';
 import { Widget } from '@lumino/widgets';
 import { IToolbarWidgetRegistry, ToolbarRegistry } from '../tokens';
@@ -171,6 +172,34 @@ export function createDefaultFactory(
         return Toolbar.createVerticalSpacerItem();
       case 'menu':
         return Toolbar.createMenuButtonItem();
+      case 'newFileDropdown': {
+        const items: NewFileMenu.IItem[] = [
+          {
+            label: 'Notebook',
+            icon: createNoteBookIcon,
+            id: 'new-notebook',
+            command: 'notebook:create-new',
+            args: {}
+          },
+          {
+            label: 'Console',
+            icon: createConsoleIcon,
+            id: 'new-console',
+            command: 'console:create',
+            args: {}
+          },
+          {
+            label: 'Terminal',
+            icon: createTerminalIcon,
+            id: 'new-terminal',
+            command: 'terminal:create-new',
+            args: {}
+          }
+        ];
+
+        return Toolbar.createNewFileDropdownItem({commands, items});
+      }
+
       default:
         return new Widget();
     }

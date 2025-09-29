@@ -23,11 +23,6 @@
   ],
   "jupyter.lab.toolbars": {
     "FileBrowser": [
-      {
-        "name": "new-launcher",
-        "command": "launcher:create",
-        "rank": 1
-      }
     ]
   },
   "properties": {},
