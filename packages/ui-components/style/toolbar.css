@@ -32,6 +32,8 @@
     align-items: center;
     justify-content: center;
   }
+
+
 }
 
 /* Toolbar items */
@@ -116,6 +118,13 @@ button.jp-ToolbarButtonComponent .jp-ToolbarButtonComponent-label {
   display: flex;
   align-items: center;
   gap: 12px;
+
+  .jp-ToolbarButtonComponent-label {
+    font-size: var(--jp-ui-font-size1);
+    line-height: 100%;
+    color: var(--jp-ui-font-color1);
+    font-family: var(--jp-ui-font-family);
+  }
 }
 
 .jp-Toolbar > .jp-Toolbar-item.jp-Toolbar-spacer {
@@ -322,9 +331,13 @@ button.jp-ToolbarButtonComponent > span {
 }
 
 
+.jp-NewFileDropdown-button:focus-visible {
+  outline: none !important;
+}
+
 .jp-NewFileDropdown-button[aria-expanded="true"] {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
 
 .jp-NewFileDropdown-button {
@@ -336,7 +349,7 @@ button.jp-ToolbarButtonComponent > span {
   gap: 16px;
   align-self: stretch;
   border: 1px solid #EEE;
-  border-radius: 4px;
+  border-radius: 4px !important;
   background: #EEE;
   cursor: pointer;
 

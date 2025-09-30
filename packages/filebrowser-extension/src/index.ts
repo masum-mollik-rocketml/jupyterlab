@@ -82,6 +82,8 @@ const FILE_BROWSER_PLUGIN_ID = '@jupyterlab/filebrowser-extension:browser';
  * The command IDs used by the file browser plugin.
  */
 namespace CommandIDs {
+  export const showUploader = 'filebrowser:show-uploader';
+
   export const copy = 'filebrowser:copy';
 
   export const copyDownloadLink = 'filebrowser:copy-download-link';
@@ -1179,6 +1181,23 @@ function addCommands(
   const { docRegistry: registry, commands } = app;
   const { tracker } = factory;
   const deleteToTrash = PageConfig.getOption('delete_to_trash') === 'true';
+
+  commands.addCommand(CommandIDs.showUploader, {
+    execute: () => {
+      const uploader = new Uploader({model: browser.model, translator: translator});
+
+      uploader.input.click();
+    },
+    icon: closeIcon.bindprops({ stylesheet: 'menuItem' }),
+    label: deleteToTrash ? trans.__('Move to Trash') : trans.__('Delete'),
+    mnemonic: 0,
+    describedBy: {
+      args: {
+        type: 'object',
+        properties: {}
+      }
+    }
+  });
 
   commands.addCommand(CommandIDs.del, {
     execute: () => {

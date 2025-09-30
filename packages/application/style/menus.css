@@ -9,7 +9,7 @@
 
 :root {
   --jp-private-menubar-height: 64px;
-  --jp-private-menu-item-height: 24px;
+  --jp-private-menu-item-height: 26px;
 }
 
 /*-----------------------------------------------------------------------------
@@ -28,18 +28,18 @@
 }
 
 .lm-MenuBar-menu.jp-ThemedContainer {
-  top: calc(-2 * var(--jp-border-width));
+  top: calc(-12 * var(--jp-border-width));
   scrollbar-width: none;
   -ms-overflow-style: none;
   overflow: auto;
   background:
-    linear-gradient(var(--jp-layout-color0) 30%, rgba(0, 0, 0, 0)) center top,
-    linear-gradient(rgba(0, 0, 0, 0), var(--jp-layout-color0) 70%) center bottom,
+    linear-gradient(var(--jp-layout-color2) 30%, rgba(0, 0, 0, 0)) center top,
+    linear-gradient(rgba(0, 0, 0, 0), var(--jp-layout-color2) 70%) center bottom,
     radial-gradient(
         farthest-side at 50% 0,
         color-mix(
           in hsl,
-          var(--jp-layout-color0) 50%,
+          var(--jp-layout-color2) 50%,
           var(--jp-inverse-layout-color0) 30%
         ),
         rgba(0, 0, 0, 0)
@@ -49,13 +49,13 @@
         farthest-side at 50% 100%,
         color-mix(
           in hsl,
-          var(--jp-layout-color0) 50%,
+          var(--jp-layout-color2) 50%,
           var(--jp-inverse-layout-color0) 30%
         ),
         rgba(0, 0, 0, 0)
       )
       center bottom;
-  background-color: var(--jp-layout-color0);
+  background-color: var(--jp-layout-color2);
   background-repeat: no-repeat;
   background-size:
     100% 40px,
@@ -63,6 +63,7 @@
     100% 14px,
     100% 14px;
   background-attachment: local, local, scroll, scroll;
+  border-radius: 2px 8px 8px;
 }
 
 .lm-MenuBar-menu.jp-ThemedContainer::-webkit-scrollbar {
@@ -70,10 +71,6 @@
 }
 
 .lm-MenuBar-item {
-  padding: 0 8px;
-  border-left: var(--jp-border-width) solid transparent;
-  border-right: var(--jp-border-width) solid transparent;
-  border-top: var(--jp-border-width) solid transparent;
   line-height: calc(
     var(--jp-private-menubar-height) - var(--jp-border-width) * 2
   );
@@ -81,10 +78,12 @@
   .lm-MenuBar-itemLabel {
     color: #EEE;
     text-align: center;
-    font-size: 13px;
+    font-size: var(--jp-menu-ui-font-size1);
     font-style: normal;
     font-weight: 400;
     line-height: 16px; /* 123.077% */
+    padding: 8px;
+    border-radius: 4px;
   }
 }
 
@@ -107,16 +106,18 @@
 }
 
 .lm-MenuBar-item.lm-mod-active {
-  background: var(--jp-layout-color2);
+
+  .lm-MenuBar-itemLabel {
+    background: var(--jp-input-hover-background);
+  }
+
 }
 
 .lm-MenuBar.lm-mod-active .lm-MenuBar-item.lm-mod-active {
   z-index: 10001;
-  background: var(--jp-layout-color0);
   color: var(--jp-ui-font-color0);
-  border-left: var(--jp-border-width) solid var(--jp-border-color1);
-  border-right: var(--jp-border-width) solid var(--jp-border-color1);
   box-shadow: var(--jp-elevation-z6);
+
 }
 
 /* stylelint-disable-next-line selector-max-class */
@@ -195,16 +196,15 @@
 
 .lm-Menu-item[data-type='separator'] > div {
   padding: 0;
-  height: 9px;
+  height: 16px;
 }
 
 .lm-Menu-item[data-type='separator'] > div::after {
   content: '';
   display: block;
   position: relative;
-  top: 4px;
-  border-top: var(--jp-border-width) solid var(--jp-layout-color2);
-  mix-blend-mode: multiply;
+  top: 8px;
+  border-top: var(--jp-border-width) solid var(--jp-layout-color4);
 }
 
 /* gray out icon/caret for disabled menu items */

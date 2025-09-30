@@ -296,11 +296,11 @@ namespace Private {
         <div className={'toolbarKernelUsage'}>
           <div className={'cpu-usage-container'}>
             <cpuUsageIcon.react className={'cpu-usage-icon'}/>
-            <span style={{ fontSize: '13px'}}>{cpuValue}</span>
+            <span>{cpuValue}</span>
           </div>
           <div className={'memory-usage-container'}>
             <memoryUsageIcon.react className={'memory-usage-icon'}/>
-            <span style={{ fontSize: '13px'}}>{memoryValue}</span>
+            <span>{memoryValue}</span>
           </div>
         </div>
       </>

@@ -1,7 +1,7 @@
 // Copyright (c) Jupyter Development Team.
 // Distributed under the terms of the Modified BSD License.
 
-import { showErrorMessage } from '@jupyterlab/apputils';
+import {showErrorMessage} from '@jupyterlab/apputils';
 import {
   ITranslator,
   nullTranslator,
@@ -16,6 +16,9 @@ import { ISignal, Signal } from '@lumino/signaling';
  * A widget which provides an upload button.
  */
 export class Uploader extends ToolbarButton {
+  get input(): HTMLInputElement {
+    return this._input;
+  }
   /**
    * Construct a new file browser buttons widget.
    */

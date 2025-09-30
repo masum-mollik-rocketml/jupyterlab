@@ -42,6 +42,11 @@ import copilotSvgstr from '../../style/icons/toolbar/copilot.svg';
 import copySvgstr from '../../style/icons/toolbar/copy.svg';
 import copyrightSvgstr from '../../style/icons/licenses/copyright.svg';
 import cpuUsageSvgstr from '../../style/icons/toolbar/cpu-usage.svg';
+import createButtonCaretSvgstr from '../../style/icons/toolbar/create-button-caret.svg';
+import createButtonSvgstr from '../../style/icons/toolbar/create-button.svg';
+import createConsoleSvgstr from '../../style/icons/toolbar/create-console.svg';
+import createNotebookSvgstr from '../../style/icons/toolbar/create-notebook.svg';
+import createTerminalSvgstr from '../../style/icons/toolbar/create-terminal.svg';
 import cutSvgstr from '../../style/icons/toolbar/cut.svg';
 import deleteSvgstr from '../../style/icons/toolbar/delete.svg';
 import dockBottomSvgstr from '../../style/icons/toolbar/dock-bottom.svg';
@@ -138,12 +143,6 @@ import videoSvgstr from '../../style/icons/filetype/video.svg';
 import viewBreakpointSvgstr from '../../style/icons/debugger/view-breakpoint.svg';
 import wordSvgstr from '../../style/icons/search/word.svg';
 import yamlSvgstr from '../../style/icons/filetype/yaml.svg';
-import createConsoleSvgstr from '../../style/icons/toolbar/create-console.svg';
-import createNotebookSvgstr from '../../style/icons/toolbar/create-notebook.svg';
-import createTerminalSvgstr from '../../style/icons/toolbar/create-terminal.svg';
-import createSvgstr from '../../style/icons/toolbar/create-button.svg';
-import createButtonCaretSvgstr from '../../style/icons/toolbar/create-button-caret.svg';
-
 
 // LabIcon instance construction
 export const addAboveIcon = new LabIcon({ name: 'ui-components:add-above', svgstr: addAboveSvgstr });
@@ -180,6 +179,11 @@ export const copilotIcon = new LabIcon({ name: 'ui-components:copilot', svgstr: 
 export const copyIcon = new LabIcon({ name: 'ui-components:copy', svgstr: copySvgstr });
 export const copyrightIcon = new LabIcon({ name: 'ui-components:copyright', svgstr: copyrightSvgstr });
 export const cpuUsageIcon = new LabIcon({ name: 'ui-components:cpu-usage', svgstr: cpuUsageSvgstr });
+export const createButtonCaretIcon = new LabIcon({ name: 'ui-components:create-button-caret', svgstr: createButtonCaretSvgstr });
+export const createButtonIcon = new LabIcon({ name: 'ui-components:create-button', svgstr: createButtonSvgstr });
+export const createConsoleIcon = new LabIcon({ name: 'ui-components:create-console', svgstr: createConsoleSvgstr });
+export const createNotebookIcon = new LabIcon({ name: 'ui-components:create-notebook', svgstr: createNotebookSvgstr });
+export const createTerminalIcon = new LabIcon({ name: 'ui-components:create-terminal', svgstr: createTerminalSvgstr });
 export const cutIcon = new LabIcon({ name: 'ui-components:cut', svgstr: cutSvgstr });
 export const deleteIcon = new LabIcon({ name: 'ui-components:delete', svgstr: deleteSvgstr });
 export const dockBottomIcon = new LabIcon({ name: 'ui-components:dock-bottom', svgstr: dockBottomSvgstr });
@@ -276,8 +280,3 @@ export const videoIcon = new LabIcon({ name: 'ui-components:video', svgstr: vide
 export const viewBreakpointIcon = new LabIcon({ name: 'ui-components:view-breakpoint', svgstr: viewBreakpointSvgstr });
 export const wordIcon = new LabIcon({ name: 'ui-components:word', svgstr: wordSvgstr });
 export const yamlIcon = new LabIcon({ name: 'ui-components:yaml', svgstr: yamlSvgstr });
-export const createNoteBookIcon = new LabIcon({ name: 'ui-components:create-notebook', svgstr: createNotebookSvgstr });
-export const createConsoleIcon = new LabIcon({ name: 'ui-components:create-console', svgstr: createConsoleSvgstr });
-export const createTerminalIcon = new LabIcon({ name: 'ui-components:create-console', svgstr: createTerminalSvgstr });
-export const createButtonIcon = new LabIcon({ name: 'ui-components:create-button', svgstr:createSvgstr});
-export const createButtonCaretIcon = new LabIcon({ name: 'ui-components:create-button-caret', svgstr: createButtonCaretSvgstr });

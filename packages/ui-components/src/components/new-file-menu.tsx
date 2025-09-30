@@ -53,9 +53,16 @@ export class NewFileMenu extends ReactWidget {
       label: this._labelFor(item),
       icon: item.icon,
       onClick: () => {
-        void this._commands.execute(item.command, item.args ?? {});
+        if (item.onClick) {
+          item.onClick();
+          return;
+        }
+
+        if (item.command) {
+          void this._commands.execute(item.command, item.args ?? {});
+        }
       },
-      disabled: disabledAll || !this._isCommandEnabled(item)
+      disabled: disabledAll || (!item.onClick && !this._isCommandEnabled(item))
     }));
 
     return (
@@ -72,7 +79,7 @@ export class NewFileMenu extends ReactWidget {
 
   private _isCommandEnabled(item: NewFileMenu.IItem): boolean {
     try {
-      if (!this._commands.listCommands().includes(item.command)) {
+      if (item.command && !this._commands.listCommands().includes(item.command)) {
         return false;
       }
       // If registry supports isEnabled, check it; default to true
@@ -89,7 +96,7 @@ export class NewFileMenu extends ReactWidget {
     }
     // Try to retrieve label from command if available
     try {
-      const cmd = this._commands.listCommands().includes(item.command) ? item.command : undefined;
+      const cmd = item.command && this._commands.listCommands().includes(item.command) ? item.command : undefined;
       if (!cmd) {
         return item.id;
       }
@@ -242,13 +249,15 @@ export namespace NewFileMenu {
     /** Unique id for the option. */
     id: string;
     /** Command id to execute when selected. */
-    command: string;
+    command?: string;
     /** Optional command arguments. */
     args?: Readonly<{ [key: string]: any }>;
     /** Optional label to display (fallbacks to command label). */
     label?: string;
     /** Optional icon displayed before the label. */
     icon?: LabIcon;
+
+    onClick?: () => void;
   }
 
   /** Options for constructing a NewFileMenu. */

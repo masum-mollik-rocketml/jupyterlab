@@ -4,7 +4,7 @@
  */
 
 import {
-  CommandToolbarButton, createConsoleIcon, createNoteBookIcon, createTerminalIcon,
+  CommandToolbarButton, createConsoleIcon, createNotebookIcon, createTerminalIcon, fileUploadIcon,
   LabIcon,
   Toolbar
 } from '@jupyterlab/ui-components';
@@ -176,7 +176,7 @@ export function createDefaultFactory(
         const items: NewFileMenu.IItem[] = [
           {
             label: 'Notebook',
-            icon: createNoteBookIcon,
+            icon: createNotebookIcon,
             id: 'new-notebook',
             command: 'notebook:create-new',
             args: {}
@@ -193,6 +193,13 @@ export function createDefaultFactory(
             icon: createTerminalIcon,
             id: 'new-terminal',
             command: 'terminal:create-new',
+            args: {}
+          },
+          {
+            label: 'Upload',
+            icon: fileUploadIcon,
+            id: 'new-file-upload',
+            command: 'filebrowser:show-uploader',
             args: {}
           }
         ];

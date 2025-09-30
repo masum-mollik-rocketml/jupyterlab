@@ -46,6 +46,11 @@
   --jp-icon-copy: url('icons/toolbar/copy.svg');
   --jp-icon-copyright: url('icons/licenses/copyright.svg');
   --jp-icon-cpu-usage: url('icons/toolbar/cpu-usage.svg');
+  --jp-icon-create-button-caret: url('icons/toolbar/create-button-caret.svg');
+  --jp-icon-create-button: url('icons/toolbar/create-button.svg');
+  --jp-icon-create-console: url('icons/toolbar/create-console.svg');
+  --jp-icon-create-notebook: url('icons/toolbar/create-notebook.svg');
+  --jp-icon-create-terminal: url('icons/toolbar/create-terminal.svg');
   --jp-icon-cut: url('icons/toolbar/cut.svg');
   --jp-icon-delete: url('icons/toolbar/delete.svg');
   --jp-icon-dock-bottom: url('icons/toolbar/dock-bottom.svg');
@@ -280,6 +285,26 @@
 
 .jp-CpuUsageIcon {
   background-image: var(--jp-icon-cpu-usage);
+}
+
+.jp-CreateButtonCaretIcon {
+  background-image: var(--jp-icon-create-button-caret);
+}
+
+.jp-CreateButtonIcon {
+  background-image: var(--jp-icon-create-button);
+}
+
+.jp-CreateConsoleIcon {
+  background-image: var(--jp-icon-create-console);
+}
+
+.jp-CreateNotebookIcon {
+  background-image: var(--jp-icon-create-notebook);
+}
+
+.jp-CreateTerminalIcon {
+  background-image: var(--jp-icon-create-terminal);
 }
 
 .jp-CutIcon {
