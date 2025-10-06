@@ -234,7 +234,7 @@ export const FilterBox = (props: IFilterBoxProps): JSX.Element => {
       placeholder={props.placeholder}
       disabled={props.disabled}
     >
-      {showSearchIcon && <searchIcon.react slot="end" tag={null} />}
+      {showSearchIcon && <searchIcon.react slot="start" tag={null} />}
     </Search>
   );
 };

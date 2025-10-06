@@ -3,13 +3,7 @@
   "description": "File Browser widget settings.",
   "jupyter.lab.toolbars": {
     "FileBrowser": [
-      { "name": "newFileDropdown", "type": "newFileDropdown", "rank": 5 },
-      { "name": "refresh", "command": "filebrowser:refresh", "rank": 30 },
-      {
-        "name": "toggle-file-filter",
-        "command": "filebrowser:toggle-file-filter",
-        "rank": 40
-      }
+      { "name": "newFileDropdown", "type": "newFileDropdown", "rank": 5 }
     ]
   },
   "jupyter.lab.menus": {

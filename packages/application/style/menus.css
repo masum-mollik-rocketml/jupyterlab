@@ -9,7 +9,7 @@
 
 :root {
   --jp-private-menubar-height: 64px;
-  --jp-private-menu-item-height: 26px;
+  --jp-private-menu-item-height: 30px;
 }
 
 /*-----------------------------------------------------------------------------
@@ -33,13 +33,13 @@
   -ms-overflow-style: none;
   overflow: auto;
   background:
-    linear-gradient(var(--jp-layout-color2) 30%, rgba(0, 0, 0, 0)) center top,
-    linear-gradient(rgba(0, 0, 0, 0), var(--jp-layout-color2) 70%) center bottom,
+    linear-gradient(var(--jp-layout-color1) 30%, rgba(0, 0, 0, 0)) center top,
+    linear-gradient(rgba(0, 0, 0, 0), var(--jp-layout-color1) 70%) center bottom,
     radial-gradient(
         farthest-side at 50% 0,
         color-mix(
           in hsl,
-          var(--jp-layout-color2) 50%,
+          var(--jp-layout-color1) 50%,
           var(--jp-inverse-layout-color0) 30%
         ),
         rgba(0, 0, 0, 0)
@@ -49,13 +49,13 @@
         farthest-side at 50% 100%,
         color-mix(
           in hsl,
-          var(--jp-layout-color2) 50%,
+          var(--jp-layout-color1) 50%,
           var(--jp-inverse-layout-color0) 30%
         ),
         rgba(0, 0, 0, 0)
       )
       center bottom;
-  background-color: var(--jp-layout-color2);
+  background-color: var(--jp-layout-color1);
   background-repeat: no-repeat;
   background-size:
     100% 40px,
@@ -149,9 +149,10 @@
 .lm-Menu {
   z-index: 10000;
   padding: 4px 0;
-  background: var(--jp-layout-color0);
+  background: var(--jp-layout-color1);
   color: var(--jp-ui-font-color0);
   border: var(--jp-border-width) solid var(--jp-border-color1);
+  border-radius: var(--jp-border-radius);
   font-size: var(--jp-ui-font-size1);
   box-shadow: var(--jp-elevation-z6);
 }

@@ -52,8 +52,13 @@
 
 /* Styles for ui-components */
 .jp-FilterBox {
+  --base-height-multiplier: 11;
   --design-unit: 3;
   --density: 0;
+
+  .control {
+    margin-top: 0;
+  }
 }
 
 .jp-Button {

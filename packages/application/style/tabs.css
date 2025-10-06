@@ -1,4 +1,4 @@
-/*-----------------------------------------------------------------------------
+  /*-----------------------------------------------------------------------------
 | Copyright (c) Jupyter Development Team.
 | Distributed under the terms of the Modified BSD License.
 |----------------------------------------------------------------------------*/
@@ -27,9 +27,7 @@
 
 .lm-DockPanel-tabBar[data-orientation='horizontal'],
 .lm-TabPanel-tabBar[data-orientation='horizontal'] {
-  min-height: calc(
-    var(--jp-private-horizontal-tab-height) + 2 * var(--jp-border-width)
-  );
+  min-height: var(--jp-private-horizontal-tab-height);
 }
 
 .lm-DockPanel-tabBar[data-orientation='vertical'] {

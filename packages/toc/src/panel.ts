@@ -31,7 +31,7 @@ export class TableOfContentsPanel extends SidePanel {
     this._treeview = new TableOfContentsWidget({
       placeholderHeadline: this._trans.__('No Headings'),
       placeholderText: this._trans.__(
-        'The table of contents shows headings in notebooks and supported files.'
+          'Table of contents will be added here when a notebook or supported file has Markdown headings.'
       )
     });
     this._treeview.addClass('jp-TableOfContents-tree');

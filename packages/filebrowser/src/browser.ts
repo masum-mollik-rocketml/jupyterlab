@@ -1,7 +1,7 @@
 // Copyright (c) Jupyter Development Team.
 // Distributed under the terms of the Modified BSD License.
 
-import { showErrorMessage } from '@jupyterlab/apputils';
+import {showErrorMessage, ToolbarButton} from '@jupyterlab/apputils';
 import { PathExt } from '@jupyterlab/coreutils';
 import { IDocumentManager } from '@jupyterlab/docmanager';
 import { Contents, ServerConnection } from '@jupyterlab/services';
@@ -9,7 +9,7 @@ import { IStateDB } from '@jupyterlab/statedb';
 import { ITranslator, nullTranslator } from '@jupyterlab/translation';
 import {
   FilenameSearcher,
-  IScore,
+  IScore, refreshIcon,
   SidePanel,
   Toolbar
 } from '@jupyterlab/ui-components';
@@ -105,13 +105,14 @@ export class FileBrowser extends SidePanel {
         });
       },
       useFuzzyFilter: this.model.useFuzzyFilter,
-      placeholder: this._trans.__('Filter files by name'),
+      placeholder: this._trans.__('Search'),
       forceRefresh: false,
-      showIcon: false,
+      showIcon: true,
       inputRef: this._fileFilterRef,
       filterSettingsChanged: this.model.filterSettingsChanged
     });
     searcher.addClass(FILTERBOX_CLASS);
+
 
     this.filterToolbar = new Toolbar();
     this.filterToolbar.addClass(FILTER_TOOLBAR_CLASS);
@@ -120,6 +121,22 @@ export class FileBrowser extends SidePanel {
       this._trans.__('File browser toolbar')
     );
     this.filterToolbar.addItem('fileNameSearcher', searcher);
+
+    const refresher = new ToolbarButton({
+      icon: refreshIcon,
+      onClick: () => {
+        options.model.refresh().catch(reason => {
+          console.error(
+              'Failed to refresh file browser in open dialog.',
+              reason
+          );
+        });
+      },
+      tooltip: this.translator.load('jupyterlab').__('Refresh File List')
+    });
+
+    this.filterToolbar.addItem('refresher', refresher);
+
     this.filterToolbar.setHidden(!this.showFileFilter);
 
     this.listing = this.createDirListing({
@@ -570,7 +587,7 @@ export class FileBrowser extends SidePanel {
   private _navigateToCurrentDirectory: boolean;
   private _allowSingleClick: boolean = false;
   private _showFileCheckboxes: boolean = false;
-  private _showFileFilter: boolean = false;
+  private _showFileFilter: boolean = true;
   private _showFileSizeColumn: boolean = false;
   private _showHiddenFiles: boolean = false;
   private _showLastModifiedColumn: boolean = true;

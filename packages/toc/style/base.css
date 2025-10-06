@@ -23,14 +23,32 @@
 .jp-TableOfContents-placeholderContent {
   color: var(--jp-content-font-color2);
   padding: 8px;
+
+  p {
+    color: var(--jp-content-font-color3);
+    font-style: italic;
+  }
+
 }
+
 
 .jp-TableOfContents-placeholderContent > h3 {
   margin-bottom: var(--jp-content-heading-margin-bottom);
+  color: var(--jp-ui-font-color0);
+
 }
 
 .jp-TableOfContents .jp-SidePanel-content {
   overflow-y: auto;
+}
+
+.jp-TableOfContents-header {
+  color: #EEE;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 16px;
+  padding: 16px 8px;
 }
 
 .jp-TableOfContents-tree {
@@ -43,10 +61,17 @@
 }
 
 .jp-tocItem {
+  --base-height-multiplier: 12;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.jp-tocItem:after {
+  --base-height-multiplier: 16;
+  top: calc(((var(--base-height-multiplier) + var(--density) + var(--element-scale)) * var(--design-unit) / 10) * 1px);
+  height: calc(((var(--base-height-multiplier) + var(--density) + var(--element-scale)) * var(--design-unit) / 2) * 1px);
 }
 
 .jp-tocItem-heading {

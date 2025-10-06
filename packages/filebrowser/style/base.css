@@ -33,7 +33,7 @@
 .jp-FileBrowser-filterToolbar {
   display: flex;
   flex: 0 0 auto;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .jp-FileBrowser-filterToolbar.jp-Toolbar {
@@ -42,6 +42,7 @@
   margin: 0 12px 6px;
   box-shadow: none;
   padding: 0;
+  z-index: 7;
 }
 
 .jp-FileBrowser-Panel {
@@ -58,7 +59,7 @@
 
 .jp-BreadCrumbs-item {
   margin: 0 2px;
-  padding: 0 2px;
+  padding: 4px;
   border-radius: var(--jp-border-radius);
   cursor: pointer;
 }
@@ -109,7 +110,7 @@
 }
 
 .jp-FileBrowser-filterToolbar > .jp-FileBrowser-filterBox {
-  width: 100%;
+  flex: 1 1;
 }
 
 .jp-FileBrowser-filterBox > .jp-FilterBox {
@@ -144,7 +145,6 @@
   flex-direction: row;
   align-items: center;
   overflow: hidden;
-  border-top: var(--jp-border-width) solid var(--jp-border-color2);
   border-bottom: var(--jp-border-width) solid var(--jp-border-color1);
   box-shadow: var(--jp-toolbar-box-shadow);
   z-index: 2;
@@ -152,7 +152,7 @@
 }
 
 .jp-DirListing-headerItem {
-  padding: 4px 12px 2px;
+  padding: 8px 12px;
   font-weight: 500;
   overflow: hidden;
   white-space: nowrap;
@@ -291,7 +291,7 @@
 
 .jp-DirListing-item {
   align-items: center;
-  padding: 4px var(--jp-dirlisting-padding-width);
+  padding: 8px var(--jp-dirlisting-padding-width);
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;

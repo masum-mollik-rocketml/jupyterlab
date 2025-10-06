@@ -229,11 +229,11 @@ all of MD as it is not optimized for dense, information rich UIs.
 
   /* Brand/accent */
 
-  --jp-brand-color0: var(--md-blue-700, #1976d2);
-  --jp-brand-color1: var(--md-blue-500, #2196f3);
-  --jp-brand-color2: var(--md-blue-300, #64b5f6);
-  --jp-brand-color3: var(--md-blue-100, #bbdefb);
-  --jp-brand-color4: var(--md-blue-50, #e3f2fd);
+  --jp-brand-color0: var(--md-teal-700, #00796b);
+  --jp-brand-color1: var(--md-teal-400, #26a69a);
+  --jp-brand-color2: var(--md-teal-300, #4db6ac);
+  --jp-brand-color3: var(--md-teal-100, #b2dfdb);
+  --jp-brand-color4: var(--md-teal-50, #e3f2fd);
   --jp-accent-color0: var(--md-green-700, #388e3c);
   --jp-accent-color1: var(--md-green-500, #4caf50);
   --jp-accent-color2: var(--md-green-300, #81c784);
@@ -437,7 +437,7 @@ all of MD as it is not optimized for dense, information rich UIs.
 
   /* File or activity icons and switch semantic variables */
   --jp-jupyter-icon-color: #f37626;
-  --jp-notebook-icon-color: #f37626;
+  --jp-notebook-icon-color: #EEE;
   --jp-json-icon-color: var(--md-orange-500, #ff9800);
   --jp-console-icon-background-color: var(--md-blue-500, #2196f3);
   --jp-console-icon-color: white;

@@ -40,17 +40,20 @@ export class TableOfContentsWidget extends VDomRenderer<TableOfContents.IModel<T
     }
 
     return (
-      <TableOfContentsTree
-        activeHeading={this.model.activeHeading}
-        documentType={this.model.documentType}
-        headings={this.model.headings}
-        onCollapseChange={(heading: TableOfContents.IHeading) => {
-          this.model!.toggleCollapse({ heading });
-        }}
-        setActiveHeading={(heading: TableOfContents.IHeading) => {
-          this.model!.setActiveHeading(heading);
-        }}
-      ></TableOfContentsTree>
+        <div style={{display: 'flex', flexDirection: 'column'}}>
+            <span className={"jp-TableOfContents-header"}>Table of contents</span>
+          <TableOfContentsTree
+              activeHeading={this.model.activeHeading}
+              documentType={this.model.documentType}
+              headings={this.model.headings}
+              onCollapseChange={(heading: TableOfContents.IHeading) => {
+                this.model!.toggleCollapse({ heading });
+              }}
+              setActiveHeading={(heading: TableOfContents.IHeading) => {
+                this.model!.setActiveHeading(heading);
+              }}
+          ></TableOfContentsTree>
+        </div>
     );
   }
 

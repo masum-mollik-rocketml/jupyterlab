@@ -388,7 +388,7 @@ export class LabShell extends Widget implements JupyterFrontEnd.IShell {
 
     hboxPanel.spacing = 0;
     vsplitPanel.spacing = 1;
-    dockPanel.spacing = 5;
+    dockPanel.spacing = 1;
     hsplitPanel.spacing = 1;
 
     headerPanel.direction = 'top-to-bottom';

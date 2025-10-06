@@ -252,14 +252,14 @@ button.jp-ToolbarButtonComponent > span {
   z-index: 1000;
   width: auto;
   padding: 8px 0;
-  background: var(--jp-layout-color2);
+  background: var(--jp-layout-color1);
   color: var(--jp-ui-font-color0);
   border: 1px solid var(--jp-inverse-border-color);
   border-radius: 4px;
 
   .jp-DropdownMenu-item {
     list-style: none;
-    padding: 4px 8px;
+    padding: 8px 12px;
     cursor: pointer;
     white-space: nowrap;
   }
