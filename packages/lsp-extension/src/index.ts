@@ -36,7 +36,7 @@ import {
   pythonIcon
 } from '@jupyterlab/ui-components';
 import { PartialJSONObject } from '@lumino/coreutils';
-import { Signal } from '@lumino/signaling';
+// import { Signal } from '@lumino/signaling';
 
 import { renderServerSetting } from './renderer';
 
@@ -115,11 +115,12 @@ function activate(
 
   // Add a sessions manager if the running extension is available
   if (runningSessionManagers) {
-    addRunningSessionManager(
+    // Disabled language servers from kernels and terminals
+    /*addRunningSessionManager(
       runningSessionManagers,
       connectionManager,
       translator
-    );
+    );*/
   }
 
   return connectionManager;
@@ -269,7 +270,7 @@ export class RunningLanguageServer implements IRunningSessions.IRunningItem {
 /**
  * Add the running terminal manager to the running panel.
  */
-function addRunningSessionManager(
+/*function addRunningSessionManager(
   managers: IRunningSessionManagers,
   lsManager: ILSPDocumentConnectionManager,
   translator: ITranslator
@@ -307,7 +308,7 @@ function addRunningSessionManager(
       'Are you sure you want to permanently shut down all running language servers?'
     )
   });
-}
+}*/
 
 const adapterTrackerPlugin: JupyterFrontEndPlugin<IWidgetLSPAdapterTracker> = {
   id: '@jupyterlab/lsp-extension:tracker',
