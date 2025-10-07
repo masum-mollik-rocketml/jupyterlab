@@ -136,7 +136,7 @@ const recentsPlugin: JupyterFrontEndPlugin<void> = {
   id: '@jupyterlab/running-extension:recently-closed',
   description: 'Adds recently closed documents list.',
   requires: [IRunningSessionManagers, IRecentsManager, ITranslator],
-  autoStart: true,
+  autoStart: false,
   activate: (
     app: JupyterFrontEnd,
     manager: IRunningSessionManagers,
