@@ -27,7 +27,7 @@ export const workspacesSidebar: JupyterFrontEndPlugin<void> = {
     IWindowResolver
   ],
   optional: [ITranslator],
-  autoStart: true,
+  autoStart: false,
   activate: async (
     app: JupyterFrontEnd,
     commands: IWorkspaceCommands,

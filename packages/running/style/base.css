@@ -13,10 +13,44 @@
   /* This is needed so that all font sizing of children done in ems is
    * relative to this base size */
   font-size: var(--jp-ui-font-size1);
+
+  .lm-AccordionPanel .jp-AccordionPanel-title {
+    box-shadow: none;
+    font-size: var(--jp-ui-font-size1);
+    line-height: 20px;
+    font-weight: 400;
+    color: var(--jp-ui-font-color0);
+
+    .jp-RunningSessions-shutdownAll {
+      color: #00ADB5;
+    }
+
+  }
+
+  .jp-Toolbar {
+    border-bottom: 0;
+    box-shadow: none;
+  }
+
+  jp-tree-item.jp-RunningSessions-item::part(positioning-region) {
+    --base-height-multiplier: 8;
+    padding: 7px 0;
+    height: 32px;
+  }
+
+  jp-tree-item.jp-RunningSessions-item {
+    --neutral-fill-stealth-rest: transparent;
+    --neutral-fill-rest: rgba(0, 173, 181, 0.24);
+    --neutral-fill-stealth-hover: rgba(0, 173, 181, 0.24);
+  }
+
+  .positioning-region {
+    padding: 7px 0;
+  }
 }
 
 .jp-RunningSessions > .jp-SidePanel-toolbar::part(positioning-region) {
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .jp-RunningSessions-section {
@@ -113,6 +147,7 @@ span.jp-RunningSessions-icon > svg {
 
 .jp-RunningSessions-itemDetail {
   font-size: var(--jp-ui-font-size1);
+  line-height: 16px;
   flex: 1 1 45%;
   padding: 0 4px;
   text-overflow: ellipsis;
@@ -122,6 +157,7 @@ span.jp-RunningSessions-icon > svg {
 
 .jp-RunningSessions-itemShutdown {
   visibility: hidden;
+  margin: 0 4px;
 }
 
 .jp-RunningSessions-item:focus-visible > .jp-RunningSessions-itemShutdown,
@@ -179,6 +215,7 @@ span.jp-RunningSessions-icon > svg {
 
   /* Required to display correctly the filter box and its focus highlight */
   padding: 0 2px;
+  flex: 1 1;
 }
 
 .jp-SearchableSessions-filter > .jp-FilterBox {

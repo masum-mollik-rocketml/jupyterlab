@@ -800,6 +800,9 @@ export class RunningSessions
     this.translator = translator ?? nullTranslator;
     const trans = this.translator.load('jupyterlab');
 
+    this._filterWidget = new FilterWidget(this.translator);
+    this.toolbar.addItem('searchSessions', this._filterWidget);
+
     this.addClass(RUNNING_CLASS);
 
     this.toolbar.addItem(
@@ -837,7 +840,7 @@ export class RunningSessions
     managers: unknown,
     manager: IRunningSessions.IManager
   ) {
-    const section = new Section({ manager, translator: this.translator });
+    const section = new Section({ manager, translator: this.translator, filterProvider: this._filterWidget });
     this.addWidget(section);
 
     const state = await this._getState();
@@ -887,6 +890,7 @@ export class RunningSessions
 
   protected managers: IRunningSessionManagers;
   protected translator: ITranslator;
+  private _filterWidget: FilterWidget;
   private _stateDB: IStateDB | null;
 }
 
