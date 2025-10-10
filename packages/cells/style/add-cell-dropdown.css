@@ -1,6 +1,91 @@
 .jp-AddCellDropdown-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px 0 8px calc(var(--jp-cell-prompt-width) + var(--jp-cell-collapser-width));
+  gap: 12px;
+  --border-color: #00ADB5;
+
+  .jp-AddCellDropdown-item {
     display: flex;
-    flex-direction: row;
+    height: 28px;
     align-items: center;
-    padding-left: calc(var(--jp-cell-prompt-width) + var(--jp-cell-collapser-width));
+    border-radius: 9px;
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
+    overflow: hidden;
+
+    .jp-AddCellDropdown-item-left:hover, .jp-AddCellDropdown-item-dropdown:hover {
+      background: var(--neutral-fill-hover);
+      cursor: pointer;
+    }
+
+    .jp-AddCellDropdown-item-left {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 0 4px 0 8px;
+      height: 100%;
+
+      .cell-bottom-plus-icon {
+        display: flex;
+        align-items: center;
+
+        svg {
+          width: 12px;
+          height: 12px;
+        }
+
+      }
+
+      .jp-AddCellDropdown-item-label {
+        color: var(--jp-ui-font-color0);
+        text-align: center;
+        font-family: var(--jp-ui-font-family);
+        font-size: var(--jp-ui-font-size1);
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+      }
+    }
+
+    .jp-AddCellDropdown-item-dropdown {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      padding: 0 8px 0 4px;
+      height: 100%;
+
+      .jp-DropdownMenu-button-icon {
+        display: flex;
+        align-items: center;
+        min-height: unset;
+        min-width: unset;
+
+        svg {
+          height: 7px;
+          width: 12px;
+        }
+      }
+    }
+  }
+}
+
+.jp-Cell:not(.jp-mod-active) .jp-AddCellDropdown-container {
+  visibility: hidden;
+}
+
+.jp-Cell:not(.jp-mod-active):hover .jp-AddCellDropdown-container {
+  visibility: visible;
+}
+
+.jp-Cell:not(.jp-mod-active):hover .jp-AddCellDropdown-container {
+
+  .jp-AddCellDropdown-item {
+    border-color: transparent;
+  }
+
+  .jp-AddCellDropdown-item:hover {
+    border-color: var(--border-color);
+  }
 }

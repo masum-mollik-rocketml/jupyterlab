@@ -145,6 +145,7 @@ import wordSvgstr from '../../style/icons/search/word.svg';
 import yamlSvgstr from '../../style/icons/filetype/yaml.svg';
 import cellRunnerSvgstr from '../../style/icons/toolbar/cell-runner.svg';
 import cellRunnerCaretSvgstr from '../../style/icons/toolbar/cell-runner-caret.svg';
+import cellBottomPlusSvgstr from '../../style/icons/toolbar/cell-bottom-plus.svg';
 
 
 // LabIcon instance construction
@@ -285,3 +286,4 @@ export const wordIcon = new LabIcon({ name: 'ui-components:word', svgstr: wordSv
 export const yamlIcon = new LabIcon({ name: 'ui-components:yaml', svgstr: yamlSvgstr });
 export const cellRunnerIcon = new LabIcon({ name: 'ui-components:cell-runner', svgstr: cellRunnerSvgstr });
 export const cellRunnerCaretIcon = new LabIcon({ name: 'ui-components:cell-runner-caret', svgstr: cellRunnerCaretSvgstr });
+export const cellBottomPlusIcon = new LabIcon({ name: 'ui-components:cell-bottom-plus', svgstr: cellBottomPlusSvgstr });

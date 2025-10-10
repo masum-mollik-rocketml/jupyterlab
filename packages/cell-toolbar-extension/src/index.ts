@@ -12,7 +12,7 @@ import {
   JupyterFrontEndPlugin
 } from '@jupyterlab/application';
 import { ISettingRegistry } from '@jupyterlab/settingregistry';
-import { CellBarExtension } from '@jupyterlab/cell-toolbar';
+import { CellBarExtension, CellBottomActionsExtension } from '@jupyterlab/cell-toolbar';
 import {
   createToolbarFactory,
   IToolbarWidgetRegistry
@@ -25,6 +25,7 @@ import { Widget } from '@lumino/widgets';
 import { CopilotWidget } from './copilot-widget';
 
 const PLUGIN_ID = '@jupyterlab/cell-toolbar-extension:plugin';
+const BOTTOM_PLUGIN_ID = '@jupyterlab/cell-toolbar-extension:bottom-actions-plugin';
 
 const CommandIds = {
   /**
@@ -156,4 +157,15 @@ const cellToolbar: JupyterFrontEndPlugin<void> = {
   optional: [ISettingRegistry, IToolbarWidgetRegistry, ITranslator]
 };
 
-export default cellToolbar;
+const bottomActionsPlugin: JupyterFrontEndPlugin<void> = {
+  id: BOTTOM_PLUGIN_ID,
+  description: 'Add bottom actions widget below outputs in each cell.',
+  autoStart: true,
+  activate: (app: JupyterFrontEnd, translator: ITranslator | null) => {
+    const ext = new CellBottomActionsExtension(app.commands, translator);
+    app.docRegistry.addWidgetExtension('Notebook', ext);
+  },
+  optional: [ITranslator]
+};
+
+export default [cellToolbar, bottomActionsPlugin];

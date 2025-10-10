@@ -75,7 +75,7 @@ export class DropdownMenu extends React.Component<IDropdownMenuProps, { open: bo
           aria-expanded={this.state.open}
           title={label}
         >
-          <LabIcon.resolveReact icon={icon} className={'jp-Icon'} elementSize={iconSize ? iconSize : 'large'} tag={'div'} />
+          <LabIcon.resolveReact icon={icon} className={'jp-Icon jp-DropdownMenu-button-icon'} elementSize={iconSize ? iconSize : 'large'} tag={'div'} />
         </button>
         {this.state.open && (
           <ul

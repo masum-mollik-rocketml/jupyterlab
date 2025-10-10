@@ -410,3 +410,15 @@ button.jp-ToolbarButtonComponent > span {
   visibility: visible;
 }
 
+.jp-MarkdownCell.jp-mod-rendered {
+  padding-top: 0;
+  .jp-cell-toolbar {
+    * , *:hover {
+      visibility: hidden;
+    }
+  }
+
+  .jp-MarkdownOutput.jp-RenderedHTMLCommon {
+    padding-bottom: 2px;
+  }
+}
