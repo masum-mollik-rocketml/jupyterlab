@@ -52,7 +52,7 @@ const cellToolbar: JupyterFrontEndPlugin<void> = {
   ) => {
 
     const { commands } = app;
-    const dialogWidget = new CopilotWidget(tracker);
+    const copilotWidget = new CopilotWidget(tracker);
 
     /* Adds a command enabled only on code cell */
     commands.addCommand(CommandIds.runCodeCell, {
@@ -96,10 +96,10 @@ const cellToolbar: JupyterFrontEndPlugin<void> = {
           console.log('Hey, a Signal has been received from', emitter);
         }
 
-        if (!dialogWidget.isAttached) {
+        if (!copilotWidget.isAttached) {
 
-          Widget.attach(dialogWidget, document.body);
-          dialogWidget.stateChanged.connect(closeDialog, this);
+          Widget.attach(copilotWidget, document.body);
+          copilotWidget.stateChanged.connect(closeDialog, this);
 
         }
 

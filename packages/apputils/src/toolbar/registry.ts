@@ -207,6 +207,10 @@ export function createDefaultFactory(
         return Toolbar.createNewFileDropdownItem({commands, items});
       }
 
+      case 'cell-runner':
+        return Toolbar.createCellRunnerItem({commands});
+
+
       default:
         return new Widget();
     }

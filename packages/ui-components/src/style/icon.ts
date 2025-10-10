@@ -52,7 +52,7 @@ export namespace LabIconStyle {
     | 'bottom left'
     | 'top left';
 
-  type ISize = 'small' | 'normal' | 'large' | 'xlarge';
+  export type ISize = 'small' | 'normal' | 'large' | 'xlarge';
 
   /**
    * Options that function as a shorthand for compound CSS properties,

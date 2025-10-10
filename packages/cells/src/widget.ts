@@ -109,6 +109,10 @@ const CELL_INPUT_WRAPPER_CLASS = 'jp-Cell-inputWrapper';
  * The CSS class added to the cell output wrapper.
  */
 const CELL_OUTPUT_WRAPPER_CLASS = 'jp-Cell-outputWrapper';
+/**
+ * The CSS class added to the add cell wrapper.
+ */
+// const CELL_Add_Cell_WRAPPER_CLASS = 'jp-Cell-Add-cellWrapper';
 
 /**
  * The CSS class added to the cell input area.
@@ -1212,7 +1216,7 @@ export class CodeCell extends Cell<ICodeCellModel> {
     const outputCollapser = new OutputCollapser();
     outputCollapser.addClass(CELL_OUTPUT_COLLAPSER_CLASS);
     outputWrapper.addWidget(outputCollapser);
-    // Set a CSS if there are no outputs, and connect a signal for future
+    // Set addCellDropdown CSS if there are no outputs, and connect addCellDropdown signal for future
     // changes to the number of outputs. This is for conditional styling
     // if there are no outputs.
     if (this.model.outputs.length === 0) {
@@ -1225,6 +1229,16 @@ export class CodeCell extends Cell<ICodeCellModel> {
     resizeHandle.sizeChanged.connect(this._sizeChangedHandler, this);
     layout.insertWidget(layout.widgets.length - 1, resizeHandle);
     layout.insertWidget(layout.widgets.length - 1, outputWrapper);
+
+
+    /*// insert the add cell after the output wrapper
+    const addCellWrapper = new Panel();
+
+    addCellWrapper.addClass(CELL_Add_Cell_WRAPPER_CLASS);
+    const addCellDropdownWidget = new AddCellDropdown({translator: this.translator});
+    addCellWrapper.addWidget(addCellDropdownWidget);
+    layout.insertWidget(layout.widgets.length - 1, addCellWrapper);
+*/
 
     if (this.model.isDirty) {
       this.addClass(DIRTY_CLASS);

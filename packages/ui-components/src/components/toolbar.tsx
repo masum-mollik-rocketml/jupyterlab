@@ -19,6 +19,7 @@ import { Throttler } from '@lumino/polling';
 import * as React from 'react';
 import { ellipsesIcon, LabIcon } from '../icon';
 import { classes } from '../utils';
+import {CellRunnerButton} from "./cell-runner-button";
 import {NewFileMenu} from "./new-file-menu";
 import { ReactWidget, UseSignal } from './vdom';
 
@@ -806,6 +807,17 @@ export namespace Toolbar {
     return new NewFileMenu(options);
   }
 
+  /**
+   * Create a toolbar vertical spacer item.
+   *
+   * #### Notes
+   * It is a vertical line spacer that separates the toolbar items
+   * from the other toolbar items.
+   */
+  export function createCellRunnerItem(options: NewFileMenu.IOptions): Widget {
+    return new CellRunnerButton(options);
+  }
+
 }
 
 /**
@@ -929,7 +941,7 @@ export function ToolbarButtonComponent(
             // add some extra classes for proper support of icons-as-css-background
             classes(props.iconClass, 'jp-Icon')
           }
-          elementSize={"large"}
+          elementSize={"normal"}
           tag={"div"}
         />
       )}

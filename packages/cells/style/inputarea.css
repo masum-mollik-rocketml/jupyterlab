@@ -12,7 +12,7 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 
 .jp-InputArea-editor {

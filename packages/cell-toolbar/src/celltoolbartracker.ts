@@ -130,10 +130,10 @@ export class CellToolbarTracker implements IDisposable {
   _onActiveCellChanged(notebook: Notebook): void {
     if (this._previousActiveCell && !this._previousActiveCell.isDisposed) {
       // Disposed cells do not have a model anymore.
-      this._removeToolbar(this._previousActiveCell.model);
-      this._previousActiveCell.model.metadataChanged.disconnect(
-        this._onMetadataChanged
-      );
+      // this._removeToolbar(this._previousActiveCell.model);
+      // this._previousActiveCell.model.metadataChanged.disconnect(
+      //   this._onMetadataChanged
+      // );
     }
 
     const activeCell = notebook.activeCell;
@@ -145,7 +145,17 @@ export class CellToolbarTracker implements IDisposable {
 
     activeCell.model.metadataChanged.connect(this._onMetadataChanged, this);
 
-    this._addToolbar(activeCell.model);
+    const cells = notebook?.widgets.map(cell => this._getCell(cell.model));
+
+    cells?.forEach(cell => {
+      if (cell) {
+        const existingToolbar = cell.inputArea && (cell.inputArea.layout as PanelLayout).widgets.find(w => (w.node.classList.contains(CELL_TOOLBAR_CLASS)));
+        if (!existingToolbar) {
+          this._addToolbar(cell.model);
+        }
+      }
+
+    })
   }
 
   get isDisposed(): boolean {
@@ -230,10 +240,10 @@ export class CellToolbarTracker implements IDisposable {
       // Wait for all the buttons to be rendered before attaching the toolbar.
       Promise.all(promises)
         .then(() => {
-          if (cell.isDisposed || this._panel?.content.activeCell !== cell) {
+          /*if (cell.isDisposed || this._panel?.content.activeCell !== cell) {
             toolbarWidget.dispose();
             return;
-          }
+          }*/
 
           // Hide the toolbar by default, to avoid temporary overlapping.
           cell.node.classList.add(TOOLBAR_OVERLAP_CLASS);
@@ -342,6 +352,10 @@ export class CellToolbarTracker implements IDisposable {
     const cellLeft = editorRect?.left ?? 0;
     const cellRight = editorRect?.right ?? 0;
     const toolbarLeft = this._cellToolbarLeft(activeCell);
+
+    if (this._panel && this._panel.content.renderingLayout === 'default') {
+      return false;
+    }
 
     if (toolbarLeft === null) {
       return false;

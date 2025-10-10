@@ -4,34 +4,22 @@
   "jupyter.lab.toolbars": {
     "Notebook": [
       {
-        "name": "insert",
-        "command": "notebook:insert-cell-below",
-        "icon": "ui-components:add",
+        "name": "restart-and-run",
+        "command": "notebook:restart-run-all",
+        "label": "Run All",
         "rank": 18
       },
-      { "name": "addCellMenu", "rank": 19 },
       { "name": "vertical-spacer", "type": "vertical-spacer", "rank": 20 },
       { "name": "cut", "command": "notebook:cut-cell", "rank": 21 },
       { "name": "copy", "command": "notebook:copy-cell", "rank": 22 },
       { "name": "paste", "command": "notebook:paste-cell-below", "rank": 23 },
-      { "name": "save", "rank": 24 },
       { "name": "vertical-spacer-1", "type": "vertical-spacer", "rank": 25 },
-      {
-        "name": "run",
-        "command": "notebook:run-cell-and-select-next",
-        "rank": 30
-      },
-      {
-        "name": "restart-and-run",
-        "command": "notebook:restart-run-all",
-        "label": "Run All",
-        "rank": 33
-      },
       { "name": "cellType", "rank": 40 },
       { "name": "spacer", "type": "spacer", "rank": 100 },
       { "name": "cpuIndicator", "rank": 1001 },
       { "name": "shutdown", "command": "notebook:shutdown-kernel", "icon": "ui-components:shutdown", "rank": 1002 },
       { "name": "restart", "command": "notebook:restart-kernel", "rank": 1003 },
+      { "name": "save", "rank": 1004 },
       { "name": "otherOptionsMenu", "rank": 1004 }
     ]
   },

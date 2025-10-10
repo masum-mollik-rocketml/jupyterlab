@@ -16,13 +16,17 @@
 }
 
 .jp-cell-toolbar {
+  --jp-private-toolbar-height: 29px;
+
   display: flex;
   flex-direction: row;
   padding: 0;
+  top: 16px;
   min-height: 25px;
   z-index: 6;
   position: absolute;
-  right: 3px;
+  left: calc(var(--jp-cell-prompt-width) + 16px);
+  width: calc(100% - var(--jp-cell-prompt-width) - 16px);
 
   /* Override .jp-Toolbar */
   background-color: transparent;

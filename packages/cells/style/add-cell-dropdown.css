@@ -1,0 +1,6 @@
+.jp-AddCellDropdown-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: calc(var(--jp-cell-prompt-width) + var(--jp-cell-collapser-width));
+}

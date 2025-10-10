@@ -3,7 +3,9 @@
 
 import * as React from 'react';
 import {addCellMenuIcon, LabIcon} from '../icon';
+import {LabIconStyle} from "../style";
 import { classes } from '../utils';
+import ISize = LabIconStyle.ISize;
 
 export interface IDropdownMenuItem {
   label: string;
@@ -14,6 +16,7 @@ export interface IDropdownMenuItem {
 export interface IDropdownMenuProps {
   label?: string;
   icon?: LabIcon;
+  iconSize?: ISize;
   className?: string;
   buttonClassName?: string;
   menuClassName?: string;
@@ -57,12 +60,12 @@ export class DropdownMenu extends React.Component<IDropdownMenuProps, { open: bo
   };
 
   render(): JSX.Element {
-    const { label = 'Menu', icon = addCellMenuIcon, className, buttonClassName, menuClassName, items } = this.props;
+    const { label = 'Menu', icon = addCellMenuIcon, className, buttonClassName, menuClassName, items, iconSize } = this.props;
     return (
       <div
         className={classes('jp-DropdownMenu', className)}
         ref={this._containerRef}
-        style={{ position: 'relative', display: 'inline-block' }}
+        style={{ display: 'inline-block' }}
       >
         <button
           className={classes('jp-DropdownMenu-button', buttonClassName)}
@@ -72,7 +75,7 @@ export class DropdownMenu extends React.Component<IDropdownMenuProps, { open: bo
           aria-expanded={this.state.open}
           title={label}
         >
-          <LabIcon.resolveReact icon={icon} className={'jp-Icon'} elementSize={'large'} tag={'div'} />
+          <LabIcon.resolveReact icon={icon} className={'jp-Icon'} elementSize={iconSize ? iconSize : 'large'} tag={'div'} />
         </button>
         {this.state.open && (
           <ul
