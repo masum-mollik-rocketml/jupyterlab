@@ -81,14 +81,14 @@ export class AddCellDropdown extends ReactWidget {
         return (
             <div className={jpAddCellDropdownContainerClass}>
                 <div className={jpAddCellDropdownItemClass}>
-                    <div className={jpAddCellDropdownLeftClass}>
+                    <div className={jpAddCellDropdownLeftClass} onClick={insertCodeCellBelow()}>
                         <LabIcon.resolveReact className={'cell-bottom-plus-icon'} icon={cellBottomPlusIcon} elementSize={'small'} tag={'div'}/>
                         <span className={jpAddCellDropdownItemLabelClass}>Code</span>
                     </div>
                     <DropdownMenu className={jpAddCellDropdownItemDropdownClass} label={this._trans.__("Add code cell")} items={codeCellOptions} iconSize={"small"} icon={cellRunnerCaretIcon} />
                 </div>
                 <div className={jpAddCellDropdownItemClass}>
-                    <div className={jpAddCellDropdownLeftClass}>
+                    <div className={jpAddCellDropdownLeftClass} onClick={insertMarkdownCellBelow()}>
                         <LabIcon.resolveReact className={'cell-bottom-plus-icon'} icon={cellBottomPlusIcon} elementSize={'small'} tag={'div'}/>
                         <span className={jpAddCellDropdownItemLabelClass}>Markdown</span>
                     </div>
