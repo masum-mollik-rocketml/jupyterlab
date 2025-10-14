@@ -73,4 +73,5 @@
 
 .jp-mod-active .jp-MarkdownOutput {
   border-color: var(--jp-cell-editor-border-color);
+  border-radius: 12px;
 }

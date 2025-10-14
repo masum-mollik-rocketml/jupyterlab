@@ -718,10 +718,10 @@ class Section extends PanelWithToolbar {
         : this._manager.supportsMultipleViews;
     const inTreeView = hasNesting && !this._buttons['switch-view'].pressed;
 
-    this._buttons['switch-view'].node.style.display = hasNesting
+    this._buttons['switch-view'].node.style.display = hasNesting && !this._manager.hideSwitchViewButton
       ? 'flex'
       : 'none';
-    this._buttons['collapse-expand'].node.style.display = inTreeView
+    this._buttons['collapse-expand'].node.style.display = inTreeView && !this._manager.hideCollapseExpandButton
       ? 'flex'
       : 'none';
 
@@ -840,7 +840,8 @@ export class RunningSessions
     managers: unknown,
     manager: IRunningSessions.IManager
   ) {
-    const section = new Section({ manager, translator: this.translator, filterProvider: this._filterWidget });
+
+    const section = new Section({ manager, translator: this.translator, filterProvider: this._filterWidget, viewMode: manager.defaultViewMode ?? undefined });
     this.addWidget(section);
 
     const state = await this._getState();
@@ -848,7 +849,7 @@ export class RunningSessions
     const sectionId = manager.name;
 
     if (sectionsInListView && sectionsInListView.includes(sectionId)) {
-      section.toggleListView(true);
+      // section.toggleListView(true);
     }
     section.viewChanged.connect(
       async (_emitter, viewState: Section.IViewState) => {
@@ -1130,7 +1131,7 @@ export class SearchableSessionsList extends Panel {
       translator: this._translator,
       showToolbar: false,
       filterProvider: this._filterWidget,
-      viewMode: 'list'
+      viewMode: 'tree'
     });
     // Do not use tree view in searchable list
     section.toggleListView(true);
@@ -1213,6 +1214,21 @@ export namespace IRunningSessions {
      * or only a flat list.
      */
     supportsMultipleViews?: boolean;
+
+
+    /**
+     * Whether the manager supports tree view for its items
+     * or only a flat list.
+     */
+    defaultViewMode?: 'tree' | 'list';
+    /**
+     *  hide collapse all button for tree view*
+    */
+    hideCollapseExpandButton?: boolean;
+    /**
+     *  hide toggle view button for tree view*
+    */
+    hideSwitchViewButton?: boolean;
   }
 
   /**

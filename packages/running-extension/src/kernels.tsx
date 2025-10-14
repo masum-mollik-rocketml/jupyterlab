@@ -136,6 +136,9 @@ export async function addKernelRunningSessionManager(
   managers.add({
     name: trans.__('Kernels'),
     supportsMultipleViews: true,
+    hideSwitchViewButton: true,
+    hideCollapseExpandButton: true,
+    defaultViewMode: 'tree',
     running: (options: { mode: 'tree' | 'list' }) => {
       const kernelsBySpec = new Map<string, Private.RunningKernel[]>();
 
