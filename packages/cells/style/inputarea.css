@@ -87,3 +87,10 @@
     text-align: left;
   }
 }
+
+.jp-InputArea-LeftSideButtonsArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}

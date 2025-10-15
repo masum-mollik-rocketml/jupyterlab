@@ -300,6 +300,14 @@ export class Cell<T extends ICellModel = ICellModel> extends Widget {
     }
   }
 
+
+  /**
+   * Get the prompt node used by the cell.
+   */
+  get draggerNode(): HTMLElement | null {
+    return this._input?.draggerNode ?? null;
+  }
+
   /**
    * Get the CodeEditorWrapper used by the cell.
    */
@@ -640,6 +648,14 @@ export class Cell<T extends ICellModel = ICellModel> extends Widget {
       }
     });
 
+    input.cellMovedUp.connect(() => {
+      this._cellMovedUp.emit();
+    });
+
+    input.cellMovedDown.connect(() => {
+      this._cellMovedDown.emit();
+    });
+
     if (this.inputHidden) {
       input.parent = null;
       (inputWrapper.layout as PanelLayout).addWidget(this._inputPlaceholder!);
@@ -783,6 +799,18 @@ export class Cell<T extends ICellModel = ICellModel> extends Widget {
   }, 0);
   private _syncCollapse = false;
   private _syncEditable = false;
+
+  private _cellMovedUp = new Signal<this, void>(this);
+
+  get cellMovedUp(): ISignal<this, void> {
+    return this._cellMovedUp;
+  }
+
+  private _cellMovedDown = new Signal<this, void>(this);
+
+  get cellMovedDown(): ISignal<this, void> {
+    return this._cellMovedDown;
+  }
 }
 
 /**

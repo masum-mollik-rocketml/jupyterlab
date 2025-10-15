@@ -688,6 +688,24 @@ export class StaticNotebook extends WindowedList<NotebookViewModel> {
     widget.inViewportChanged.connect(this._onCellInViewportChanged, this);
     widget.addClass(NB_CELL_CLASS);
 
+    widget.cellMovedDown.connect((cell) => {
+      console.log(cell);
+      this.cellsArray.forEach((c, index) => {
+        if (c.node === cell.node) {
+          this.moveCell(index, index + 1);
+        }
+      });
+    });
+
+    widget.cellMovedUp.connect((cell) => {
+      console.log(cell);
+      this.cellsArray.forEach((c, index) => {
+        if (c.node === cell.node) {
+          this.moveCell(index, index - 1);
+        }
+      });
+    });
+
     ArrayExt.insert(this.cellsArray, index, widget);
     this.onCellInserted(index, widget);
 
@@ -1622,6 +1640,8 @@ export class Notebook extends StaticNotebook {
     this.selectionChanged.connect(this._updateSelectedCells, this);
 
     this.addFooter();
+
+    this.model?.cells.changed.connect(this._onCellsChanged, this);
   }
 
   /**

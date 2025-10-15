@@ -3,11 +3,14 @@
 | Distributed under the terms of the Modified BSD License.
 |----------------------------------------------------------------------------*/
 
-import { PanelLayout } from '@lumino/widgets';
+import {Signal} from "@lumino/signaling";
+import {Panel, PanelLayout} from '@lumino/widgets';
 
 import { Widget } from '@lumino/widgets';
 
 import { CodeEditor, CodeEditorWrapper } from '@jupyterlab/codeeditor';
+import {CellDraggerIconWidget, ICellDraggerIconWidget} from "./cell-dragger";
+import {MoveDownWidget, MoveUpWidget} from "./cell-mover";
 
 import { ICellModel } from './model';
 
@@ -15,6 +18,8 @@ import { ICellModel } from './model';
  * The class name added to input area widgets.
  */
 const INPUT_AREA_CLASS = 'jp-InputArea';
+
+const LEFT_SIDE_BUTTONS_AREA_CLASS = 'jp-InputArea-LeftSideButtonsArea';
 
 /**
  * The class name added to the prompt area of cell.
@@ -49,11 +54,15 @@ export class InputArea extends Widget {
     this.model = model;
     this.contentFactory = contentFactory;
 
+    const leftSideCellPanel = new Panel();
+    leftSideCellPanel.addClass(LEFT_SIDE_BUTTONS_AREA_CLASS);
+
     // Prompt
+
     const prompt = (this._prompt = contentFactory.createInputPrompt());
     prompt.addClass(INPUT_AREA_PROMPT_CLASS);
-
     // Editor
+
     const editor = (this._editor = new CodeEditorWrapper({
       factory: contentFactory.editorFactory,
       model,
@@ -61,8 +70,28 @@ export class InputArea extends Widget {
     }));
     editor.addClass(INPUT_AREA_EDITOR_CLASS);
 
+    const cellDraggerIconWidget = (
+        this._dragger = new CellDraggerIconWidget()
+    );
+    const moveUpWidget = new MoveUpWidget();
+    const moveDownWidget = new MoveDownWidget();
+
+    leftSideCellPanel.addWidget(prompt);
+    leftSideCellPanel.addWidget(cellDraggerIconWidget);
+    leftSideCellPanel.addWidget(moveUpWidget);
+    leftSideCellPanel.addWidget(moveDownWidget);
+
+    moveUpWidget.cellMovedUp.connect(() => {
+      this.cellMovedUp.emit();
+    });
+
+    moveDownWidget.cellMovedDown.connect(() => {
+      this.cellMovedDown.emit();
+    });
+
     const layout = (this.layout = new PanelLayout());
-    layout.addWidget(prompt);
+
+    layout.addWidget(leftSideCellPanel);
     layout.addWidget(editor);
   }
 
@@ -95,6 +124,14 @@ export class InputArea extends Widget {
    */
   get promptNode(): HTMLElement {
     return this._prompt.node;
+  }
+
+
+  /**
+   * Get the dragger node used by the cell.
+   */
+  get draggerNode(): HTMLElement {
+    return this._dragger.node;
   }
 
   /**
@@ -149,8 +186,12 @@ export class InputArea extends Widget {
   }
 
   private _prompt: IInputPrompt;
+  private _dragger: ICellDraggerIconWidget;
   private _editor: CodeEditorWrapper;
   private _rendered: Widget;
+  cellMovedUp = new Signal<this, void>(this);
+  cellMovedDown = new Signal<this, void>(this);
+
 }
 
 /**
