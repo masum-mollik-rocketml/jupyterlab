@@ -4,7 +4,7 @@
 |----------------------------------------------------------------------------*/
 
 import { Cell, CellModel, ICellModel } from '@jupyterlab/cells';
-import {AddCellDropdown} from "@jupyterlab/cells/lib/add-cell-dropdown";
+import {AddCellDropdown} from "@jupyterlab/cells";
 import { Notebook, NotebookPanel } from '@jupyterlab/notebook';
 import { DocumentRegistry } from '@jupyterlab/docregistry';
 import {ITranslator} from "@jupyterlab/translation";

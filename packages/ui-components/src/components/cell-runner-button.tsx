@@ -1,8 +1,7 @@
 import {ITranslator, nullTranslator, TranslationBundle} from "@jupyterlab/translation";
-import {CommandRegistry} from "@lumino/commands";
 import React from "react";
 import {cellRunnerCaretIcon, cellRunnerIcon, LabIcon} from "../icon";
-import DropdownMenu, {IDropdownMenuItem} from "./dropdownmenu";
+import { DropdownMenu, IDropdownMenuItem } from './dropdownmenu';
 import {ReactWidget} from "./vdom";
 
 export class CellRunnerButton extends ReactWidget {
@@ -49,7 +48,7 @@ export class CellRunnerButton extends ReactWidget {
         );
     }
 
-    private _commands: CommandRegistry;
+    private _commands: any;
     private _translator: ITranslator;
     private _trans: TranslationBundle;
     private _tooltip: string;
@@ -58,7 +57,7 @@ export class CellRunnerButton extends ReactWidget {
 export namespace CellRunnerButton {
     export interface IOptions {
         /** The command registry to use when executing items. */
-        commands: CommandRegistry;
+        commands: any;
         /** The translator to use for UI strings. */
         translator?: ITranslator;
         /** Tooltip shown on hover. */

@@ -6,8 +6,7 @@ import {
     LabIcon,
     ReactWidget
 } from "@jupyterlab/ui-components";
-import DropdownMenu from "@jupyterlab/ui-components/lib/components/dropdownmenu";
-import {CommandRegistry} from "@lumino/commands";
+import { DropdownMenu } from '@jupyterlab/ui-components';
 import * as React from "react";
 
 const jpAddCellDropdownContainerClass = 'jp-AddCellDropdown-container';
@@ -53,7 +52,7 @@ export class AddCellDropdown extends ReactWidget {
 
         const insertMarkdownCellAbove = () => {
             return () => {
-                this._commands.execute('notebook:insert-cell-above').then(_ => {
+                this._commands.execute('notebook:insert-cell-above').then((_: any) => {
                     this._commands.execute('notebook:change-cell-to-markdown').then();
                 });
             };
@@ -61,7 +60,7 @@ export class AddCellDropdown extends ReactWidget {
 
         const insertMarkdownCellBelow = () => {
             return () => {
-                this._commands.execute('notebook:insert-cell-below').then(_ => {
+                this._commands.execute('notebook:insert-cell-below').then((_: any) => {
                     this._commands.execute('notebook:change-cell-to-markdown').then();
                 });
             };
@@ -100,13 +99,13 @@ export class AddCellDropdown extends ReactWidget {
 
     private _translator: ITranslator;
     private _trans: TranslationBundle;
-    private _commands: CommandRegistry;
+    private _commands: any;
 }
 
 export namespace AddCellDropdown {
     export interface IOptions {
         /** The command registry to use when executing items. */
-        commands: CommandRegistry;
+        commands: any;
         /** The translator to use for UI strings. */
         translator?: ITranslator | null;
     }

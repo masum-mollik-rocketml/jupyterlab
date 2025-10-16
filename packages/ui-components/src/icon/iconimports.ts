@@ -26,6 +26,9 @@ import caretRightSvgstr from '../../style/icons/arrow/caret-right.svg';
 import caretUpEmptyThinSvgstr from '../../style/icons/arrow/caret-up-empty-thin.svg';
 import caretUpSvgstr from '../../style/icons/arrow/caret-up.svg';
 import caseSensitiveSvgstr from '../../style/icons/search/case-sensitive.svg';
+import cellBottomPlusSvgstr from '../../style/icons/toolbar/cell-bottom-plus.svg';
+import cellRunnerCaretSvgstr from '../../style/icons/toolbar/cell-runner-caret.svg';
+import cellRunnerSvgstr from '../../style/icons/toolbar/cell-runner.svg';
 import checkSvgstr from '../../style/icons/toolbar/check.svg';
 import circleEmptySvgstr from '../../style/icons/toolbar/circle-empty.svg';
 import circleSvgstr from '../../style/icons/toolbar/circle.svg';
@@ -55,6 +58,7 @@ import dockRightSvgstr from '../../style/icons/toolbar/dock-right.svg';
 import dockTopSvgstr from '../../style/icons/toolbar/dock-top.svg';
 import dotsSvgstr from '../../style/icons/toolbar/dots.svg';
 import downloadSvgstr from '../../style/icons/toolbar/download.svg';
+import draggerSvgstr from '../../style/icons/cell/dragger.svg';
 import duplicateSvgstr from '../../style/icons/toolbar/duplicate.svg';
 import editSvgstr from '../../style/icons/toolbar/edit.svg';
 import ellipsesSvgstr from '../../style/icons/toolbar/ellipses.svg';
@@ -143,11 +147,6 @@ import videoSvgstr from '../../style/icons/filetype/video.svg';
 import viewBreakpointSvgstr from '../../style/icons/debugger/view-breakpoint.svg';
 import wordSvgstr from '../../style/icons/search/word.svg';
 import yamlSvgstr from '../../style/icons/filetype/yaml.svg';
-import cellRunnerSvgstr from '../../style/icons/toolbar/cell-runner.svg';
-import cellRunnerCaretSvgstr from '../../style/icons/toolbar/cell-runner-caret.svg';
-import cellBottomPlusSvgstr from '../../style/icons/toolbar/cell-bottom-plus.svg';
-import cellDraggerSvgstr from '../../style/icons/cell/dragger.svg';
-
 
 // LabIcon instance construction
 export const addAboveIcon = new LabIcon({ name: 'ui-components:add-above', svgstr: addAboveSvgstr });
@@ -168,6 +167,9 @@ export const caretRightIcon = new LabIcon({ name: 'ui-components:caret-right', s
 export const caretUpEmptyThinIcon = new LabIcon({ name: 'ui-components:caret-up-empty-thin', svgstr: caretUpEmptyThinSvgstr });
 export const caretUpIcon = new LabIcon({ name: 'ui-components:caret-up', svgstr: caretUpSvgstr });
 export const caseSensitiveIcon = new LabIcon({ name: 'ui-components:case-sensitive', svgstr: caseSensitiveSvgstr });
+export const cellBottomPlusIcon = new LabIcon({ name: 'ui-components:cell-bottom-plus', svgstr: cellBottomPlusSvgstr });
+export const cellRunnerCaretIcon = new LabIcon({ name: 'ui-components:cell-runner-caret', svgstr: cellRunnerCaretSvgstr });
+export const cellRunnerIcon = new LabIcon({ name: 'ui-components:cell-runner', svgstr: cellRunnerSvgstr });
 export const checkIcon = new LabIcon({ name: 'ui-components:check', svgstr: checkSvgstr });
 export const circleEmptyIcon = new LabIcon({ name: 'ui-components:circle-empty', svgstr: circleEmptySvgstr });
 export const circleIcon = new LabIcon({ name: 'ui-components:circle', svgstr: circleSvgstr });
@@ -197,6 +199,7 @@ export const dockRightIcon = new LabIcon({ name: 'ui-components:dock-right', svg
 export const dockTopIcon = new LabIcon({ name: 'ui-components:dock-top', svgstr: dockTopSvgstr });
 export const dotsIcon = new LabIcon({ name: 'ui-components:dots', svgstr: dotsSvgstr });
 export const downloadIcon = new LabIcon({ name: 'ui-components:download', svgstr: downloadSvgstr });
+export const draggerIcon = new LabIcon({ name: 'ui-components:dragger', svgstr: draggerSvgstr });
 export const duplicateIcon = new LabIcon({ name: 'ui-components:duplicate', svgstr: duplicateSvgstr });
 export const editIcon = new LabIcon({ name: 'ui-components:edit', svgstr: editSvgstr });
 export const ellipsesIcon = new LabIcon({ name: 'ui-components:ellipses', svgstr: ellipsesSvgstr });
@@ -285,7 +288,3 @@ export const videoIcon = new LabIcon({ name: 'ui-components:video', svgstr: vide
 export const viewBreakpointIcon = new LabIcon({ name: 'ui-components:view-breakpoint', svgstr: viewBreakpointSvgstr });
 export const wordIcon = new LabIcon({ name: 'ui-components:word', svgstr: wordSvgstr });
 export const yamlIcon = new LabIcon({ name: 'ui-components:yaml', svgstr: yamlSvgstr });
-export const cellRunnerIcon = new LabIcon({ name: 'ui-components:cell-runner', svgstr: cellRunnerSvgstr });
-export const cellRunnerCaretIcon = new LabIcon({ name: 'ui-components:cell-runner-caret', svgstr: cellRunnerCaretSvgstr });
-export const cellBottomPlusIcon = new LabIcon({ name: 'ui-components:cell-bottom-plus', svgstr: cellBottomPlusSvgstr });
-export const cellDraggerIcon = new LabIcon({ name: 'ui-components:cell-dragger', svgstr: cellDraggerSvgstr });

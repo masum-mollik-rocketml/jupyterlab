@@ -3,9 +3,8 @@
 
 import * as React from 'react';
 import {addCellMenuIcon, LabIcon} from '../icon';
-import {LabIconStyle} from "../style";
+import { LabIconStyle } from '../style';
 import { classes } from '../utils';
-import ISize = LabIconStyle.ISize;
 
 export interface IDropdownMenuItem {
   label: string;
@@ -16,7 +15,7 @@ export interface IDropdownMenuItem {
 export interface IDropdownMenuProps {
   label?: string;
   icon?: LabIcon;
-  iconSize?: ISize;
+  iconSize?: LabIconStyle.ISize;
   className?: string;
   buttonClassName?: string;
   menuClassName?: string;
@@ -105,5 +104,3 @@ export class DropdownMenu extends React.Component<IDropdownMenuProps, { open: bo
     );
   }
 }
-
-export default DropdownMenu;

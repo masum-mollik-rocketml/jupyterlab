@@ -20,3 +20,4 @@ export * from './toolbar';
 export * from './vdom';
 export * from './windowedlist';
 export * from './dropdownmenu';
+export * from './new-file-menu'

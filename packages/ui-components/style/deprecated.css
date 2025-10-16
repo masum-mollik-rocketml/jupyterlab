@@ -30,6 +30,9 @@
   --jp-icon-caret-up-empty-thin: url('icons/arrow/caret-up-empty-thin.svg');
   --jp-icon-caret-up: url('icons/arrow/caret-up.svg');
   --jp-icon-case-sensitive: url('icons/search/case-sensitive.svg');
+  --jp-icon-cell-bottom-plus: url('icons/toolbar/cell-bottom-plus.svg');
+  --jp-icon-cell-runner-caret: url('icons/toolbar/cell-runner-caret.svg');
+  --jp-icon-cell-runner: url('icons/toolbar/cell-runner.svg');
   --jp-icon-check: url('icons/toolbar/check.svg');
   --jp-icon-circle-empty: url('icons/toolbar/circle-empty.svg');
   --jp-icon-circle: url('icons/toolbar/circle.svg');
@@ -59,6 +62,7 @@
   --jp-icon-dock-top: url('icons/toolbar/dock-top.svg');
   --jp-icon-dots: url('icons/toolbar/dots.svg');
   --jp-icon-download: url('icons/toolbar/download.svg');
+  --jp-icon-dragger: url('icons/cell/dragger.svg');
   --jp-icon-duplicate: url('icons/toolbar/duplicate.svg');
   --jp-icon-edit: url('icons/toolbar/edit.svg');
   --jp-icon-ellipses: url('icons/toolbar/ellipses.svg');
@@ -223,6 +227,18 @@
   background-image: var(--jp-icon-case-sensitive);
 }
 
+.jp-CellBottomPlusIcon {
+  background-image: var(--jp-icon-cell-bottom-plus);
+}
+
+.jp-CellRunnerCaretIcon {
+  background-image: var(--jp-icon-cell-runner-caret);
+}
+
+.jp-CellRunnerIcon {
+  background-image: var(--jp-icon-cell-runner);
+}
+
 .jp-CheckIcon {
   background-image: var(--jp-icon-check);
 }
@@ -337,6 +353,10 @@
 
 .jp-DownloadIcon {
   background-image: var(--jp-icon-download);
+}
+
+.jp-DraggerIcon {
+  background-image: var(--jp-icon-dragger);
 }
 
 .jp-DuplicateIcon {

@@ -15,3 +15,6 @@ export * from './model';
 export * from './placeholder';
 export * from './searchprovider';
 export * from './widget';
+export * from './add-cell-dropdown';
+export * from './cell-dragger';
+export * from './cell-mover';
