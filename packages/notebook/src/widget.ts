@@ -2834,7 +2834,7 @@ export class Notebook extends StaticNotebook {
     if (widget) {
       if (widget.editorWidget?.node.contains(target)) {
         targetArea = 'input';
-      } else if (widget.promptNode?.contains(target)) {
+      } else if (widget.draggerNode?.contains(target)) {
         targetArea = 'prompt';
       } else {
         targetArea = 'cell';

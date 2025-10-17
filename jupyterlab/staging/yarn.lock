@@ -868,7 +868,7 @@ __metadata:
 
 "@jupyterlab/cell-toolbar-extension@file:../../packages/cell-toolbar-extension::locator=%40jupyterlab%2Fapplication-top%40workspace%3A.":
   version: 4.5.0-alpha.4
-  resolution: "@jupyterlab/cell-toolbar-extension@file:../../packages/cell-toolbar-extension#../../packages/cell-toolbar-extension::hash=7ac5d2&locator=%40jupyterlab%2Fapplication-top%40workspace%3A."
+  resolution: "@jupyterlab/cell-toolbar-extension@file:../../packages/cell-toolbar-extension#../../packages/cell-toolbar-extension::hash=99aa2f&locator=%40jupyterlab%2Fapplication-top%40workspace%3A."
   dependencies:
     "@jupyterlab/application": ^4.5.0-alpha.4
     "@jupyterlab/apputils": ^4.6.0-alpha.4
@@ -880,7 +880,7 @@ __metadata:
     "@lumino/signaling": ^2.1.4
     "@lumino/widgets": ^2.7.1
     react: ^18.2.0
-  checksum: e6b8bf3be23e056ee332c2bc5dad6268bec20e19cae7861fd9c2da7a4fc359eca9e48a9bdff873dcc813e0a98455f5a6f60f9d90b849ca0bf057608b5349cd93
+  checksum: ec2ee4b5cbb83bf79f6c4477c2d02b0eb86d0044408f885b6630e17a381af8430c91c9386e637ea6ad7dcbe5ad4a410080adf12bd69cf1ff7fcca491f5b9c69c
   languageName: node
   linkType: hard
 
@@ -907,7 +907,7 @@ __metadata:
 
 "@jupyterlab/cells@file:../../packages/cells::locator=%40jupyterlab%2Fapplication-top%40workspace%3A.":
   version: 4.5.0-alpha.4
-  resolution: "@jupyterlab/cells@file:../../packages/cells#../../packages/cells::hash=79f033&locator=%40jupyterlab%2Fapplication-top%40workspace%3A."
+  resolution: "@jupyterlab/cells@file:../../packages/cells#../../packages/cells::hash=ea3069&locator=%40jupyterlab%2Fapplication-top%40workspace%3A."
   dependencies:
     "@codemirror/state": ^6.5.2
     "@codemirror/view": ^6.38.1
@@ -937,7 +937,7 @@ __metadata:
     "@lumino/virtualdom": ^2.0.3
     "@lumino/widgets": ^2.7.1
     react: ^18.2.0
-  checksum: 39ff12c9442bbdef9b9641479d136f00b4939231aa50e798512d2a71a0f1c4c210ff7ec3e4887e3dcebdf34b958f5d3db9e379e28393975320f96f1fed836f5c
+  checksum: d3e290579a1bd68b92371f69fb9e7b95f50c5ddc7d4b6947cb1c029758970352f27d110a2d85e523fe4f74c974c7dbaeee9faf26603d6e46c2413a9d4c31593e
   languageName: node
   linkType: hard
 
@@ -2027,7 +2027,7 @@ __metadata:
 
 "@jupyterlab/notebook@file:../../packages/notebook::locator=%40jupyterlab%2Fapplication-top%40workspace%3A.":
   version: 4.5.0-alpha.4
-  resolution: "@jupyterlab/notebook@file:../../packages/notebook#../../packages/notebook::hash=abf88a&locator=%40jupyterlab%2Fapplication-top%40workspace%3A."
+  resolution: "@jupyterlab/notebook@file:../../packages/notebook#../../packages/notebook::hash=107de9&locator=%40jupyterlab%2Fapplication-top%40workspace%3A."
   dependencies:
     "@jupyter/ydoc": ^3.1.0
     "@jupyterlab/apputils": ^4.6.0-alpha.4
@@ -2061,7 +2061,7 @@ __metadata:
     "@lumino/virtualdom": ^2.0.3
     "@lumino/widgets": ^2.7.1
     react: ^18.2.0
-  checksum: c24643a8ae483a19c6262cf518556ddb787a88e304ad762bd8042beda0bdd7ce7c1888fec8a108627c25e31e41820e72a05778a5dcf2d078a65c2adf089b6037
+  checksum: ba40a09d595ba0ac1a1d6b936f7dccf06dab78b146d9f0ffa96d264b7462e0fd4749b0fdfa5dae80553deb432613feb711d096f7186b5e27bd0ba890b30a3277
   languageName: node
   linkType: hard
 

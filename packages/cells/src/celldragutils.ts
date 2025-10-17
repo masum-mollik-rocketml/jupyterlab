@@ -99,7 +99,7 @@ export namespace CellDragUtils {
     if (cell) {
       if (cell.editorWidget?.node.contains(target)) {
         targetArea = 'input';
-      } else if (cell.promptNode?.contains(target)) {
+      } else if (cell.draggerNode?.contains(target)) {
         targetArea = 'prompt';
       } else {
         targetArea = 'cell';

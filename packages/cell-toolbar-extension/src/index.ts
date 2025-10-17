@@ -42,7 +42,7 @@ const CommandIds = {
 const cellToolbar: JupyterFrontEndPlugin<void> = {
   id: PLUGIN_ID,
   description: 'Add the cells toolbar.',
-  autoStart: true,
+  autoStart: false,
   requires: [INotebookTracker],
   activate: async (
     app: JupyterFrontEnd,
