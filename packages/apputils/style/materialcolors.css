@@ -120,16 +120,16 @@
   --md-cyan-A200: #18ffff;
   --md-cyan-A400: #00e5ff;
   --md-cyan-A700: #00b8d4;
-  --md-teal-50: #e0f2f1;
-  --md-teal-100: #b2dfdb;
-  --md-teal-200: #80cbc4;
-  --md-teal-300: #4db6ac;
-  --md-teal-400: #26a69a;
-  --md-teal-500: #009688;
-  --md-teal-600: #00897b;
-  --md-teal-700: #00796b;
-  --md-teal-800: #00695c;
-  --md-teal-900: #004d40;
+  --md-teal-50:  #E6F8F9;      /* Light tint from #00ADB5 */
+  --md-teal-100: #C2EFF1;      /* Softer accent tone */
+  --md-teal-200: #9AE5E8;      /* Subtle pastel teal */
+  --md-teal-300: #6CD6DB;      /* Light brand tint */
+  --md-teal-400: #38C8CF;      /* Mid-range teal */
+  --md-teal-500: #00ADB5;      /* ✅ Your main brand color */
+  --md-teal-600: #009BA3;      /* Slightly deeper brand variant */
+  --md-teal-700: #007C83;      /* Dark accent teal */
+  --md-teal-800: #005E64;      /* Deep contrast tone */
+  --md-teal-900: #113E41;      /* ✅ Your dark brand base */
   --md-teal-A100: #a7ffeb;
   --md-teal-A200: #64ffda;
   --md-teal-A400: #1de9b6;

@@ -868,7 +868,7 @@ __metadata:
 
 "@jupyterlab/cell-toolbar-extension@file:../../packages/cell-toolbar-extension::locator=%40jupyterlab%2Fapplication-top%40workspace%3A.":
   version: 4.5.0-alpha.4
-  resolution: "@jupyterlab/cell-toolbar-extension@file:../../packages/cell-toolbar-extension#../../packages/cell-toolbar-extension::hash=99aa2f&locator=%40jupyterlab%2Fapplication-top%40workspace%3A."
+  resolution: "@jupyterlab/cell-toolbar-extension@file:../../packages/cell-toolbar-extension#../../packages/cell-toolbar-extension::hash=435a19&locator=%40jupyterlab%2Fapplication-top%40workspace%3A."
   dependencies:
     "@jupyterlab/application": ^4.5.0-alpha.4
     "@jupyterlab/apputils": ^4.6.0-alpha.4
@@ -880,7 +880,7 @@ __metadata:
     "@lumino/signaling": ^2.1.4
     "@lumino/widgets": ^2.7.1
     react: ^18.2.0
-  checksum: ec2ee4b5cbb83bf79f6c4477c2d02b0eb86d0044408f885b6630e17a381af8430c91c9386e637ea6ad7dcbe5ad4a410080adf12bd69cf1ff7fcca491f5b9c69c
+  checksum: 1623ace109e897b54611e28fa00431f8fc725aa5fa693beca338344a03d1faf93564e7ceedb130d7903cdee4f5033a1fea93beed070228d5fe4d31465bbbd78a
   languageName: node
   linkType: hard
 

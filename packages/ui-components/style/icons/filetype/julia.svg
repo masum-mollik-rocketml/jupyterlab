@@ -1,5 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" viewBox="0 0 325 300">
-  <path fill="#cb3c33" d="M150.898 225c0 41.422-33.578 75-75 75s-75-33.578-75-75 33.579-75 75-75 75 33.578 75 75" class="jp-brand0 jp-icon-selectable"/>
-  <path fill="#389826" d="M237.5 75c0 41.422-33.578 75-75 75s-75-33.578-75-75 33.578-75 75-75 75 33.578 75 75" class="jp-brand0 jp-icon-selectable"/>
-  <path fill="#9558b2" d="M324.102 225c0 41.422-33.579 75-75 75s-75-33.578-75-75 33.578-75 75-75 75 33.578 75 75" class="jp-brand0 jp-icon-selectable"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200.04 182.29">
+<defs>
+  <style>
+    .cls-1 {
+    fill: #eee;
+    }
+  </style>
+</defs>
+<g id="Layer_2-2" data-name="Layer 2">
+  <g>
+    <path class="jp-brand0 jp-icon-selectable cls-1" d="M39.89,102.25c34.74-.16,53.1,41.75,29.5,67.27-17.38,18.79-48,16.52-62.37-4.59-18.07-26.55.84-62.52,32.87-62.67Z"/>
+    <path class="jp-brand0 jp-icon-selectable cls-1" d="M97.46.07c31.84-1.8,52.57,32.76,36.7,60.34-15.51,26.96-56,25.84-70.08-1.85C50.86,32.59,68.46,1.71,97.46.07Z"/>
+    <path class="jp-brand0 jp-icon-selectable cls-1" d="M155.62,102.64c32.01-3.1,55.03,30.24,39.42,58.76-13.57,24.8-47.49,27.91-65.77,6.44-20.39-23.95-4.92-62.18,26.35-65.21Z"/>
+  </g>
+</g>
 </svg>

@@ -229,11 +229,14 @@ all of MD as it is not optimized for dense, information rich UIs.
 
   /* Brand/accent */
 
-  --jp-brand-color0: var(--md-teal-700, #00796b);
-  --jp-brand-color1: var(--md-teal-400, #26a69a);
-  --jp-brand-color2: var(--md-teal-300, #4db6ac);
-  --jp-brand-color3: var(--md-teal-100, #b2dfdb);
-  --jp-brand-color4: var(--md-teal-50, #e3f2fd);
+  --jp-brand-color0: var(--md-teal-900, #113E41);  /* Deep brand */
+  --jp-brand-color1: var(--md-teal-700, #007C83);  /* Primary button hover */
+  --jp-brand-color2: var(--md-teal-500, #00ADB5);  /* ✅ Primary accent */
+  --jp-brand-color3: var(--md-teal-200, #9AE5E8);  /* Secondary accent / subtle bg */
+  --jp-brand-color4: var(--md-teal-50,  #E6F8F9);  /* Light background */
+  /* Optional transparency variants */
+  --jp-brand-color2-transparent: #00ADB53D; /* ✅ From your color (25% opacity) */
+
   --jp-accent-color0: var(--md-green-700, #388e3c);
   --jp-accent-color1: var(--md-green-500, #4caf50);
   --jp-accent-color2: var(--md-green-300, #81c784);

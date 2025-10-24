@@ -114,7 +114,7 @@
   content: '';
   height: var(--jp-private-horizontal-tab-active-top-border);
   width: calc(100% + 2 * var(--jp-border-width));
-  background: var(--jp-brand-color1);
+  background: var(--jp-brand-color2);
 }
 
 /* This is the left tab bar current tab: only 1 exists. */

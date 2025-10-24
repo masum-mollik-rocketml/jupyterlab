@@ -1,3 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#000" viewBox="0 0 24 24">
-  <path fill="#616161" d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" class="jp-icon3 jp-icon-selectable"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 255.93 256.29">
+<defs>
+  <style>
+    .cls-1 {
+    fill: #eee;
+    }
+  </style>
+</defs>
+<g id="Layer_2-2" data-name="Layer 2">
+  <path class="jp-icon3 jp-icon-selectable cls-1" d="M235.96,133.07v116.5c0,3.28-8.03,7.65-11.46,6.54H30.43c-3.19.87-10.46-3.64-10.46-6.54v-116.5c-10.41,11.49-26.69.72-16.99-12.49L119.94,3.55c6.18-4.76,9.93-4.7,16.05,0l116.97,117.03c9.7,13.22-6.58,23.99-16.99,12.49ZM215.96,236.07v-123.5L129.99,26.54l-2.39-1.39L39.96,112.57v123.5h39v-72.5c0-3.21,7.48-6.17,10.5-6.5,18.22-2.03,56.27-1.41,75.05-.04,2.76.2,5.74.37,8.18,1.82.99.59,4.27,4.34,4.27,4.73v72.5h39ZM156.96,177.07h-58v59h58v-59Z"/>
+</g>
 </svg>

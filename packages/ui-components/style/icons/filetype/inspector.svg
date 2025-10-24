@@ -1,3 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" viewBox="0 0 24 24">
-  <path fill="#616161" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m-5 14H4v-4h11zm0-5H4V9h11zm5 5h-4V9h4z" class="jp-inspector-icon-color jp-icon-selectable"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256.07 256.03">
+<defs>
+  <style>
+    .cls-1 {
+    fill: #eee;
+    }
+  </style>
+</defs>
+<g id="Layer_2-2" data-name="Layer 2">
+  <path class="jp-inspector-icon-color jp-icon-selectable cls-1" d="M256.04,27.48l.03,199.04c-1.41,16.32-13.17,28.09-29.5,29.5H29.5c-16.32-1.41-28.09-13.17-29.5-29.5V29.45C1.38,13.44,12.67,1.95,28.55,0l201.75.23c13.79,3.09,23.49,13.28,25.75,27.25ZM240.04,78.99V27.49c0-3.94-8.94-11.82-13.48-11.52l-199.55.49c-3.82.48-10.97,7.73-10.97,11.03v51.5s224,0,224,0ZM177.04,160.99h63s0-66,0-66h-63s0,66,0,66ZM16.04,160.99h145s0-66,0-66H16.04s0,66,0,66ZM177.04,239.99h51.5c2.94,0,11.5-8.56,11.5-11.5v-51.5s-63,0-63,0v63ZM16.04,228.49c0,2.94,8.56,11.5,11.5,11.5h133.5s0-63,0-63H16.04s0,51.5,0,51.5Z"/>
+</g>
 </svg>
