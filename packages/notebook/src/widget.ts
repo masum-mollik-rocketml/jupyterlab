@@ -943,7 +943,11 @@ export class StaticNotebook extends WindowedList<NotebookViewModel> {
     ) {
       const cell = this.cellsArray[cellIdx];
       if (cell.isPlaceholder()) {
-        if (['defer', 'full'].includes(this.notebookConfig.windowingMode)) {
+        if (
+          ['defer', 'full', 'contentVisibility'].includes(
+            this.notebookConfig.windowingMode
+          )
+        ) {
           await this._updateForDeferMode(cell, cellIdx);
           if (this.notebookConfig.windowingMode === 'full') {
             // We need to delay slightly the removal to let codemirror properly initialize
@@ -954,6 +958,13 @@ export class StaticNotebook extends WindowedList<NotebookViewModel> {
               );
               this.layout.removeWidget(cell);
             });
+          } else if (
+            this.notebookConfig.windowingMode === 'contentVisibility'
+          ) {
+            // Update height estimate in the view model
+            const height = cell.node.getBoundingClientRect().height;
+            this.viewModel.setEstimatedWidgetSize(cell.model.id, height);
+            cell.node.style.containIntrinsicSize = `auto ${height}px`;
           }
         }
       }
@@ -986,12 +997,6 @@ export class StaticNotebook extends WindowedList<NotebookViewModel> {
     cellIdx: number
   ): Promise<void> {
     cell.dataset.windowedListIndex = `${cellIdx}`;
-
-    // Apply content visibility to this newly created cell
-    if (this._notebookConfig.windowingMode === 'contentVisibility') {
-      this._applyContentVisibility(cell, cellIdx);
-    }
-
     this.layout.insertWidget(cellIdx, cell);
     await cell.ready;
   }
@@ -1026,12 +1031,23 @@ export class StaticNotebook extends WindowedList<NotebookViewModel> {
       this._notebookConfig.windowingMode === 'full';
 
     // Apply content visibility when notebook settings update (without reload)
-    if (this._notebookConfig.windowingMode === 'contentVisibility') {
-      this._applyContentVisibilityToAllCells();
+    const isContentVisibility =
+      this._notebookConfig.windowingMode === 'contentVisibility';
+    this.viewportNode.classList.toggle(
+      'jp-content-visibility-mode',
+      isContentVisibility
+    );
+
+    if (isContentVisibility) {
+      requestAnimationFrame(() => {
+        this.cellsArray.forEach((cell, i) => {
+          const estHeight = this._viewModel.estimateWidgetSize(i);
+          cell.node.style.containIntrinsicSize = `auto ${estHeight}px`;
+        });
+      });
     } else {
-      // Remove content-visibility from all cells
-      this.cellsArray.forEach((cell, i) => {
-        cell.toggleClass('jp-content-visibility', false);
+      // Remove intrinsic size styling when disabling content visibility
+      this.cellsArray.forEach(cell => {
         cell.node.style.removeProperty('contain-intrinsic-size');
       });
     }
@@ -1042,35 +1058,25 @@ export class StaticNotebook extends WindowedList<NotebookViewModel> {
 
     // Apply content visibility when notebook widget is attached to the DOM
     if (this._notebookConfig.windowingMode === 'contentVisibility') {
-      // Apply content visibility to all cells initially
-      this._applyContentVisibilityToAllCells();
+      this.viewportNode.classList.toggle('jp-content-visibility-mode', true);
 
-      // watch for newly added cells
+      // Update intrinsic sizes for all cells initially
+      requestAnimationFrame(() => {
+        this.cellsArray.forEach((cell, i) => {
+          const estHeight = this._viewModel.estimateWidgetSize(i);
+          cell.node.style.containIntrinsicSize = `auto ${estHeight}px`;
+        });
+      });
+
+      // Watch for newly added cells and set intrinsic size for them too
       this.model?.cells.changed.connect(() => {
-        this._applyContentVisibilityToAllCells();
+        requestAnimationFrame(() => {
+          this.cellsArray.forEach((cell, i) => {
+            const estHeight = this._viewModel.estimateWidgetSize(i);
+            cell.node.style.containIntrinsicSize = `auto ${estHeight}px`;
+          });
+        });
       });
-    }
-  }
-
-  private _applyContentVisibilityToAllCells(): void {
-    requestAnimationFrame(() => {
-      this.cellsArray.forEach((cell, i) => {
-        this._applyContentVisibility(cell, i);
-      });
-    });
-  }
-
-  private _applyContentVisibility(cell: Cell<ICellModel>, index: number): void {
-    const isContentVisibility =
-      this._notebookConfig.windowingMode === 'contentVisibility';
-
-    cell.toggleClass('jp-content-visibility', isContentVisibility);
-
-    if (isContentVisibility) {
-      const estHeight = this._viewModel.estimateWidgetSize(index);
-      cell.node.style.containIntrinsicSize = `auto ${estHeight}px`;
-    } else {
-      cell.node.style.removeProperty('contain-intrinsic-size');
     }
   }
 
@@ -1309,9 +1315,18 @@ export namespace StaticNotebook {
      * - 'defer': Wait for idle CPU cycles to attach out of viewport cells
      * - 'full': Attach to the DOM only cells in viewport
      * - 'none': Attach all cells to the viewport
+     * - 'contentVisibility': Use content-visibility to skip offscreen cells
      */
     windowingMode: 'defer' | 'full' | 'none' | 'contentVisibility';
     accessKernelHistory?: boolean;
+
+    /**
+     * Whether to show a minimap alongside the notebook.
+     *
+     * The minimap provides a scroll-synchronized view of the
+     * notebook’s content to help with navigation.
+     */
+    showMinimap?: boolean;
   }
 
   /**
@@ -1333,9 +1348,10 @@ export namespace StaticNotebook {
     sideBySideRightMarginOverride: '10px',
     sideBySideOutputRatio: 1,
     overscanCount: 1,
-    windowingMode: 'full',
+    windowingMode: 'contentVisibility',
     accessKernelHistory: false,
-    showInputPlaceholder: true
+    showInputPlaceholder: true,
+    showMinimap: false
   };
 
   /**

@@ -162,6 +162,14 @@ namespace CommandIDs {
 }
 
 /**
+ * Settings for configuring the breadcrumb
+ */
+interface IBreadcrumbsSettings {
+  minimumLeftItems: number;
+  minimumRightItems: number;
+}
+
+/**
  * The file browser namespace token.
  */
 const namespace = 'filebrowser';
@@ -268,7 +276,10 @@ const browserSettings: JupyterFrontEndPlugin<void> = {
             const value = settings.get(key).composite as boolean;
             browser[key] = value;
           }
-
+          const breadcrumbs = settings.get('breadcrumbs')
+            .composite as unknown as IBreadcrumbsSettings;
+          browser.minimumBreadcrumbsLeftItems = breadcrumbs.minimumLeftItems;
+          browser.minimumBreadcrumbsRightItems = breadcrumbs.minimumRightItems;
           const filterDirectories = settings.get('filterDirectories')
             .composite as boolean;
           const useFuzzyFilter = settings.get('useFuzzyFilter')
