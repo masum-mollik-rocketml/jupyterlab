@@ -845,7 +845,7 @@ export namespace EditorExtensionRegistry {
       }),
       Object.freeze({
         name: 'popupToolbar',
-        default: true,  // or false if you want it disabled by default
+        default: false,  // or false if you want it disabled by default
         factory: () => createConditionalExtension(popupToolbar()),
         schema: {
           type: 'boolean',

@@ -168,3 +168,6 @@ agents
 venv
 anaconda_projects
 .jupyter_ystore.db
+
+# Ignore secrets in '.env'
+.env

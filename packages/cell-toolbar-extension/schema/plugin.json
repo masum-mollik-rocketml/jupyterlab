@@ -9,15 +9,18 @@
       {
         "command": "notebook:delete-cell",
         "icon": "ui-components:delete",
-        "name": "delete-cell"
+        "name": "delete-cell",
+        "rank": 1001
       },
       {
         "name": "run-code-cell",
-        "command": "toolbar-button:run-code-cell"
+        "command": "toolbar-button:run-code-cell",
+        "rank": 1002
       },
       {
         "name": "render-markdows-cell",
-        "command": "toolbar-button:render-markdown-cell"
+        "command": "toolbar-button:render-markdown-cell",
+        "rank": 1003
       }
     ]
   },
