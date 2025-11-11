@@ -1639,7 +1639,7 @@ export namespace Commands {
   ): IDisposable {
     const disposables = new DisposableSet();
 
-    for (const filetype of availableKernelFileTypes) {
+    /*for (const filetype of availableKernelFileTypes) {
       disposables.add(
         menu.fileMenu.newMenu.addItem({
           command: CommandIDs.createNew,
@@ -1653,7 +1653,7 @@ export namespace Commands {
           rank: 31
         })
       );
-    }
+    }*/
 
     return disposables;
   }

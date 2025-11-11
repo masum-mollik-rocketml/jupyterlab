@@ -225,10 +225,10 @@ function activate(
     );
 
     // Add terminal creation to the file menu.
-    mainMenu.fileMenu.newMenu.addItem({
+    /*mainMenu.fileMenu.newMenu.addItem({
       command: CommandIDs.createNew,
       rank: 20
-    });
+    });*/
 
     // Add terminal close-and-shutdown to the file menu.
     mainMenu.fileMenu.closeAndCleaners.add({

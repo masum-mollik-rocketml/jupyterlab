@@ -12,10 +12,6 @@
             "rank": 9.9
           },
           {
-            "command": "apputils:display-notifications",
-            "rank": 9.92
-          },
-          {
             "type": "separator",
             "rank": 9.99
           }

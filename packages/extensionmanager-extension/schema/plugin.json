@@ -22,10 +22,6 @@
             "rank": 100
           },
           {
-            "command": "extensionmanager:toggle",
-            "rank": 100
-          },
-          {
             "type": "separator",
             "rank": 100
           }

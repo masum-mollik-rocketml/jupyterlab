@@ -9,10 +9,6 @@
         "id": "jp-mainmenu-view",
         "items": [
           {
-            "command": "apputils:activate-command-palette",
-            "rank": 0
-          },
-          {
             "type": "separator",
             "rank": 0
           }

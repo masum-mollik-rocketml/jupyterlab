@@ -6,10 +6,6 @@
       {
         "id": "jp-mainmenu-view",
         "items": [
-          {
-            "command": "property-inspector:show-panel",
-            "rank": 2
-          }
         ]
       }
     ]

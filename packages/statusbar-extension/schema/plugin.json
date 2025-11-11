@@ -6,18 +6,6 @@
       {
         "id": "jp-mainmenu-view",
         "items": [
-          {
-            "type": "submenu",
-            "submenu": {
-              "id": "jp-mainmenu-view-appearance",
-              "items": [
-                {
-                  "command": "statusbar:toggle",
-                  "rank": 15
-                }
-              ]
-            }
-          }
         ]
       }
     ]
