@@ -180,10 +180,10 @@ const langMenu: JupyterFrontEndPlugin<void> = {
 
           // Add the language command to the menu
           if (languagesMenu) {
-            languagesMenu.addItem({
+            /*languagesMenu.addItem({
               command,
               args: {}
-            });
+            });*/
           }
 
           if (palette) {

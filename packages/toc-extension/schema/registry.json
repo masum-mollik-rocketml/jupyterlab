@@ -8,10 +8,6 @@
       {
         "id": "jp-mainmenu-view",
         "items": [
-          {
-            "command": "toc:show-panel",
-            "rank": 4
-          }
         ]
       }
     ],

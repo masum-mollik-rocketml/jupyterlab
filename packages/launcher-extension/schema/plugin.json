@@ -3,15 +3,6 @@
   "description": "Launcher settings.",
   "jupyter.lab.menus": {
     "main": [
-      {
-        "id": "jp-mainmenu-file",
-        "items": [
-          {
-            "command": "launcher:create",
-            "rank": 0.99
-          }
-        ]
-      }
     ]
   },
   "jupyter.lab.shortcuts": [

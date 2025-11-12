@@ -6,10 +6,6 @@
       {
         "id": "jp-mainmenu-view",
         "items": [
-          {
-            "command": "running:show-panel",
-            "rank": 3
-          }
         ]
       }
     ],

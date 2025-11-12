@@ -8,22 +8,6 @@
       {
         "id": "jp-mainmenu-file",
         "items": [
-          {
-            "type": "submenu",
-            "submenu": {
-              "id": "jp-mainmenu-file-new",
-              "items": [
-                {
-                  "command": "fileeditor:create-new",
-                  "rank": 30
-                },
-                {
-                  "command": "fileeditor:create-new-markdown-file",
-                  "rank": 30
-                }
-              ]
-            }
-          }
         ]
       },
       {
@@ -31,14 +15,6 @@
         "items": [
           {
             "type": "separator",
-            "rank": 40
-          },
-          {
-            "type": "submenu",
-            "submenu": {
-              "id": "jp-mainmenu-view-codemirror-language",
-              "label": "Text Editor Syntax Highlighting"
-            },
             "rank": 40
           },
           {
@@ -52,47 +28,6 @@
         "items": [
           {
             "type": "separator",
-            "rank": 30
-          },
-          {
-            "type": "submenu",
-            "submenu": {
-              "id": "jp-mainmenu-settings-fileeditorindent",
-              "label": "Text Editor Indentation",
-              "items": [
-                {
-                  "command": "fileeditor:change-tabs"
-                },
-                {
-                  "command": "fileeditor:change-tabs",
-                  "args": {
-                    "size": "1"
-                  }
-                },
-                {
-                  "command": "fileeditor:change-tabs",
-                  "args": {
-                    "size": "2"
-                  }
-                },
-                {
-                  "command": "fileeditor:change-tabs",
-                  "args": {
-                    "size": "4"
-                  }
-                },
-                {
-                  "command": "fileeditor:change-tabs",
-                  "args": {
-                    "size": "8"
-                  }
-                }
-              ]
-            },
-            "rank": 30
-          },
-          {
-            "command": "fileeditor:toggle-autoclosing-brackets-universal",
             "rank": 30
           },
           {

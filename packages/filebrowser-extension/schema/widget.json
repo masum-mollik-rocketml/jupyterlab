@@ -11,10 +11,6 @@
       {
         "id": "jp-mainmenu-view",
         "items": [
-          {
-            "command": "filebrowser:toggle-main",
-            "rank": 1
-          }
         ]
       },
       {
@@ -22,10 +18,6 @@
         "items": [
           {
             "type": "separator",
-            "rank": 5
-          },
-          {
-            "command": "filebrowser:toggle-navigate-to-current-directory",
             "rank": 5
           },
           {

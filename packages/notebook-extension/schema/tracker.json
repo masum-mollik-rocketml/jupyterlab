@@ -6,18 +6,6 @@
       {
         "id": "jp-mainmenu-file",
         "items": [
-          {
-            "type": "submenu",
-            "submenu": {
-              "id": "jp-mainmenu-file-new",
-              "items": [
-                {
-                  "command": "notebook:create-new",
-                  "rank": 10
-                }
-              ]
-            }
-          }
         ]
       },
       {
@@ -40,14 +28,6 @@
             "rank": 5
           },
           {
-            "command": "notebook:cut-cell",
-            "rank": 5
-          },
-          {
-            "command": "notebook:copy-cell",
-            "rank": 5
-          },
-          {
             "command": "notebook:paste-cell-below",
             "rank": 5
           },
@@ -64,19 +44,7 @@
             "rank": 6
           },
           {
-            "command": "notebook:delete-cell",
-            "rank": 6
-          },
-          {
             "type": "separator",
-            "rank": 7
-          },
-          {
-            "command": "notebook:select-all",
-            "rank": 7
-          },
-          {
-            "command": "notebook:deselect-all",
             "rank": 7
           },
           {
@@ -84,31 +52,7 @@
             "rank": 8
           },
           {
-            "command": "notebook:move-cell-up",
-            "rank": 8
-          },
-          {
-            "command": "notebook:move-cell-down",
-            "rank": 8
-          },
-          {
             "type": "separator",
-            "rank": 9
-          },
-          {
-            "command": "notebook:split-cell-at-cursor",
-            "rank": 9
-          },
-          {
-            "command": "notebook:merge-cells",
-            "rank": 9
-          },
-          {
-            "command": "notebook:merge-cell-above",
-            "rank": 9
-          },
-          {
-            "command": "notebook:merge-cell-below",
             "rank": 9
           },
           {
@@ -125,14 +69,6 @@
             "rank": 10
           },
           {
-            "command": "notebook:hide-cell-code",
-            "rank": 10
-          },
-          {
-            "command": "notebook:hide-cell-outputs",
-            "rank": 10
-          },
-          {
             "command": "notebook:hide-all-cell-code",
             "rank": 10
           },
@@ -143,14 +79,6 @@
           {
             "type": "separator",
             "rank": 10
-          },
-          {
-            "command": "notebook:show-cell-code",
-            "rank": 11
-          },
-          {
-            "command": "notebook:show-cell-outputs",
-            "rank": 11
           },
           {
             "command": "notebook:show-all-cell-code",
@@ -216,15 +144,6 @@
           {
             "type": "separator",
             "rank": 12
-          }
-        ]
-      },
-      {
-        "id": "jp-mainmenu-kernel",
-        "items": [
-          {
-            "command": "notebook:restart-and-run-to-selected",
-            "rank": 1
           }
         ]
       }

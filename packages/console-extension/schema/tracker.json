@@ -8,18 +8,6 @@
       {
         "id": "jp-mainmenu-file",
         "items": [
-          {
-            "type": "submenu",
-            "submenu": {
-              "id": "jp-mainmenu-file-new",
-              "items": [
-                {
-                  "command": "console:create",
-                  "rank": 1
-                }
-              ]
-            }
-          }
         ]
       },
       {
@@ -27,28 +15,6 @@
         "items": [
           {
             "type": "separator",
-            "rank": 9
-          },
-          {
-            "type": "submenu",
-            "submenu": {
-              "id": "jp-mainmenu-settings-consoleexecute",
-              "label": "Console Run Keystroke",
-              "items": [
-                {
-                  "command": "console:interaction-mode",
-                  "args": {
-                    "interactionMode": "terminal"
-                  }
-                },
-                {
-                  "command": "console:interaction-mode",
-                  "args": {
-                    "interactionMode": "notebook"
-                  }
-                }
-              ]
-            },
             "rank": 9
           },
           {

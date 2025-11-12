@@ -598,7 +598,14 @@ export class ToolbarOtherOptionsMenu extends ReactWidget {
       {
         label: this._trans.__("Interrupt Kernel"),
         onClick: () => {
-          this._commands.execute('notebook:interrupt-kernel').then(_ => {});
+          this._commands.execute('notebook:interrupt-kernel').then(_ => {
+          });
+        }
+      },
+      {
+        label: this._trans.__("Reconnect to Kernel"),
+        onClick: () => {
+          this._commands.execute('notebook:reconnect-to-kernel').then(_ => {});
         }
       }
     ];

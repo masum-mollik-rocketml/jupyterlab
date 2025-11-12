@@ -10,10 +10,6 @@
         "id": "jp-mainmenu-file",
         "items": [
           {
-            "command": "docmanager:clone",
-            "rank": 2
-          },
-          {
             "type": "separator",
             "rank": 4
           },
@@ -32,22 +28,6 @@
           {
             "type": "separator",
             "rank": 5
-          },
-          {
-            "command": "docmanager:reload",
-            "rank": 5
-          },
-          {
-            "command": "docmanager:restore-checkpoint",
-            "rank": 5
-          },
-          {
-            "command": "docmanager:rename",
-            "rank": 5
-          },
-          {
-            "command": "docmanager:duplicate",
-            "rank": 5
           }
         ]
       },
@@ -56,10 +36,6 @@
         "items": [
           {
             "type": "separator",
-            "rank": 4
-          },
-          {
-            "command": "docmanager:toggle-autosave",
             "rank": 4
           },
           {
