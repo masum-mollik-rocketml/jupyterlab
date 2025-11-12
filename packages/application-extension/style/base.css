@@ -11,7 +11,7 @@
 
 #jp-top-bar {
   --jp-private-toolbar-height: var(--jp-private-menu-panel-height);
-
+  background: var(--jp-layout-color1);
   flex: 1 1 auto;
   padding: 0 2px;
   box-shadow: none;

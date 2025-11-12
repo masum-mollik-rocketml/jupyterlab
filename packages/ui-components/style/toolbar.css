@@ -19,9 +19,9 @@
   --toolbar-item-gap: 0;
 
   color: var(--jp-ui-font-color0);
-  border-bottom: var(--jp-border-width) solid var(--jp-toolbar-border-color);
-  box-shadow: var(--jp-toolbar-box-shadow);
-  background: var(--jp-toolbar-background);
+  border-bottom: 0;
+  box-shadow: none;
+  background: var(--jp-layout-color0);
   min-height: var(--jp-toolbar-micro-height);
   padding: 0 2px;
   z-index: 8;

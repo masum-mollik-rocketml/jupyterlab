@@ -25,7 +25,7 @@ const statusBar: JupyterFrontEndPlugin<IStatusBar> = {
   description: 'Provides the application status bar.',
   requires: [ITranslator],
   provides: IStatusBar,
-  autoStart: true,
+  autoStart: false,
   activate: (
     app: JupyterFrontEnd,
     translator: ITranslator,

@@ -24,7 +24,7 @@
 .jp-SideBar.lm-TabBar,
 #jp-down-stack .lm-TabBar {
   color: var(--jp-ui-font-color2);
-  background: var(--jp-layout-color2);
+  background: var(--jp-layout-color0);
   font-size: var(--jp-ui-font-size1);
   overflow: visible;
 }
@@ -66,12 +66,12 @@
   right: 0;
   top: 0;
   left: 0;
-  border: var(--jp-border-width) solid var(--jp-layout-color1);
+  /*border: var(--jp-border-width) solid var(--jp-layout-color1);*/
 }
 
 .jp-SideBar .lm-TabBar-tab:not(.lm-mod-current),
 #jp-down-stack .lm-TabBar-tab:not(.lm-mod-current) {
-  background: var(--jp-layout-color2);
+  background: var(--jp-layout-color0);
 }
 
 .jp-SideBar .lm-TabBar-tabIcon.jp-SideBar-tabIcon {
@@ -109,19 +109,19 @@
 /* stylelint-disable selector-max-class */
 
 .jp-SideBar.lm-TabBar .lm-TabBar-tab + .lm-TabBar-tab {
-  border-top: var(--jp-border-width) solid var(--jp-layout-color2);
+  /*border-top: var(--jp-border-width) solid var(--jp-layout-color2);*/
 }
 
 .jp-SideBar.lm-TabBar .lm-TabBar-tab.lm-mod-current + .lm-TabBar-tab {
-  border-top: var(--jp-border-width) solid var(--jp-border-color0);
+  /*border-top: var(--jp-border-width) solid var(--jp-border-color0);*/
 }
 
 .jp-SideBar.lm-TabBar .lm-TabBar-tab + .lm-TabBar-tab.lm-mod-current {
-  border-top: var(--jp-border-width) solid var(--jp-border-color0);
+  /*border-top: var(--jp-border-width) solid var(--jp-border-color0);*/
 }
 
 .jp-SideBar.lm-TabBar .lm-TabBar-tab.lm-mod-current:last-child {
-  border-bottom: var(--jp-border-width) solid var(--jp-border-color0);
+  /*border-bottom: var(--jp-border-width) solid var(--jp-border-color0);*/
 }
 
 .jp-SideBar.lm-TabBar .lm-TabBar-tabLabel {
@@ -204,7 +204,7 @@
 #jp-left-stack > .lm-Widget,
 #jp-right-stack > .lm-Widget {
   min-width: var(--jp-sidebar-min-width);
-  background-color: var(--jp-layout-color1);
+  background-color: var(--jp-layout-color0);
 }
 
 #jp-right-stack {

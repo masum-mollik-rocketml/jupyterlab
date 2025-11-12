@@ -1397,11 +1397,12 @@ const jupyterLogo: JupyterFrontEndPlugin<void> = {
     const div = document.createElement('div');
     const span = document.createElement('span');
     span.textContent = 'Notebooks';
-    span.style.color = 'var(--jp-brand-color1)';
+    span.style.color = 'var(--jp-brand-color2)';
     span.style.fontSize = '16px';
     span.style.fontStyle = 'normal';
     span.style.fontWeight = '600';
     span.style.lineHeight = '16px';
+    span.style.marginLeft = '24px';
     div.appendChild(span);
     logo.node.appendChild(div);
     logo.id = 'jp-MainLogo';

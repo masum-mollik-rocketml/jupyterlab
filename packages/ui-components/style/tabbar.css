@@ -9,7 +9,8 @@
   padding: 4px;
   padding-bottom: 5px;
   margin-right: 1px;
-  background-color: var(--jp-layout-color2);
+  background-color: var(--jp-layout-color0);
+  border-radius: 8px 8px 0 0;
 }
 
 .lm-TabBar .lm-TabBar-addButton:hover {

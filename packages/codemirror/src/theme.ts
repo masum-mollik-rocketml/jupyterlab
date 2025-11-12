@@ -90,7 +90,7 @@ export const jupyterEditorTheme = EditorView.theme({
   },
 
   '.cm-gutter': {
-    backgroundColor: 'var(--jp-layout-color2)'
+    backgroundColor: 'var(--jp-layout-color0)'
   },
 
   '.cm-activeLine': {

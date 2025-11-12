@@ -14,9 +14,9 @@
 .lm-DockPanel-widget,
 .lm-TabPanel-stackedPanel {
   background: var(--jp-layout-color0);
-  border-left: var(--jp-border-width) solid var(--jp-border-color1);
-  border-right: var(--jp-border-width) solid var(--jp-border-color1);
-  border-bottom: var(--jp-border-width) solid var(--jp-border-color1);
+  border-left: calc(2 * var(--jp-border-width)) solid var(--jp-border-color3);
+  border-right: calc(2 * var(--jp-border-width)) solid var(--jp-border-color3);
+  border-bottom: calc(2 * var(--jp-border-width)) solid var(--jp-border-color3);
 }
 
 .lm-DockPanel-overlay {
