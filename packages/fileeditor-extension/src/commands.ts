@@ -1414,11 +1414,11 @@ export namespace Commands {
     launcher: ILauncher,
     trans: TranslationBundle
   ): void {
-    launcher.add({
-      command: CommandIDs.createNew,
-      category: trans.__('Other'),
-      rank: 1
-    });
+    // launcher.add({
+    //   command: CommandIDs.createNew,
+    //   category: trans.__('Other'),
+    //   rank: 1
+    // });
   }
 
   /**
@@ -1428,11 +1428,11 @@ export namespace Commands {
     launcher: ILauncher,
     trans: TranslationBundle
   ): void {
-    launcher.add({
+    /*launcher.add({
       command: CommandIDs.createNewMarkdown,
       category: trans.__('Other'),
       rank: 2
-    });
+    });*/
   }
 
   /**
@@ -1446,6 +1446,12 @@ export namespace Commands {
   ): IDisposable {
     const disposables = new DisposableSet();
 
+    const getIconName = (filetype: IRenderMime.IFileType) => {
+      if (filetype.launcherIcon?.toString()) {
+        return filetype.launcherIcon.toString();
+      }
+      return filetype.icon?.toString() ?? '';
+    };
     for (const filetype of availableKernelFileTypes) {
       disposables.add(
         launcher.add({
@@ -1454,10 +1460,13 @@ export namespace Commands {
           rank: 3,
           args: {
             fileExt: filetype.extensions[0],
-            iconName: filetype.icon?.toString() ?? '',
-            launcherLabel: trans.__('%1 File', filetype.displayName),
+            iconName: getIconName(filetype),
+            launcherLabel: trans.__('%1', filetype.displayName),
             paletteLabel: trans.__('New %1 File', filetype.displayName),
             caption: trans.__('Create a new %1 File', filetype.displayName)
+          },
+          metadata: {
+            description: 'Write. Run. Innovate — all in your code editor.'
           }
         })
       );

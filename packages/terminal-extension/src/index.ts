@@ -33,7 +33,7 @@ import {
   copyIcon,
   pasteIcon,
   refreshIcon,
-  terminalIcon
+  terminalIcon, terminalLauncherIcon
 } from '@jupyterlab/ui-components';
 import { Menu, Widget } from '@lumino/widgets';
 import { TerminalSearchProvider } from './searchprovider';
@@ -272,8 +272,12 @@ function activate(
   if (launcher) {
     launcher.add({
       command: CommandIDs.createNew,
+      args: { isLauncher: true },
       category: trans.__('Other'),
-      rank: 0
+      rank: 0,
+      metadata: {
+        description: 'Execute commands in your integrated terminal'
+      }
     });
   }
 
@@ -358,7 +362,7 @@ function addCommands(
     label: args =>
       args['isPalette'] ? trans.__('New Terminal') : trans.__('Terminal'),
     caption: trans.__('Start a new terminal session'),
-    icon: args => (args['isPalette'] ? undefined : terminalIcon),
+    icon: args => (args['isPalette'] ? undefined : (args['isLauncher'] ? terminalLauncherIcon : terminalIcon)),
     execute: async args => {
       const name = args['name'] as string;
       const cwd = args['cwd'] as string;

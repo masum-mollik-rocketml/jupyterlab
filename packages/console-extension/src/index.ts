@@ -63,9 +63,9 @@ import {
 } from '@jupyterlab/ui-components';
 import { find } from '@lumino/algorithm';
 import {
-  JSONExt,
+  // JSONExt,
   JSONObject,
-  ReadonlyJSONValue,
+  // ReadonlyJSONValue,
   ReadonlyPartialJSONObject,
   UUID
 } from '@lumino/coreutils';
@@ -392,7 +392,7 @@ async function activateConsole(
         if (!specs) {
           return;
         }
-        disposables = new DisposableSet();
+        /*disposables = new DisposableSet();
         for (const name in specs.kernelspecs) {
           const rank = name === specs.default ? 0 : Infinity;
           const spec = specs.kernelspecs[name]!;
@@ -412,7 +412,7 @@ async function activateConsole(
               }
             })
           );
-        }
+        }*/
       };
       onSpecsChanged();
       manager.kernelspecs.specsChanged.connect(onSpecsChanged);

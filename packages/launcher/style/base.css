@@ -13,6 +13,7 @@
   --jp-private-launcher-card-icon-height: 5.231em;
   --jp-private-launcher-large-icon-size: 4em;
   --jp-private-launcher-small-icon-size: 2.462em;
+  --jp-launcher-welcome-padding: 40px;
 }
 
 /* Launcher */
@@ -21,7 +22,10 @@
   margin: 0;
   padding: 0;
   outline: none;
-  background: var(--jp-layout-color0);
+  background-image: url('./background.png'); /* or bg.png */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   box-sizing: border-box;
   min-width: 120px;
   min-height: 120px;
@@ -37,7 +41,9 @@
   box-sizing: border-box;
   overflow: auto;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .jp-Launcher-cwd h3 {
@@ -54,6 +60,11 @@
   padding-left: var(--jp-private-launcher-side-padding);
   padding-right: var(--jp-private-launcher-side-padding);
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 120px;
 }
 
 /* Launcher section */
@@ -98,43 +109,80 @@
 .jp-LauncherCard {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  flex: 1 1;
   cursor: pointer;
-  width: var(--jp-private-launcher-card-size);
-  min-height: var(--jp-private-launcher-card-size);
-  margin: 8px;
+  margin: 20px;
   padding: 0;
-  border: 1px solid var(--jp-border-color2);
-  background: var(--jp-layout-color0);
-  box-shadow: var(--jp-elevation-z2);
-  transition: 0.2s box-shadow;
-  border-radius: var(--jp-border-radius);
+  gap: 16px;
 }
 
 .jp-LauncherCard:focus:not(:active) {
-  border: 1px solid var(--jp-brand-color1);
-  box-shadow: var(--jp-elevation-z6);
-  outline: unset; /* if outline is not unset, then depending on which browser you use, the
-    border change is either hidden behind the outline or visually combined with it */
+  .jp-LauncherCard-icon {
+    svg {
+      box-shadow: var(--jp-elevation-z2);
+      outline: unset; /* if outline is not unset, then depending on which browser you use, the
+      border change is either hidden behind the outline or visually combined with it */
+    }
+  }
 }
 
 .jp-LauncherCard:hover {
-  box-shadow: var(--jp-elevation-z6);
-  background: var(--jp-layout-color1);
+  .jp-LauncherCard-icon {
+    svg {
+      box-shadow: var(--jp-elevation-z6);
+    }
+  }
 }
 
 .jp-LauncherCard:active {
-  box-shadow: var(--jp-elevation-z4);
+  .jp-LauncherCard-icon {
+    svg {
+      box-shadow: var(--jp-elevation-z4);
+    }
+  }
+}
+
+.jp-Launcher-top-bar {
+  width: 100%;
+  padding: var(--jp-launcher-welcome-padding);
+  box-sizing: border-box;
+  color: #FFF;
+  font-size: var(--jp-ui-font-size2);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .jp-Launcher-welcome {
+
+  }
+
+  .jp-Launcher-top-bar-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+
 }
 
 .jp-LauncherCard-icon {
   width: 100%;
-  height: var(--jp-private-launcher-card-icon-height);
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: var(--jp-elevation-z0);
+  border-radius: var(--jp-border-radius);
+
+  svg {
+    transition: 0.3s box-shadow;
+  }
 }
 
 .jp-LauncherCard-noKernelIcon {
@@ -157,18 +205,35 @@
   min-height: var(--jp-private-launcher-card-label-height);
   padding: 0 4px 4px;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 .jp-LauncherCard-label p {
   min-height: 2.154em;
-  word-break: break-word;
+  white-space: break-spaces;
   text-align: center;
-  color: var(--jp-ui-font-color1);
-  line-height: 1.077em;
-  font-size: calc(var(--jp-ui-font-size1) * 0.923);
-  overflow: hidden;
+  color: #FFF;
+  font-size: calc(var(--jp-ui-font-size1) * 1.85);
   margin: auto;
+  text-shadow: 0 5.447px 10.894px rgba(75, 112, 127, 0.24);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 100% */
+}
+
+.jp-Launcher-description {
+  margin-top: 120px;
+  min-height: 48px;
+  color: #FFF;
+  text-align: center;
+  text-shadow: 0 5.447px 10.894px rgba(75, 112, 127, 0.24);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+
+  p {
+    margin: 0;
+  }
 }
 
 /* kernel icons */

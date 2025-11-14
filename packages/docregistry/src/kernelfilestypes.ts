@@ -21,6 +21,7 @@ export async function getAvailableKernelFileTypes(
           name: 'Python',
           extensions: ['.py'],
           icon: 'ui-components:python',
+          launcherIcon: 'ui-components:python-launcher',
           displayName: 'Python',
           mimeTypes: ['text/plain']
         }

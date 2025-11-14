@@ -112,7 +112,7 @@ import {
   IFormRendererRegistry,
   moveDownIcon,
   moveUpIcon,
-  notebookIcon,
+  notebookIcon, notebookLauncherIcon,
   pasteIcon,
   RankedMenu,
   restartKernelIcon,
@@ -2167,6 +2167,9 @@ function activateNotebookHandler(
   // Add a command for creating a new notebook.
   commands.addCommand(CommandIDs.createNew, {
     label: args => {
+      if (args['displayName']) {
+        return trans.__(args['displayName'] as string);
+      }
       const kernelName = (args['kernelName'] as string) || '';
       if (args['isLauncher'] && args['kernelName'] && services.kernelspecs) {
         return (
@@ -2180,7 +2183,13 @@ function activateNotebookHandler(
       return trans.__('Notebook');
     },
     caption: trans.__('Create a new notebook'),
-    icon: args => (args['isPalette'] ? undefined : notebookIcon),
+    icon: args => {
+      if(args['isPalette']) {
+        return undefined;
+      } else {
+        return args['isLauncher'] ? notebookLauncherIcon : notebookIcon;
+      }
+    },
     execute: args => {
       const currentBrowser =
         filebrowserFactory?.tracker.currentWidget ?? defaultBrowser;
@@ -2248,19 +2257,20 @@ function activateNotebookHandler(
         for (const name in specs.kernelspecs) {
           const rank = name === specs.default ? 0 : Infinity;
           const spec = specs.kernelspecs[name]!;
-          const kernelIconUrl =
-            spec.resources['logo-svg'] || spec.resources['logo-64x64'];
+          /*const kernelIconUrl =
+            spec.resources['logo-svg'] || spec.resources['logo-64x64'];*/
           disposables.add(
             launcher.add({
               command: CommandIDs.createNew,
-              args: { isLauncher: true, kernelName: name },
+              args: { isLauncher: true, kernelName: name, displayName: 'Notebook' },
               category: trans.__('Notebook'),
               rank,
-              kernelIconUrl,
+              // kernelIconUrl,
               metadata: {
                 kernel: JSONExt.deepCopy(
                   spec.metadata || {}
-                ) as ReadonlyJSONValue
+                ) as ReadonlyJSONValue,
+                description: 'Experiment. Analyze. Discover — all in your notebook.'
               }
             })
           );

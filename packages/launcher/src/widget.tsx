@@ -8,7 +8,7 @@ import {
   TranslationBundle
 } from '@jupyterlab/translation';
 import {
-  classes,
+  classes, helpIcon,
   LabIcon,
   VDomModel,
   VDomRenderer
@@ -141,7 +141,8 @@ export class Launcher extends VDomRenderer<ILauncher.IModel> {
 
     // Variable to help create sections
     const sections: React.ReactElement<any>[] = [];
-    let section: React.ReactElement<any>;
+    let categoryItems: React.ReactElement<any>[] = [];
+    // let section: React.ReactElement<any>;
 
     // Assemble the final ordered list of categories, beginning with
     // KNOWN_CATEGORIES.
@@ -160,14 +161,14 @@ export class Launcher extends VDomRenderer<ILauncher.IModel> {
       if (!categories[cat]) {
         return;
       }
-      const item = categories[cat][0] as ILauncher.IItemOptions;
-      const args = { ...item.args, cwd: this.cwd };
+      // const item = categories[cat][0] as ILauncher.IItemOptions;
+      // const args = { ...item.args, cwd: this.cwd };
       const kernel = kernelCategories.indexOf(cat) > -1;
-      const iconClass = this._commands.iconClass(item.command, args);
-      const icon = this._commands.icon(item.command, args);
+      // const iconClass = this._commands.iconClass(item.command, args);
+      // const icon = this._commands.icon(item.command, args);
 
       if (cat in categories) {
-        section = (
+        /*section = (
           <div className="jp-Launcher-section" key={cat}>
             <div className="jp-Launcher-sectionHeader">
               <LabIcon.resolveReact
@@ -194,13 +195,41 @@ export class Launcher extends VDomRenderer<ILauncher.IModel> {
             </div>
           </div>
         );
-        sections.push(section);
+        sections.push(section);*/
+
+        categoryItems = Array.from(
+                map(categories[cat], (item: ILauncher.IItemOptions) => {
+                  return Card(
+                    kernel,
+                    item,
+                    this,
+                    this._commands,
+                    this._trans,
+                    this._callback
+                  );
+                })
+              );
+        sections.push(...categoryItems);
       }
     });
 
     // Wrap the sections in body and content divs.
     return (
       <div className="jp-Launcher-body">
+        <div className={'jp-Launcher-top-bar'}>
+          <div className={'jp-Launcher-welcome'}>
+            <span>Welcome to Notebooks</span>
+          </div>
+          <div className={'jp-Launcher-top-bar-right'}>
+            <span>Help</span>
+            <LabIcon.resolveReact icon={helpIcon} elementSize={'normal'} tag={'span'} />
+          </div>
+        </div>
+
+        <div className="jp-Launcher-description" id="launcher-description-panel">
+          <p></p>
+        </div>
+
         <div className="jp-Launcher-content">
           <div className="jp-Launcher-cwd">
             <h3>{this.cwd}</h3>
@@ -247,6 +276,17 @@ function Card(
   const caption = commands.caption(command, args);
   const label = commands.label(command, args);
   const title = kernel ? label : caption || label;
+  const description = item.metadata?.description || '';
+
+  const onHover = () => {
+    const panel = document.getElementById('launcher-description-panel');
+    if (panel) panel.innerHTML = `<p>${description}</p>`;
+  };
+
+  const onOut = () => {
+    const panel = document.getElementById('launcher-description-panel');
+    if (panel) panel.innerHTML = `<p></p>`;
+  };
 
   // Build the onclick handler.
   const onclick = () => {
@@ -296,25 +336,21 @@ function Card(
       tabIndex={0}
       data-category={item.category || trans.__('Other')}
       key={Private.keyProperty.get(item)}
+      onMouseEnter={onHover}
+      onMouseLeave={onOut}
     >
       <div className="jp-LauncherCard-icon">
-        {kernel ? (
-          item.kernelIconUrl ? (
-            <img
-              src={item.kernelIconUrl}
-              className="jp-Launcher-kernelIcon"
-              alt={title}
-            />
-          ) : (
-            <div className="jp-LauncherCard-noKernelIcon">
-              {label[0].toUpperCase()}
-            </div>
-          )
-        ) : (
+        {kernel && item.kernelIconUrl ? (
+          <img
+            src={item.kernelIconUrl}
+            className="jp-Launcher-kernelIcon"
+            alt={title}
+          />) : (
           <LabIcon.resolveReact
             icon={icon}
             iconClass={classes(iconClass, 'jp-Icon-cover')}
             stylesheet="launcherCard"
+            tag={"div"}
           />
         )}
       </div>

@@ -200,12 +200,15 @@ export namespace LabIconStyle {
 
     launcherCard: {
       container: {
-        height: '52px',
-        width: '52px'
+        height: 'auto',
+        width: '100%',
+        maxWidth: '160px'
       },
       element: {
-        height: '52px',
-        width: '52px'
+        height: '100%',
+        width: '100%',
+        aspectRatio: '1/1',
+        borderRadius: '33.872px'
       },
       options: {
         elementPosition: 'center'

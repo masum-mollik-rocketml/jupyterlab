@@ -191,7 +191,7 @@ const inspector: JupyterFrontEndPlugin<IInspector> = {
 
     // Add open command to launcher if possible.
     if (launcher) {
-      launcher.add({ command: CommandIDs.open, args: { isLauncher: true } });
+      // launcher.add({ command: CommandIDs.open, args: { isLauncher: true } });
     }
 
     // Add toggle command to command palette if possible.

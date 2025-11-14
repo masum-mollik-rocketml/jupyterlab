@@ -5,6 +5,7 @@
  * @module filebrowser-extension
  */
 
+import { ILauncher } from '@jupyterlab/launcher';
 import { DisposableSet } from '@lumino/disposable';
 import {
   ILabShell,
@@ -54,7 +55,7 @@ import {
   cutIcon,
   downloadIcon,
   editIcon,
-  fileIcon,
+  fileIcon, fileUploadLauncherIcon,
   filterIcon,
   folderIcon,
   IDisposableMenuItem,
@@ -718,6 +719,43 @@ const browserWidget: JupyterFrontEndPlugin<void> = {
   }
 };
 
+
+/**
+ * A plugin to add the file upload icon to to Launcher
+ */
+const launcherUploadPlugin: JupyterFrontEndPlugin<void> = {
+  id: '@jupyterlab/filebrowser-extension:launcher',
+  description: 'Adds the file browser to the application shell.',
+  requires: [
+    ILauncher,
+    ITranslator
+  ],
+  optional: [],
+  autoStart: true,
+  activate: (
+    app: JupyterFrontEnd,
+    launcher: ILauncher,
+    translator: ITranslator
+  ): void => {
+
+    const trans = translator.load('jupyterlab');
+
+    if (launcher) {
+      launcher.add({
+        command: CommandIDs.showUploader,
+        category: trans.__('Other'),
+        rank: 3,
+        args: {
+          isLauncher: true
+        },
+        metadata: {
+          description: 'Upload you local files.'
+        }
+      })
+    }
+  }
+};
+
 /**
  * The default file browser share-file plugin
  *
@@ -1199,8 +1237,8 @@ function addCommands(
 
       uploader.input.click();
     },
-    icon: closeIcon.bindprops({ stylesheet: 'menuItem' }),
-    label: deleteToTrash ? trans.__('Move to Trash') : trans.__('Delete'),
+    icon: (args) => args['isLauncher'] ? fileUploadLauncherIcon : closeIcon.bindprops({ stylesheet: 'menuItem' }),
+    label: trans.__('Upload File'),
     mnemonic: 0,
     describedBy: {
       args: {
@@ -1906,7 +1944,8 @@ const plugins: JupyterFrontEndPlugin<any>[] = [
   openBrowserTabPlugin,
   openUrlPlugin,
   notifyUploadPlugin,
-  createNewLanguageFilePlugin
+  createNewLanguageFilePlugin,
+  launcherUploadPlugin
 ];
 export default plugins;
 
